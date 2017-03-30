@@ -10,6 +10,7 @@ categories: AKKA
 AKKA is based on an actor model that is quite simple, let's suppose that we have 2 actors: A and B
 
 `Actor A`: Hi Actor B, can you do xyz
+
 `Actor B`: Sure, give me a while
 
 Basically a model based on messaging where one Actor send a message to other one when needs something.
