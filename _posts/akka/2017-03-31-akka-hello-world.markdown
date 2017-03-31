@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "AKKA Hello World"
-date:   2017-03-30 16:33
+date:   2017-03-31 14:51
 categories: AKKA
 ---
 Let's create the most well known application for us, the HELLO WORLD APP  
