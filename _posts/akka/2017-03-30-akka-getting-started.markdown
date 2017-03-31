@@ -5,6 +5,7 @@ date:   2017-03-30 16:33
 categories: AKKA
 ---
 # AKKA
+Akka is a really cool toolkit and runtime for building highly concurrent and distributed applications based on a message-driven model. Let's review some key concepts in order to understand it.
 
 ## Actor Model
 AKKA is based on an actor model that is quite simple, let's suppose that we have 2 actors: A and B
