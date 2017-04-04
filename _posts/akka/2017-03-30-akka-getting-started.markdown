@@ -47,3 +47,5 @@ One task run and it wont delay other tasks running
 
 ### Race Condition
 It's when more than one actor are trying to modify the state of something at the same time
+
+That's all for now, in the next posts we are going to dive into the AKKA world
