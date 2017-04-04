@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-04-03T22:52:31-05:00</updated><id>/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">AKKA Hello World</title><link href="/akka/2017/03/31/akka-hello-world.html" rel="alternate" type="text/html" title="AKKA Hello World" /><published>2017-03-31T14:51:00-05:00</published><updated>2017-03-31T14:51:00-05:00</updated><id>/akka/2017/03/31/akka-hello-world</id><content type="html" xml:base="/akka/2017/03/31/akka-hello-world.html">&lt;p&gt;Let’s create the most well known application for us, the HELLO WORLD APP&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-04-03T22:54:00-05:00</updated><id>/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">AKKA Hello World</title><link href="/akka/2017/03/31/akka-hello-world.html" rel="alternate" type="text/html" title="AKKA Hello World" /><published>2017-03-31T14:51:00-05:00</published><updated>2017-03-31T14:51:00-05:00</updated><id>/akka/2017/03/31/akka-hello-world</id><content type="html" xml:base="/akka/2017/03/31/akka-hello-world.html">&lt;p&gt;Let’s create the most well known application for us, the HELLO WORLD APP&lt;/p&gt;
 
 &lt;p&gt;In order to have the required actor of an AKKA application, we will need:&lt;/p&gt;
 
@@ -70,6 +70,14 @@ This method will be executed when the actor receives the message.&lt;/p&gt;
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Actor B&lt;/code&gt;: Sure, give me a while&lt;/p&gt;
 
 &lt;p&gt;Basically a model based on messaging where one Actor send a message to other one when needs something.&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;main-concepts-related-to-akka&quot;&gt;Main Concepts Related to AKKA&lt;/h2&gt;
 &lt;p&gt;In order to understand how AKKA works, it’s vital understand a couple of concepts:&lt;/p&gt;
