@@ -16,6 +16,16 @@ AKKA is based on an actor model that is quite simple, let's suppose that we have
 
 Basically a model based on messaging where one Actor send a message to other one when needs something.
 
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- inferior -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-5428825449848403"
+     data-ad-slot="1328012179"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 ## Main Concepts Related to AKKA
 In order to understand how AKKA works, it's vital understand a couple of concepts:
 
