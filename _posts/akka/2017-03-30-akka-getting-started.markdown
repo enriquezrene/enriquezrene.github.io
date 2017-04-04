@@ -49,3 +49,14 @@ One task run and it wont delay other tasks running
 It's when more than one actor are trying to modify the state of something at the same time
 
 That's all for now, in the next posts we are going to dive into the AKKA world
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- inferior -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-5428825449848403"
+     data-ad-slot="1328012179"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
