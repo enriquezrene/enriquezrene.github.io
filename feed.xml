@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-04-13T09:24:24-05:00</updated><id>/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">RegEx Getting Started</title><link href="/regex/2017/04/13/regex-getting-started.html" rel="alternate" type="text/html" title="RegEx Getting Started" /><published>2017-04-13T09:09:00-05:00</published><updated>2017-04-13T09:09:00-05:00</updated><id>/regex/2017/04/13/regex-getting-started</id><content type="html" xml:base="/regex/2017/04/13/regex-getting-started.html">&lt;h1 id=&quot;regex&quot;&gt;RegEx&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-04-13T09:25:32-05:00</updated><id>/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">RegEx Getting Started</title><link href="/regex/2017/04/13/regex-getting-started.html" rel="alternate" type="text/html" title="RegEx Getting Started" /><published>2017-04-13T09:09:00-05:00</published><updated>2017-04-13T09:09:00-05:00</updated><id>/regex/2017/04/13/regex-getting-started</id><content type="html" xml:base="/regex/2017/04/13/regex-getting-started.html">&lt;h1 id=&quot;regex&quot;&gt;RegEx&lt;/h1&gt;
 &lt;p&gt;It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place&lt;/p&gt;
 
 &lt;h2 id=&quot;filtering-with-grep&quot;&gt;Filtering with GREP&lt;/h2&gt;
@@ -12,11 +12,10 @@ For example, let say we are looking for the string “ERROR” in the logs direc
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -n &lt;span class=&quot;s1&quot;&gt;'ERROR'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.log
 apache.log:8:ERROR &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;line ...
-nginx.log:77:it has an ERROR ...&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+nginx.log:77:it has an ERROR ...
 
-&lt;p&gt;Explanation:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;-n:     print the line number
+&lt;span class=&quot;c&quot;&gt;# Where:&lt;/span&gt;
+-n:     print the line number
 ERROR:  string to find
 &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:      any file
 .log:   files must have .log extension&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;

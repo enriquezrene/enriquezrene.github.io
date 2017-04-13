@@ -78,11 +78,10 @@ For example, let say we are looking for the string “ERROR” in the logs direc
 
 <figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -n <span class="s1">'ERROR'</span> <span class="k">*</span>.log
 apache.log:8:ERROR <span class="k">in </span>line ...
-nginx.log:77:it has an ERROR ...</code></pre></figure>
+nginx.log:77:it has an ERROR ...
 
-<p>Explanation:</p>
-
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell">-n:     print the line number
+<span class="c"># Where:</span>
+-n:     print the line number
 ERROR:  string to find
 <span class="k">*</span>:      any file
 .log:   files must have .log extension</code></pre></figure>
