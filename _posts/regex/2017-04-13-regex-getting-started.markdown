@@ -20,11 +20,8 @@ Use grep for finding the pattern:
 $ grep -n 'ERROR' *.log
 apache.log:8:ERROR in line ...
 nginx.log:77:it has an ERROR ...
-{% endhighlight %}
 
-Explanation:
-
-{% highlight shell %}
+# Where:
 -n:     print the line number
 ERROR:  string to find
 *:      any file
