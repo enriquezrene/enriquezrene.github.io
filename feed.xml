@@ -1,4 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-04-03T22:54:00-05:00</updated><id>/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">AKKA Hello World</title><link href="/akka/2017/03/31/akka-hello-world.html" rel="alternate" type="text/html" title="AKKA Hello World" /><published>2017-03-31T14:51:00-05:00</published><updated>2017-03-31T14:51:00-05:00</updated><id>/akka/2017/03/31/akka-hello-world</id><content type="html" xml:base="/akka/2017/03/31/akka-hello-world.html">&lt;p&gt;Let’s create the most well known application for us, the HELLO WORLD APP&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-04-13T09:22:21-05:00</updated><id>/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">RegEx Getting Started</title><link href="/regex/2017/04/13/regex-getting-started.html" rel="alternate" type="text/html" title="RegEx Getting Started" /><published>2017-04-13T09:09:00-05:00</published><updated>2017-04-13T09:09:00-05:00</updated><id>/regex/2017/04/13/regex-getting-started</id><content type="html" xml:base="/regex/2017/04/13/regex-getting-started.html">&lt;h1 id=&quot;regex&quot;&gt;RegEx&lt;/h1&gt;
+&lt;p&gt;It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place&lt;/p&gt;
+
+&lt;h2 id=&quot;filtering-with-grep&quot;&gt;Filtering with GREP&lt;/h2&gt;
+&lt;p&gt;The most simple way to find text in files in UNIX is using GREP. This one is heavily used daily on servers in order to find some patterns inside logs.
+For example, let say we are looking for the string “ERROR” in the logs directory.&lt;/p&gt;
+
+&lt;p&gt;Move to the logs directory:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;cd path/to/logs/directory&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Use grep for finding the pattern:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -n &lt;span class=&quot;s1&quot;&gt;'ERROR'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.log
+apache.log:8:ERROR &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;line...
+nginx.log:77:it has an ERROR&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;-n:     print the line number
+ERROR:  string to find
+*:      any file
+.log:   files must have .log extension&lt;/p&gt;
+
+&lt;p&gt;From the output, firstly you will se file that has the coincidence, then the line number and the whole line that has the string that you are searching for&lt;/p&gt;</content><author><name></name></author><summary type="html">RegEx It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place</summary></entry><entry><title type="html">AKKA Hello World</title><link href="/akka/2017/03/31/akka-hello-world.html" rel="alternate" type="text/html" title="AKKA Hello World" /><published>2017-03-31T14:51:00-05:00</published><updated>2017-03-31T14:51:00-05:00</updated><id>/akka/2017/03/31/akka-hello-world</id><content type="html" xml:base="/akka/2017/03/31/akka-hello-world.html">&lt;p&gt;Let’s create the most well known application for us, the HELLO WORLD APP&lt;/p&gt;
 
 &lt;p&gt;In order to have the required actor of an AKKA application, we will need:&lt;/p&gt;
 

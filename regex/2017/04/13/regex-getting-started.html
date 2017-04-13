@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Geek Town</title>
-  <meta name="description" content="">
+  <title>RegEx Getting Started</title>
+  <meta name="description" content="RegEx It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="/">
+  <link rel="canonical" href="/regex/2017/04/13/regex-getting-started.html">
   <link rel="alternate" type="application/rss+xml" title="Geek Town" href="/feed.xml">
   
   
@@ -56,44 +56,41 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <div class="home">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <h1 class="page-heading">Posts</h1>
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">RegEx Getting Started</h1>
+    <p class="post-meta"><time datetime="2017-04-13T09:09:00-05:00" itemprop="datePublished">Apr 13, 2017</time></p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="regex">RegEx</h1>
+<p>It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place</p>
+
+<h2 id="filtering-with-grep">Filtering with GREP</h2>
+<p>The most simple way to find text in files in UNIX is using GREP. This one is heavily used daily on servers in order to find some patterns inside logs.
+For example, let say we are looking for the string “ERROR” in the logs directory.</p>
+
+<p>Move to the logs directory:
+<code class="highlighter-rouge">cd path/to/logs/directory</code></p>
+
+<p>Use grep for finding the pattern:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -n <span class="s1">'ERROR'</span> <span class="k">*</span>.log
+apache.log:8:ERROR <span class="k">in </span>line...
+nginx.log:77:it has an ERROR</code></pre></figure>
+
+<p>-n:     print the line number
+ERROR:  string to find
+*:      any file
+.log:   files must have .log extension</p>
+
+<p>From the output, firstly you will se file that has the coincidence, then the line number and the whole line that has the string that you are searching for</p>
+
+  </div>
+
   
-  
-
-
-  <ul class="post-list">
-    
-      <li>
-        <span class="post-meta">Apr 13, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/regex/2017/04/13/regex-getting-started.html">RegEx Getting Started</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 31, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/akka/2017/03/31/akka-hello-world.html">AKKA Hello World</a>
-        </h2>
-      </li>
-    
-      <li>
-        <span class="post-meta">Mar 30, 2017</span>
-
-        <h2>
-          <a class="post-link" href="/akka/2017/03/30/akka-getting-started.html">AKKA Getting Started!</a>
-        </h2>
-      </li>
-    
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
-
-</div>
+</article>
 
       </div>
     </main>
