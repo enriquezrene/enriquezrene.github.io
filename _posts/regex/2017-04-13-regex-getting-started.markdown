@@ -18,13 +18,17 @@ Use grep for finding the pattern:
 
 {% highlight shell %}
 $ grep -n 'ERROR' *.log
-apache.log:8:ERROR in line...
-nginx.log:77:it has an ERROR
+apache.log:8:ERROR in line ...
+nginx.log:77:it has an ERROR ...
 {% endhighlight %}
 
+Explanation:
+
+{% highlight shell %}
 -n:     print the line number
 ERROR:  string to find
 *:      any file
 .log:   files must have .log extension
+{% highlight %}
 
 From the output, firstly you will se file that has the coincidence, then the line number and the whole line that has the string that you are searching for
