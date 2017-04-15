@@ -1,4 +1,103 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-04-13T09:25:32-05:00</updated><id>/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">RegEx Getting Started</title><link href="/regex/2017/04/13/regex-getting-started.html" rel="alternate" type="text/html" title="RegEx Getting Started" /><published>2017-04-13T09:09:00-05:00</published><updated>2017-04-13T09:09:00-05:00</updated><id>/regex/2017/04/13/regex-getting-started</id><content type="html" xml:base="/regex/2017/04/13/regex-getting-started.html">&lt;h1 id=&quot;regex&quot;&gt;RegEx&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-04-15T00:31:12-05:00</updated><id>/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">Quantifiers</title><link href="/regex/2017/04/13/quantifiers.html" rel="alternate" type="text/html" title="Quantifiers" /><published>2017-04-13T11:32:00-05:00</published><updated>2017-04-13T11:32:00-05:00</updated><id>/regex/2017/04/13/quantifiers</id><content type="html" xml:base="/regex/2017/04/13/quantifiers.html">&lt;h1 id=&quot;quantifiers&quot;&gt;Quantifiers&lt;/h1&gt;
+&lt;p&gt;XYZ&lt;/p&gt;
+
+&lt;h2 id=&quot;-optional&quot;&gt;? Optional&lt;/h2&gt;
+&lt;p&gt;It allows to find a text that contains or not a character&lt;/p&gt;
+
+&lt;p&gt;For the demonstration we are going to use a file named file.txt with this content:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;Java SE it&lt;span class=&quot;s1&quot;&gt;'s nice
+I like JEE just a little bit
+I prefer to avoid J2EE and use plain JavaSE
+JavaFX is growing a lot&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Finding lines with JEE or J2EE&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;J2?EE&quot;&lt;/span&gt; file.txt
+I like JEE just a little bit
+I prefer to avoid J2EE and use plain SEJava&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;-exact-coincidences&quot;&gt;* Exact Coincidences&lt;/h2&gt;
+&lt;p&gt;Finding lines with Java text (no matter where, beginning-middle-ending)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;*Java&quot;&lt;/span&gt; file.txt
+Java SE it&lt;span class=&quot;s1&quot;&gt;'s nice
+I prefer to avoid J2EE and use plain SEJava
+JavaFX is growing a lot&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;-a-quantity-of-coincidences&quot;&gt;+ A Quantity Of Coincidences&lt;/h2&gt;
+&lt;p&gt;Let’s replace the content by:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;1
+2
+12
+21
+123
+213&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Finding two or more digits&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;[0-9][0-9]+&quot;&lt;/span&gt; file.txt
+12
+21
+123
+213&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><summary type="html">Quantifiers XYZ</summary></entry><entry><title type="html">Meta-Characters</title><link href="/regex/2017/04/13/meta-characters.html" rel="alternate" type="text/html" title="Meta-Characters" /><published>2017-04-13T11:08:00-05:00</published><updated>2017-04-13T11:08:00-05:00</updated><id>/regex/2017/04/13/meta-characters</id><content type="html" xml:base="/regex/2017/04/13/meta-characters.html">&lt;h1 id=&quot;meta-characters&quot;&gt;Meta-Characters&lt;/h1&gt;
+&lt;p&gt;RegEx uses heavily meta-characters in order to easily find patterns inside a file&lt;/p&gt;
+
+&lt;h2 id=&quot;-brackets&quot;&gt;[] Brackets&lt;/h2&gt;
+&lt;p&gt;It allows to define a range of characters for find them in a file.&lt;/p&gt;
+
+&lt;p&gt;For the demonstration we are going to use a file named file.txt with this content:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;1
+hello
+2
+goodbye&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Finding alphabetic characters&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;[a-z]&quot;&lt;/span&gt; file.txt
+hello
+goodbye&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Finding numbers&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;[0-9]&quot;&lt;/span&gt; file.txt
+1
+2&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;-negate&quot;&gt;^ Negate&lt;/h2&gt;
+&lt;p&gt;Finding no-alphabetic characters&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;[^a-z]&quot;&lt;/span&gt; file.txt
+1
+2&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Finding no numbers&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;[^0-9]&quot;&lt;/span&gt; file.txt
+hello
+goodbye&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;searching-text-starting-and-ending-with&quot;&gt;Searching Text Starting and Ending With&lt;/h2&gt;
+&lt;p&gt;For the sake of simplicity let’s change the content of the file by:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;FirstName
+LastName
+Name1
+1stName&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;-starting-with&quot;&gt;^[ Starting With&lt;/h3&gt;
+&lt;p&gt;Finding text starting with a number&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;^[0-9]&quot;&lt;/span&gt; file.txt
+1stName&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;-ending-with&quot;&gt;$ Ending With&lt;/h3&gt;
+&lt;p&gt;Finding text ending in a number&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;[0-9]$&quot;&lt;/span&gt; file.txt
+Name1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><summary type="html">Meta-Characters RegEx uses heavily meta-characters in order to easily find patterns inside a file</summary></entry><entry><title type="html">RegEx Getting Started</title><link href="/regex/2017/04/13/regex-getting-started.html" rel="alternate" type="text/html" title="RegEx Getting Started" /><published>2017-04-13T09:09:00-05:00</published><updated>2017-04-13T09:09:00-05:00</updated><id>/regex/2017/04/13/regex-getting-started</id><content type="html" xml:base="/regex/2017/04/13/regex-getting-started.html">&lt;h1 id=&quot;regex&quot;&gt;RegEx&lt;/h1&gt;
 &lt;p&gt;It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place&lt;/p&gt;
 
 &lt;h2 id=&quot;filtering-with-grep&quot;&gt;Filtering with GREP&lt;/h2&gt;
