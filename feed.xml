@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-04-15T00:36:24-05:00</updated><id>/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">Quantifiers</title><link href="/regex/2017/04/13/quantifiers.html" rel="alternate" type="text/html" title="Quantifiers" /><published>2017-04-13T11:32:00-05:00</published><updated>2017-04-13T11:32:00-05:00</updated><id>/regex/2017/04/13/quantifiers</id><content type="html" xml:base="/regex/2017/04/13/quantifiers.html">&lt;h1 id=&quot;quantifiers&quot;&gt;Quantifiers&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-04-15T00:41:11-05:00</updated><id>/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">Quantifiers</title><link href="/regex/2017/04/13/quantifiers.html" rel="alternate" type="text/html" title="Quantifiers" /><published>2017-04-13T11:32:00-05:00</published><updated>2017-04-13T11:32:00-05:00</updated><id>/regex/2017/04/13/quantifiers</id><content type="html" xml:base="/regex/2017/04/13/quantifiers.html">&lt;h1 id=&quot;quantifiers&quot;&gt;Quantifiers&lt;/h1&gt;
 &lt;p&gt;XYZ&lt;/p&gt;
 
 &lt;h2 id=&quot;-optional&quot;&gt;? Optional&lt;/h2&gt;
@@ -129,15 +129,7 @@ ERROR:  string to find
 
 &lt;p&gt;From the output, firstly you will se file that has the coincidence, then the line number and the whole line that has the string that you are searching for&lt;/p&gt;
 
-&lt;p&gt;If you enjoyed this article please support it clicking on the ads&lt;/p&gt;
-
-&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
-
-&lt;!-- inferior --&gt;
-&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
-&lt;script&gt;
-(adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">RegEx It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place</summary></entry><entry><title type="html">AKKA Hello World</title><link href="/akka/2017/03/31/akka-hello-world.html" rel="alternate" type="text/html" title="AKKA Hello World" /><published>2017-03-31T14:51:00-05:00</published><updated>2017-03-31T14:51:00-05:00</updated><id>/akka/2017/03/31/akka-hello-world</id><content type="html" xml:base="/akka/2017/03/31/akka-hello-world.html">&lt;p&gt;Let’s create the most well known application for us, the HELLO WORLD APP&lt;/p&gt;
+&lt;p&gt;If you enjoyed this article please support it clicking on the ads&lt;/p&gt;</content><author><name></name></author><summary type="html">RegEx It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place</summary></entry><entry><title type="html">AKKA Hello World</title><link href="/akka/2017/03/31/akka-hello-world.html" rel="alternate" type="text/html" title="AKKA Hello World" /><published>2017-03-31T14:51:00-05:00</published><updated>2017-03-31T14:51:00-05:00</updated><id>/akka/2017/03/31/akka-hello-world</id><content type="html" xml:base="/akka/2017/03/31/akka-hello-world.html">&lt;p&gt;Let’s create the most well known application for us, the HELLO WORLD APP&lt;/p&gt;
 
 &lt;p&gt;In order to have the required actor of an AKKA application, we will need:&lt;/p&gt;
 
