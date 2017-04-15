@@ -14,6 +14,16 @@ For example, let say we are looking for the string "ERROR" in the logs directory
 Move to the logs directory:
 `cd path/to/logs/directory`
 
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- inferior -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-5428825449848403"
+     data-ad-slot="1328012179"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 Use grep for finding the pattern:
 
 {% highlight shell %}
@@ -29,3 +39,15 @@ ERROR:  string to find
 {% endhighlight %}
 
 From the output, firstly you will se file that has the coincidence, then the line number and the whole line that has the string that you are searching for
+
+If you enjoyed this article please support it clicking on the ads
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- inferior -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-5428825449848403"
+     data-ad-slot="1328012179"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
