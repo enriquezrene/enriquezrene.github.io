@@ -4,9 +4,6 @@ title:  "RegEx Getting Started"
 date:   2017-04-13 09:09
 categories: RegEx
 ---
-{% capture time %}{{ content | reading_time }}{% endcapture %}
-<p>This article will take {{ time }} {% if time == '1' %}minute{% else %}minutes{% endif %} to read.</p>
-
 # RegEx
 It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place
 
