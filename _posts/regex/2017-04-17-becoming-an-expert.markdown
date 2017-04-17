@@ -21,8 +21,10 @@ So, the expression for finding these values will be:
 $ grep -Po "\(\([0-9]{1,}\s{1}[0-9]{1,}(?:,[0-9]{1,}\s{1}[0-9]{1,}){1,}\)\)" file.txt
 ((1 2,3 4))
 ((5 6,7 8,9 10))
+{% endhighlight %}
 
 OMG, what it is? Let's breath and understand what we did
+{% highlight shell %}
 \(\(            : two parenthesis opening the expression, since ( is a metacharacter we need to scape them using \
 [0-9]{1,}       : 1 or more numbers from 0 to 9
 \s{1}           : a blank space
@@ -57,18 +59,8 @@ So, the expression for finding these values will be:
 grep -Po "\(\([-+]?\d+(\.\d+)?${1,}\s{1}[-+]?\d+(\.\d+)?${1,}(?:,[-+]?\d+(\.\d+)?${1,}\s{1}[-+]?\d+(\.\d+)?${1,}){1,}\)\)" file.txt
 ((-102.084546466 26.45688853338312,-102.1490725018084 26.13520439439342,-102.15047246071138 26.1264975143505,-102.14981952668641 26.1384657784035,-102.12671666102124 26.149049533554354,-102.1188178 26.152923456807,-102.10091893897877 26.149049533554354,-102.0878160633126 26.1384657784035,-102.08653386170432 26.13460053338312))
 ((-102.15271126918533 26.129748541924556,-102.14764154329896 26.12984171790165,-102.14755705371499 26.13408877990621,-102.14815585687757 26.13514319847587,-102.13090187683702 26.13494986238747,-102.10652676348738 26.13471792646315,-102.0865197014023 26.13455784661961,-102.08302007795753 26.1240081,-102.0878160633126 26.109550421596495,-102.10091893897877 26.09896666644564,-102.1188178 26.09509274319299,-102.12671666102124 26.09896666644564,-102.14981952668641 26.109550421596495,-102.15461552204248 26.1240081,-102.15271126918533 26.129748541924556))
-OMG, what it is? Don't cry please, we only changed the last expression replacing [0-9] by [-+]?\d+(\.\d+)?$, that's it.
 {% endhighlight %}
+OMG, what it is? Don't cry please, we only changed the last expression replacing [0-9] by [-+]?\d+(\.\d+)?$, that's it.
 
 
 If you like this post please pay me with a click on the ads :)
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- inferior -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
-     data-ad-client="ca-pub-5428825449848403"
-     data-ad-slot="1328012179"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
