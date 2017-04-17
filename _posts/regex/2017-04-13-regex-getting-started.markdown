@@ -4,7 +4,6 @@ title:  "RegEx Getting Started"
 date:   2017-04-13 09:09
 categories: RegEx
 ---
-Read this in about {{ page.content | reading_time }}
 # RegEx
 It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place
 
