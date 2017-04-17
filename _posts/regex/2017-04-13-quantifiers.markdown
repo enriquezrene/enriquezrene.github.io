@@ -53,3 +53,33 @@ $ grep -E "[0-9][0-9]+" file.txt
 123
 213
 {% endhighlight %}
+
+## {} Quantifiers for IDN
+Let's validate an identification number, we are looking for this pattern:
+3_DIGITS - 4_DIGITS - 2_DIGITS - 5_DIGITS
+For this example we are use a file with this content:
+
+{% highlight shell %}
+12345-4567-453465-45646
+123-4568-45-45698
+45646-454-545-99999
+321-6548-55-87549
+01236-21-45646-00
+012-2546-5-00008
+{% endhighlight %}
+The expression that we need is:
+{% highlight shell %}
+$ grep -E "[0-9]{3}-[0-9]{4}-[0-9]{2}-[0-9]{5}" file.txt
+123-4568-45-45698
+321-6548-55-87549
+{% endhighlight %}
+
+Let's suppose that valid IDN is:
+3or5_DIGITS-4_DIGITS-2orMORE_DIGITS-5DIGITS
+The expression that we need in this case is:
+{% highlight shell %}
+$ grep -E "[0-9]{3,5}-[0-9]{4}-[0-9]{2,}-[0-9]{5}" file.txt
+12345-4567-453465-45646
+123-4568-45-45698
+321-6548-55-87549
+{% endhighlight %}
