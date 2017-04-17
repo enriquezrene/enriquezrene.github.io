@@ -32,4 +32,4 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
-pluginh: [liquid_reading_time]
+plugins: [liquid_reading_time]
