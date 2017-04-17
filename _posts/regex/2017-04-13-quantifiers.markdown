@@ -5,7 +5,7 @@ date:   2017-04-13 11:32
 categories: RegEx
 ---
 # Quantifiers
-XYZ
+It allows us to specify how many characters we do need to search, let's dive right in
 
 ## ? Optional
 It allows to find a text that contains or not a character 
