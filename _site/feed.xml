@@ -1,4 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-04-24T16:03:26-05:00</updated><id>http://localhost:4000/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">Becoming an expert</title><link href="http://localhost:4000/regex/2017/04/17/becoming-an-expert.html" rel="alternate" type="text/html" title="Becoming an expert" /><published>2017-04-17T16:34:00-05:00</published><updated>2017-04-17T16:34:00-05:00</updated><id>http://localhost:4000/regex/2017/04/17/becoming-an-expert</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/17/becoming-an-expert.html">&lt;h1 id=&quot;lets-work-hard&quot;&gt;Let’s work hard&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-04-24T16:07:00-05:00</updated><id>http://localhost:4000/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">Subscription Success</title><link href="http://localhost:4000/subscription/2017/04/24/subscription-ok.html" rel="alternate" type="text/html" title="Subscription Success" /><published>2017-04-24T08:08:00-05:00</published><updated>2017-04-24T08:08:00-05:00</updated><id>http://localhost:4000/subscription/2017/04/24/subscription-ok</id><content type="html" xml:base="http://localhost:4000/subscription/2017/04/24/subscription-ok.html">&lt;h1 id=&quot;welcome-to-geektown&quot;&gt;Welcome to GeekTown&lt;/h1&gt;
+
+&lt;p&gt;Now you are part of our community, we are so glad to have you here.&lt;/p&gt;
+
+&lt;p&gt;Please, d on’t forget to pay us with a click on the ads if you enjoy this site.&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Welcome to GeekTown</summary></entry><entry><title type="html">Becoming an expert</title><link href="http://localhost:4000/regex/2017/04/17/becoming-an-expert.html" rel="alternate" type="text/html" title="Becoming an expert" /><published>2017-04-17T16:34:00-05:00</published><updated>2017-04-17T16:34:00-05:00</updated><id>http://localhost:4000/regex/2017/04/17/becoming-an-expert</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/17/becoming-an-expert.html">&lt;h1 id=&quot;lets-work-hard&quot;&gt;Let’s work hard&lt;/h1&gt;
 &lt;p&gt;We are going to extract coordinates from a string like this&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;COORDINATES&lt;span class=&quot;o&quot;&gt;(((&lt;/span&gt;1 2,3 4&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;5 6,7 8,9 10&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
@@ -472,64 +484,4 @@ This method will be executed when the actor receives the message.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;n&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sbt&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;github&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enriquezrene&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;akka01&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;HelloWorld&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prints&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;'I'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;working&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Write&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AKKA&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Hello&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;World&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;STDOUT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><summary type="html">Let’s create the most well known application for us, the HELLO WORLD APP</summary></entry><entry><title type="html">AKKA Getting Started!</title><link href="http://localhost:4000/akka/2017/03/30/akka-getting-started.html" rel="alternate" type="text/html" title="AKKA Getting Started!" /><published>2017-03-30T16:33:00-05:00</published><updated>2017-03-30T16:33:00-05:00</updated><id>http://localhost:4000/akka/2017/03/30/akka-getting-started</id><content type="html" xml:base="http://localhost:4000/akka/2017/03/30/akka-getting-started.html">&lt;h1 id=&quot;akka&quot;&gt;AKKA&lt;/h1&gt;
-&lt;p&gt;Akka is a really cool toolkit for building highly concurrent and distributed applications based on a message-driven model. Let’s review some key concepts in order to understand it.&lt;/p&gt;
-
-&lt;h2 id=&quot;actor-model&quot;&gt;Actor Model&lt;/h2&gt;
-&lt;p&gt;AKKA is based on an actor model that is quite simple, let’s suppose that we have 2 actors: A and B&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Actor A&lt;/code&gt;: Hi Actor B, can you do xyz&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Actor B&lt;/code&gt;: Sure, give me a while&lt;/p&gt;
-
-&lt;p&gt;Basically a model based on messaging where one Actor send a message to other one when needs something.&lt;/p&gt;
-
-&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
-
-&lt;!-- inferior --&gt;
-&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
-&lt;script&gt;
-(adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;main-concepts-related-to-akka&quot;&gt;Main Concepts Related to AKKA&lt;/h2&gt;
-&lt;p&gt;In order to understand how AKKA works, it’s vital understand a couple of concepts:&lt;/p&gt;
-
-&lt;h3 id=&quot;concurrency-and-parallelism&quot;&gt;Concurrency and Parallelism&lt;/h3&gt;
-
-&lt;h4 id=&quot;concurrency&quot;&gt;Concurrency&lt;/h4&gt;
-&lt;p&gt;Many task running on single core machine.
-One coffee machine, many guys taking a little bit of coffee one after other&lt;/p&gt;
-
-&lt;h4 id=&quot;parallelism&quot;&gt;Parallelism&lt;/h4&gt;
-&lt;p&gt;Many task running on multicore processor machine.
-Many coffee machines, many guys taking coffee from there at the same time&lt;/p&gt;
-
-&lt;h3 id=&quot;sync-and-async-processes&quot;&gt;Sync and Async processes&lt;/h3&gt;
-
-&lt;h4 id=&quot;sync&quot;&gt;Sync&lt;/h4&gt;
-&lt;p&gt;One task invokes another one and it should wait until the other one has completed to continue&lt;/p&gt;
-
-&lt;h4 id=&quot;async&quot;&gt;Async&lt;/h4&gt;
-&lt;p&gt;One task invokes another one and it can keep working with no need to wait for the completion. After the completion, the invoked task can inform about its progress with a callback, message or any other way&lt;/p&gt;
-
-&lt;h3 id=&quot;blocking-and-non-blocking&quot;&gt;Blocking and Non-blocking&lt;/h3&gt;
-
-&lt;h4 id=&quot;blocking&quot;&gt;Blocking&lt;/h4&gt;
-&lt;p&gt;One task will delay other tasks running&lt;/p&gt;
-
-&lt;h4 id=&quot;non-blocking&quot;&gt;Non-Blocking&lt;/h4&gt;
-&lt;p&gt;One task run and it wont delay other tasks running&lt;/p&gt;
-
-&lt;h3 id=&quot;race-condition&quot;&gt;Race Condition&lt;/h3&gt;
-&lt;p&gt;It’s when more than one actor are trying to modify the state of something at the same time&lt;/p&gt;
-
-&lt;p&gt;That’s all for now, in the next posts we are going to dive into the AKKA world&lt;/p&gt;
-
-&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
-
-&lt;!-- inferior --&gt;
-&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
-&lt;script&gt;
-(adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">AKKA Akka is a really cool toolkit for building highly concurrent and distributed applications based on a message-driven model. Let’s review some key concepts in order to understand it.</summary></entry></feed>
+&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prints&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;'I'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;working&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Write&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AKKA&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Hello&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;World&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;STDOUT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><summary type="html">Let’s create the most well known application for us, the HELLO WORLD APP</summary></entry></feed>
