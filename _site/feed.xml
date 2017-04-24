@@ -1,4 +1,417 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-04-03T22:34:26-05:00</updated><id>http://localhost:4000/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">AKKA Hello World</title><link href="http://localhost:4000/akka/2017/03/31/akka-hello-world.html" rel="alternate" type="text/html" title="AKKA Hello World" /><published>2017-03-31T14:51:00-05:00</published><updated>2017-03-31T14:51:00-05:00</updated><id>http://localhost:4000/akka/2017/03/31/akka-hello-world</id><content type="html" xml:base="http://localhost:4000/akka/2017/03/31/akka-hello-world.html">&lt;p&gt;Let’s create the most well known application for us, the HELLO WORLD APP&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-04-24T15:19:05-05:00</updated><id>http://localhost:4000/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">Becoming an expert</title><link href="http://localhost:4000/regex/2017/04/17/becoming-an-expert.html" rel="alternate" type="text/html" title="Becoming an expert" /><published>2017-04-17T16:34:00-05:00</published><updated>2017-04-17T16:34:00-05:00</updated><id>http://localhost:4000/regex/2017/04/17/becoming-an-expert</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/17/becoming-an-expert.html">&lt;h1 id=&quot;lets-work-hard&quot;&gt;Let’s work hard&lt;/h1&gt;
+&lt;p&gt;We are going to extract coordinates from a string like this&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;COORDINATES&lt;span class=&quot;o&quot;&gt;(((&lt;/span&gt;1 2,3 4&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;5 6,7 8,9 10&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The desired output will be:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;1 2, 3 4&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;5 6,7 8,9 10&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;So, the expression for finding these values will be:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -Po &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(\(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[0-9]{1,}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;{1}[0-9]{1,}(?:,[0-9]{1,}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;{1}[0-9]{1,}){1,}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\)\)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
+&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;1 2,3 4&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;5 6,7 8,9 10&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;OMG, what it is? Let’s breath and understand what we did&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;se&quot;&gt;\(\(&lt;/span&gt;            : two parenthesis opening the expression, since &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; is a metacharacter we need to scape them using &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;0-9]&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1,&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;       : 1 or more numbers from 0 to 9
+&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;1&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;           : a blank space
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;?:REGEX&lt;span class=&quot;o&quot;&gt;){&lt;/span&gt;1,&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;   : 1 or more expressions &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;REGEX is the same that openning expression explained above, quite simple!!! &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;se&quot;&gt;\)\)&lt;/span&gt;            : two parenthesis closing the expression, since &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; is a metacharacter we need to scape them using &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Now, we are going to make it a little bit difficult, let’s say numbers expressing the coordinates can be signal decimals like: -4.875 or 9.669
+Let’s use this string:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;COORDINATES&lt;span class=&quot;o&quot;&gt;(((&lt;/span&gt;-102.084546466 26.45688853338312,-102.1490725018084 26.13520439439342,-102.15047246071138 26.1264975143505,-102.14981952668641 26.1384657784035,-102.12671666102124 26.149049533554354,-102.1188178 26.152923456807,-102.10091893897877 26.149049533554354,-102.0878160633126 26.1384657784035,-102.08653386170432 26.13460053338312&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;-102.15271126918533 26.129748541924556,-102.14764154329896 26.12984171790165,-102.14755705371499 26.13408877990621,-102.14815585687757 26.13514319847587,-102.13090187683702 26.13494986238747,-102.10652676348738 26.13471792646315,-102.0865197014023 26.13455784661961,-102.08302007795753 26.1240081,-102.0878160633126 26.109550421596495,-102.10091893897877 26.09896666644564,-102.1188178 26.09509274319299,-102.12671666102124 26.09896666644564,-102.14981952668641 26.109550421596495,-102.15461552204248 26.1240081,-102.15271126918533 26.129748541924556&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The desired output will be:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;-102.084546466 26.45688853338312,-102.1490725018084 26.13520439439342,-102.15047246071138 26.1264975143505,-102.14981952668641 26.1384657784035,-102.12671666102124 26.149049533554354,-102.1188178 26.152923456807,-102.10091893897877 26.149049533554354,-102.0878160633126 26.1384657784035,-102.08653386170432 26.13460053338312&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;-102.15271126918533 26.129748541924556,-102.14764154329896 26.12984171790165,-102.14755705371499 26.13408877990621,-102.14815585687757 26.13514319847587,-102.13090187683702 26.13494986238747,-102.10652676348738 26.13471792646315,-102.0865197014023 26.13455784661961,-102.08302007795753 26.1240081,-102.0878160633126 26.109550421596495,-102.10091893897877 26.09896666644564,-102.1188178 26.09509274319299,-102.12671666102124 26.09896666644564,-102.14981952668641 26.109550421596495,-102.15461552204248 26.1240081,-102.15271126918533 26.129748541924556&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;So, the expression for finding these values will be:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;grep -Po &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(\(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[-+]?&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+)?&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;{1}[-+]?&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+)?&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;(?:,[-+]?&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+)?&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;{1}[-+]?&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+)?&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;){1,}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\)\)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
+&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;-102.084546466 26.45688853338312,-102.1490725018084 26.13520439439342,-102.15047246071138 26.1264975143505,-102.14981952668641 26.1384657784035,-102.12671666102124 26.149049533554354,-102.1188178 26.152923456807,-102.10091893897877 26.149049533554354,-102.0878160633126 26.1384657784035,-102.08653386170432 26.13460053338312&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;-102.15271126918533 26.129748541924556,-102.14764154329896 26.12984171790165,-102.14755705371499 26.13408877990621,-102.14815585687757 26.13514319847587,-102.13090187683702 26.13494986238747,-102.10652676348738 26.13471792646315,-102.0865197014023 26.13455784661961,-102.08302007795753 26.1240081,-102.0878160633126 26.109550421596495,-102.10091893897877 26.09896666644564,-102.1188178 26.09509274319299,-102.12671666102124 26.09896666644564,-102.14981952668641 26.109550421596495,-102.15461552204248 26.1240081,-102.15271126918533 26.129748541924556&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;OMG, what it is? Don’t cry please, we only changed the last expression replacing [0-9] by [-+]?\d+(.\d+)?$, that’s it.&lt;/p&gt;
+
+&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;</content><author><name></name></author><summary type="html">Let’s work hard We are going to extract coordinates from a string like this COORDINATES(((1 2,3 4)),((5 6,7 8,9 10)))</summary></entry><entry><title type="html">URLs</title><link href="http://localhost:4000/regex/2017/04/17/urls.html" rel="alternate" type="text/html" title="URLs" /><published>2017-04-17T15:53:00-05:00</published><updated>2017-04-17T15:53:00-05:00</updated><id>http://localhost:4000/regex/2017/04/17/urls</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/17/urls.html">&lt;h1 id=&quot;looking-for-valid-urls&quot;&gt;Looking for valid URLs&lt;/h1&gt;
+&lt;p&gt;Valid URLs are protocol://someadress, for this example we are going to use a file with this content:&lt;/p&gt;
+
+&lt;p&gt;http://www.google.com
+http:/www.google.com
+ftp://123.44.5.22
+https://255.122.22.11
+htt://google.com
+http://google.com
+file://somefile
+file//another-file&lt;/p&gt;
+
+&lt;p&gt;We will support these protocols: http, https, ftp 
+So, the expression for find these values is quite simple:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;^(https?|ftp|file)://.+$&quot;&lt;/span&gt; file.txt
+http://www.google.com
+ftp://123.44.5.22
+https://255.122.22.11
+http://google.com
+file://somefile
+Where:
+^               : at the beginning
+https?|ftp|file : http or https &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;no, find ftp &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;no find file
+://             : ://  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; self explained &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+.+              : any characters
+&lt;span class=&quot;gp&quot;&gt;$               &lt;/span&gt;: at the end&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Looking for valid URLs Valid URLs are protocol://someadress, for this example we are going to use a file with this content:</summary></entry><entry><title type="html">Ip Adress with RegEx</title><link href="http://localhost:4000/regex/2017/04/17/ip-address.html" rel="alternate" type="text/html" title="Ip Adress with RegEx" /><published>2017-04-17T14:34:00-05:00</published><updated>2017-04-17T14:34:00-05:00</updated><id>http://localhost:4000/regex/2017/04/17/ip-address</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/17/ip-address.html">&lt;h1 id=&quot;looking-for-valid-ip-addresses&quot;&gt;Looking for valid IP Addresses&lt;/h1&gt;
+&lt;p&gt;IP Addresses have the format
+3DIGITS.3DIGITS.3DIGITS.3DIGITS&lt;/p&gt;
+
+&lt;p&gt;So, the expression for find these values is quite simple:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;^([&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{1,3}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;){3}[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{1,3}$&quot;&lt;/span&gt; file.txt
+127.0.0.1
+129.22.224.55
+192.168.1.1
+123.255.255.255
+Where:
+^               : at the beginning
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]{&lt;/span&gt;1,3&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;       : find 1, 2 or 3 digits
+&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;              : those numbers must be followed by a .
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;3&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;             : we are looking &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;3 groups with the same pattern
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]{&lt;/span&gt;1,3&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;       : find a block of 1,2 or 3 digits
+&lt;span class=&quot;gp&quot;&gt;$               &lt;/span&gt;: at the end&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For this example we have used a file with this content:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;127.0.0.1
+129.22.224.55
+192.168.1.1
+123.12.12
+11.00.00.1.2
+123.255.255.255
+12.12.12.12.12&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Looking for valid IP Addresses IP Addresses have the format 3DIGITS.3DIGITS.3DIGITS.3DIGITS So, the expression for find these values is quite simple: $ grep -P &quot;^([\d]{1,3}\.){3}[\d]{1,3}$&quot; file.txt 127.0.0.1 129.22.224.55 192.168.1.1 123.255.255.255 Where: ^ : at the beginning [\d]{1,3} : find 1, 2 or 3 digits \. : those numbers must be followed by a . {3} : we are looking for 3 groups with the same pattern [\d]{1,3} : find a block of 1,2 or 3 digits $ : at the end</summary></entry><entry><title type="html">Shortcuts</title><link href="http://localhost:4000/regex/2017/04/17/shortcuts.html" rel="alternate" type="text/html" title="Shortcuts" /><published>2017-04-17T12:34:00-05:00</published><updated>2017-04-17T12:34:00-05:00</updated><id>http://localhost:4000/regex/2017/04/17/shortcuts</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/17/shortcuts.html">&lt;h1 id=&quot;shortcuts&quot;&gt;Shortcuts&lt;/h1&gt;
+&lt;p&gt;It allows to specify key characters for simplifying our expressions&lt;/p&gt;
+
+&lt;h2 id=&quot;d-digits-0-9&quot;&gt;\d digits ([0-9])&lt;/h2&gt;
+&lt;p&gt;The expression:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;[0-9]{3,5}-[0-9]{4}-[0-9]{2,}-[0-9]{5}&quot;&lt;/span&gt; file.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;can be easily translated into:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{3,5}-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{4}-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{2,}-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{5}&quot;&lt;/span&gt; file.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;NOTE: we are using -P instead of -E flag because now we are using a Perl regular expression&lt;/p&gt;
+
+&lt;p&gt;let’s use this content in your file for tests&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;1stName
+2ndName
+Name1
+Name2
+LastName1
+LastName2
+Full Name
+Change4Free
+ Type
+  your
+   name&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;b-beginning&quot;&gt;\b beginning&lt;/h2&gt;
+&lt;p&gt;Finding expressions beginning with a number:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]&quot;&lt;/span&gt; file.txt
+1stName
+2ndName&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;At the end:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
+Name1
+Name2
+LastName1
+LastName2&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;s-space&quot;&gt;\s space&lt;/h2&gt;
+&lt;p&gt;Finding expressions with spaces:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
+Full Name
+ Type
+  your
+   name&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;-group--optional-group&quot;&gt;(?: GROUP )? Optional Group&lt;/h2&gt;
+&lt;p&gt;Let’s validate ZIP codes, valid values are:
+5_DIGITS
+5_DIGITS-4_DIGITS&lt;/p&gt;
+
+&lt;p&gt;For this example we are going to replace the content of the file with:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;12354
+456465-444
+54546-4445
+5554
+65465-9978&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The expression that we need is:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;^[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{5}(?:-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{4})?$&quot;&lt;/span&gt; file.txt
+12354
+54546-4445
+Where:
+^               : at the beginning
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]{&lt;/span&gt;5&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;         : 5 digits
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;?:REGEX&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;       : expression
+?               : optional
+&lt;span class=&quot;gp&quot;&gt;$               &lt;/span&gt;: at the end&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Shortcuts It allows to specify key characters for simplifying our expressions</summary></entry><entry><title type="html">BackReference</title><link href="http://localhost:4000/regex/2017/04/17/back-reference.html" rel="alternate" type="text/html" title="BackReference" /><published>2017-04-17T12:34:00-05:00</published><updated>2017-04-17T12:34:00-05:00</updated><id>http://localhost:4000/regex/2017/04/17/back-reference</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/17/back-reference.html">&lt;h1 id=&quot;back-reference&quot;&gt;Back Reference&lt;/h1&gt;
+&lt;p&gt;It allows to find repeated blocks in an expression
+let’s use this content in your file for tests&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;I need to to find double
+expressions &lt;span class=&quot;k&quot;&gt;in
+&lt;/span&gt;this this file&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;repeated-words&quot;&gt;Repeated words&lt;/h2&gt;
+&lt;p&gt;In order to find repeated words let’s use this expression:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;([a-z]+) +&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
+I need to to find double
+this this file&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Back Reference It allows to find repeated blocks in an expression let’s use this content in your file for tests I need to to find double expressions in this this file</summary></entry><entry><title type="html">Quantifiers</title><link href="http://localhost:4000/regex/2017/04/13/quantifiers.html" rel="alternate" type="text/html" title="Quantifiers" /><published>2017-04-13T11:32:00-05:00</published><updated>2017-04-13T11:32:00-05:00</updated><id>http://localhost:4000/regex/2017/04/13/quantifiers</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/13/quantifiers.html">&lt;h1 id=&quot;quantifiers&quot;&gt;Quantifiers&lt;/h1&gt;
+&lt;p&gt;It allows us to specify how many characters we do need to search, let’s dive right in&lt;/p&gt;
+
+&lt;h2 id=&quot;-optional&quot;&gt;? Optional&lt;/h2&gt;
+&lt;p&gt;It allows to find a text that contains or not a character&lt;/p&gt;
+
+&lt;p&gt;For the demonstration we are going to use a file named file.txt with this content:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;Java SE it&lt;span class=&quot;s1&quot;&gt;'s nice
+I like JEE just a little bit
+I prefer to avoid J2EE and use plain JavaSE
+JavaFX is growing a lot&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Finding lines with JEE or J2EE&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;J2?EE&quot;&lt;/span&gt; file.txt
+I like JEE just a little bit
+I prefer to avoid J2EE and use plain SEJava&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;-exact-coincidences&quot;&gt;* Exact Coincidences&lt;/h2&gt;
+&lt;p&gt;Finding lines with Java text (no matter where, beginning-middle-ending)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;*Java&quot;&lt;/span&gt; file.txt
+Java SE it&lt;span class=&quot;s1&quot;&gt;'s nice
+I prefer to avoid J2EE and use plain SEJava
+JavaFX is growing a lot&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;-a-quantity-of-coincidences&quot;&gt;+ A Quantity Of Coincidences&lt;/h2&gt;
+&lt;p&gt;Let’s replace the content by:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;1
+2
+12
+21
+123
+213&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Finding two or more digits&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;[0-9][0-9]+&quot;&lt;/span&gt; file.txt
+12
+21
+123
+213&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;-quantifiers-for-idn&quot;&gt;{} Quantifiers for IDN&lt;/h2&gt;
+&lt;p&gt;Let’s validate an identification number, we are looking for this pattern:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;3_DIGITS - 4_DIGITS - 2_DIGITS - 5_DIGITS&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;For this example we are use a file with this content:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;12345-4567-453465-45646
+123-4568-45-45698
+45646-454-545-99999
+321-6548-55-87549
+01236-21-45646-00
+012-2546-5-00008&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The expression that we need is:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;[0-9]{3}-[0-9]{4}-[0-9]{2}-[0-9]{5}&quot;&lt;/span&gt; file.txt
+123-4568-45-45698
+321-6548-55-87549&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Let’s suppose that valid IDN is:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;3or5_DIGITS-4_DIGITS-2orMORE_DIGITS-5DIGITS&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The expression that we need in this case is:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;[0-9]{3,5}-[0-9]{4}-[0-9]{2,}-[0-9]{5}&quot;&lt;/span&gt; file.txt
+12345-4567-453465-45646
+123-4568-45-45698
+321-6548-55-87549&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Quantifiers It allows us to specify how many characters we do need to search, let’s dive right in</summary></entry><entry><title type="html">Meta-Characters</title><link href="http://localhost:4000/regex/2017/04/13/meta-characters.html" rel="alternate" type="text/html" title="Meta-Characters" /><published>2017-04-13T11:08:00-05:00</published><updated>2017-04-13T11:08:00-05:00</updated><id>http://localhost:4000/regex/2017/04/13/meta-characters</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/13/meta-characters.html">&lt;h1 id=&quot;meta-characters&quot;&gt;Meta-Characters&lt;/h1&gt;
+&lt;p&gt;RegEx uses heavily meta-characters in order to easily find patterns inside a file&lt;/p&gt;
+
+&lt;h2 id=&quot;-brackets&quot;&gt;[] Brackets&lt;/h2&gt;
+&lt;p&gt;It allows to define a range of characters for find them in a file.&lt;/p&gt;
+
+&lt;p&gt;For the demonstration we are going to use a file named file.txt with this content:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;1
+hello
+2
+goodbye&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Finding alphabetic characters&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;[a-z]&quot;&lt;/span&gt; file.txt
+hello
+goodbye&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Finding numbers&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;[0-9]&quot;&lt;/span&gt; file.txt
+1
+2&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;-negate&quot;&gt;^ Negate&lt;/h2&gt;
+&lt;p&gt;Finding no-alphabetic characters&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;[^a-z]&quot;&lt;/span&gt; file.txt
+1
+2&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Finding no numbers&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;[^0-9]&quot;&lt;/span&gt; file.txt
+hello
+goodbye&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;searching-text-starting-and-ending-with&quot;&gt;Searching Text Starting and Ending With&lt;/h2&gt;
+&lt;p&gt;For the sake of simplicity let’s change the content of the file by:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;FirstName
+LastName
+Name1
+1stName&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;-starting-with&quot;&gt;^[ Starting With&lt;/h3&gt;
+&lt;p&gt;Finding text starting with a number&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;^[0-9]&quot;&lt;/span&gt; file.txt
+1stName&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h3 id=&quot;-ending-with&quot;&gt;$ Ending With&lt;/h3&gt;
+&lt;p&gt;Finding text ending in a number&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;[0-9]$&quot;&lt;/span&gt; file.txt
+Name1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Meta-Characters RegEx uses heavily meta-characters in order to easily find patterns inside a file</summary></entry><entry><title type="html">RegEx Getting Started</title><link href="http://localhost:4000/regex/2017/04/13/regex-getting-started.html" rel="alternate" type="text/html" title="RegEx Getting Started" /><published>2017-04-13T09:09:00-05:00</published><updated>2017-04-13T09:09:00-05:00</updated><id>http://localhost:4000/regex/2017/04/13/regex-getting-started</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/13/regex-getting-started.html">&lt;h1 id=&quot;regex&quot;&gt;RegEx&lt;/h1&gt;
+&lt;p&gt;It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place&lt;/p&gt;
+
+&lt;h2 id=&quot;filtering-with-grep&quot;&gt;Filtering with GREP&lt;/h2&gt;
+&lt;p&gt;The most simple way to find text in files in UNIX is using GREP. This one is heavily used daily on servers in order to find some patterns inside logs.
+For example, let say we are looking for the string “ERROR” in the logs directory.&lt;/p&gt;
+
+&lt;p&gt;Move to the logs directory:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;cd path/to/logs/directory&lt;/code&gt;&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Use grep for finding the pattern:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -n &lt;span class=&quot;s1&quot;&gt;'ERROR'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.log
+apache.log:8:ERROR &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;line ...
+nginx.log:77:it has an ERROR ...
+
+&lt;span class=&quot;c&quot;&gt;# Where:&lt;/span&gt;
+-n:     print the line number
+ERROR:  string to find
+&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:      any file
+.log:   files must have .log extension&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;From the output, firstly you will se file that has the coincidence, then the line number and the whole line that has the string that you are searching for&lt;/p&gt;
+
+&lt;p&gt;If you enjoyed this article please support it clicking on the ads&lt;/p&gt;</content><author><name></name></author><summary type="html">RegEx It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place</summary></entry><entry><title type="html">AKKA Hello World</title><link href="http://localhost:4000/akka/2017/03/31/akka-hello-world.html" rel="alternate" type="text/html" title="AKKA Hello World" /><published>2017-03-31T14:51:00-05:00</published><updated>2017-03-31T14:51:00-05:00</updated><id>http://localhost:4000/akka/2017/03/31/akka-hello-world</id><content type="html" xml:base="http://localhost:4000/akka/2017/03/31/akka-hello-world.html">&lt;p&gt;Let’s create the most well known application for us, the HELLO WORLD APP&lt;/p&gt;
 
 &lt;p&gt;In order to have the required actor of an AKKA application, we will need:&lt;/p&gt;
 
@@ -71,6 +484,14 @@ This method will be executed when the actor receives the message.&lt;/p&gt;
 
 &lt;p&gt;Basically a model based on messaging where one Actor send a message to other one when needs something.&lt;/p&gt;
 
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
 &lt;h2 id=&quot;main-concepts-related-to-akka&quot;&gt;Main Concepts Related to AKKA&lt;/h2&gt;
 &lt;p&gt;In order to understand how AKKA works, it’s vital understand a couple of concepts:&lt;/p&gt;
 
@@ -101,4 +522,14 @@ Many coffee machines, many guys taking coffee from there at the same time&lt;/p&
 &lt;p&gt;One task run and it wont delay other tasks running&lt;/p&gt;
 
 &lt;h3 id=&quot;race-condition&quot;&gt;Race Condition&lt;/h3&gt;
-&lt;p&gt;It’s when more than one actor are trying to modify the state of something at the same time&lt;/p&gt;</content><author><name></name></author><summary type="html">AKKA Akka is a really cool toolkit for building highly concurrent and distributed applications based on a message-driven model. Let’s review some key concepts in order to understand it.</summary></entry></feed>
+&lt;p&gt;It’s when more than one actor are trying to modify the state of something at the same time&lt;/p&gt;
+
+&lt;p&gt;That’s all for now, in the next posts we are going to dive into the AKKA world&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">AKKA Akka is a really cool toolkit for building highly concurrent and distributed applications based on a message-driven model. Let’s review some key concepts in order to understand it.</summary></entry></feed>

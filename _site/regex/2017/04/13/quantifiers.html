@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About</title>
-  <meta name="description" content="">
+  <title>Quantifiers</title>
+  <meta name="description" content="Quantifiers It allows us to specify how many characters we do need to search, let’s dive right in">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/about/">
+  <link rel="canonical" href="http://localhost:4000/regex/2017/04/13/quantifiers.html">
   <link rel="alternate" type="application/rss+xml" title="Geek Town" href="/feed.xml">
   
   
@@ -69,17 +69,103 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">About</h1>
+    <h1 class="post-title" itemprop="name headline">Quantifiers</h1>
+    <p class="post-meta"><time datetime="2017-04-13T11:32:00-05:00" itemprop="datePublished">Apr 13, 2017</time></p>
   </header>
 
-  <div class="post-content">
-    <p>Under construction</p>
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="quantifiers">Quantifiers</h1>
+<p>It allows us to specify how many characters we do need to search, let’s dive right in</p>
+
+<h2 id="-optional">? Optional</h2>
+<p>It allows to find a text that contains or not a character</p>
+
+<p>For the demonstration we are going to use a file named file.txt with this content:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">Java SE it<span class="s1">'s nice
+I like JEE just a little bit
+I prefer to avoid J2EE and use plain JavaSE
+JavaFX is growing a lot</span></code></pre></figure>
+
+<p>Finding lines with JEE or J2EE</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -E <span class="s2">"J2?EE"</span> file.txt
+I like JEE just a little bit
+I prefer to avoid J2EE and use plain SEJava</code></pre></figure>
+
+<h2 id="-exact-coincidences">* Exact Coincidences</h2>
+<p>Finding lines with Java text (no matter where, beginning-middle-ending)</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -E <span class="s2">"*Java"</span> file.txt
+Java SE it<span class="s1">'s nice
+I prefer to avoid J2EE and use plain SEJava
+JavaFX is growing a lot</span></code></pre></figure>
+
+<h2 id="-a-quantity-of-coincidences">+ A Quantity Of Coincidences</h2>
+<p>Let’s replace the content by:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">1
+2
+12
+21
+123
+213</code></pre></figure>
+
+<p>Finding two or more digits</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -E <span class="s2">"[0-9][0-9]+"</span> file.txt
+12
+21
+123
+213</code></pre></figure>
+
+<h2 id="-quantifiers-for-idn">{} Quantifiers for IDN</h2>
+<p>Let’s validate an identification number, we are looking for this pattern:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">3_DIGITS - 4_DIGITS - 2_DIGITS - 5_DIGITS</code></pre></figure>
+
+<p>For this example we are use a file with this content:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">12345-4567-453465-45646
+123-4568-45-45698
+45646-454-545-99999
+321-6548-55-87549
+01236-21-45646-00
+012-2546-5-00008</code></pre></figure>
+
+<p>The expression that we need is:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -E <span class="s2">"[0-9]{3}-[0-9]{4}-[0-9]{2}-[0-9]{5}"</span> file.txt
+123-4568-45-45698
+321-6548-55-87549</code></pre></figure>
+
+<p>Let’s suppose that valid IDN is:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">3or5_DIGITS-4_DIGITS-2orMORE_DIGITS-5DIGITS</code></pre></figure>
+
+<p>The expression that we need in this case is:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -E <span class="s2">"[0-9]{3,5}-[0-9]{4}-[0-9]{2,}-[0-9]{5}"</span> file.txt
+12345-4567-453465-45646
+123-4568-45-45698
+321-6548-55-87549</code></pre></figure>
+
+<p>If you like this post please pay me with a click on the ads :)</p>
+
+<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- inferior -->
+<p><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-5428825449848403" data-ad-slot="1328012179"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
 
   </div>
 
+  
 </article>
 
       </div>

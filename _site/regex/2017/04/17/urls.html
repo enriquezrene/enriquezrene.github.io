@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About</title>
-  <meta name="description" content="">
+  <title>URLs</title>
+  <meta name="description" content="Looking for valid URLs Valid URLs are protocol://someadress, for this example we are going to use a file with this content:">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/about/">
+  <link rel="canonical" href="http://localhost:4000/regex/2017/04/17/urls.html">
   <link rel="alternate" type="application/rss+xml" title="Geek Town" href="/feed.xml">
   
   
@@ -69,17 +69,55 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">About</h1>
+    <h1 class="post-title" itemprop="name headline">URLs</h1>
+    <p class="post-meta"><time datetime="2017-04-17T15:53:00-05:00" itemprop="datePublished">Apr 17, 2017</time></p>
   </header>
 
-  <div class="post-content">
-    <p>Under construction</p>
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="looking-for-valid-urls">Looking for valid URLs</h1>
+<p>Valid URLs are protocol://someadress, for this example we are going to use a file with this content:</p>
+
+<p>http://www.google.com
+http:/www.google.com
+ftp://123.44.5.22
+https://255.122.22.11
+htt://google.com
+http://google.com
+file://somefile
+file//another-file</p>
+
+<p>We will support these protocols: http, https, ftp 
+So, the expression for find these values is quite simple:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -P <span class="s2">"^(https?|ftp|file)://.+$"</span> file.txt
+http://www.google.com
+ftp://123.44.5.22
+https://255.122.22.11
+http://google.com
+file://somefile
+Where:
+^               : at the beginning
+https?|ftp|file : http or https <span class="k">if </span>no, find ftp <span class="k">if </span>no find file
+://             : ://  <span class="o">(</span> self explained <span class="o">)</span>
+.+              : any characters
+<span class="gp">$               </span>: at the end</code></pre></figure>
+
+<p>If you like this post please pay me with a click on the ads :)</p>
+
+<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- inferior -->
+<p><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-5428825449848403" data-ad-slot="1328012179"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
 
   </div>
 
+  
 </article>
 
       </div>
