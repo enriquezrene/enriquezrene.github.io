@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About</title>
-  <meta name="description" content="">
+  <title>Shortcuts</title>
+  <meta name="description" content="Shortcuts It allows to specify key characters for simplifying our expressions">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/about/">
+  <link rel="canonical" href="http://localhost:4000/regex/2017/04/17/shortcuts.html">
   <link rel="alternate" type="application/rss+xml" title="Geek Town" href="/feed.xml">
   
   
@@ -69,17 +69,104 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">About</h1>
+    <h1 class="post-title" itemprop="name headline">Shortcuts</h1>
+    <p class="post-meta"><time datetime="2017-04-17T12:34:00-05:00" itemprop="datePublished">Apr 17, 2017</time></p>
   </header>
 
-  <div class="post-content">
-    <p>Under construction</p>
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="shortcuts">Shortcuts</h1>
+<p>It allows to specify key characters for simplifying our expressions</p>
+
+<h2 id="d-digits-0-9">\d digits ([0-9])</h2>
+<p>The expression:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -E <span class="s2">"[0-9]{3,5}-[0-9]{4}-[0-9]{2,}-[0-9]{5}"</span> file.txt</code></pre></figure>
+
+<p>can be easily translated into:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -P <span class="s2">"[</span><span class="se">\d</span><span class="s2">]{3,5}-[</span><span class="se">\d</span><span class="s2">]{4}-[</span><span class="se">\d</span><span class="s2">]{2,}-[</span><span class="se">\d</span><span class="s2">]{5}"</span> file.txt</code></pre></figure>
+
+<p>NOTE: we are using -P instead of -E flag because now we are using a Perl regular expression</p>
+
+<p>let’s use this content in your file for tests</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">1stName
+2ndName
+Name1
+Name2
+LastName1
+LastName2
+Full Name
+Change4Free
+ Type
+  your
+   name</code></pre></figure>
+
+<h2 id="b-beginning">\b beginning</h2>
+<p>Finding expressions beginning with a number:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -P <span class="s2">"</span><span class="se">\b</span><span class="s2">[</span><span class="se">\d</span><span class="s2">]"</span> file.txt
+1stName
+2ndName</code></pre></figure>
+
+<p>At the end:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -P <span class="s2">"[</span><span class="se">\d</span><span class="s2">]</span><span class="se">\b</span><span class="s2">"</span> file.txt
+Name1
+Name2
+LastName1
+LastName2</code></pre></figure>
+
+<h2 id="s-space">\s space</h2>
+<p>Finding expressions with spaces:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -P <span class="s2">"</span><span class="se">\s</span><span class="s2">"</span> file.txt
+Full Name
+ Type
+  your
+   name</code></pre></figure>
+
+<h2 id="-group--optional-group">(?: GROUP )? Optional Group</h2>
+<p>Let’s validate ZIP codes, valid values are:
+5_DIGITS
+5_DIGITS-4_DIGITS</p>
+
+<p>For this example we are going to replace the content of the file with:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell">12354
+456465-444
+54546-4445
+5554
+65465-9978</code></pre></figure>
+
+<p>The expression that we need is:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -P <span class="s2">"^[</span><span class="se">\d</span><span class="s2">]{5}(?:-[</span><span class="se">\d</span><span class="s2">]{4})?$"</span> file.txt
+12354
+54546-4445
+Where:
+^               : at the beginning
+<span class="o">[</span><span class="se">\d</span><span class="o">]{</span>5<span class="o">}</span>         : 5 digits
+<span class="o">(</span>?:REGEX<span class="o">)</span>       : expression
+?               : optional
+<span class="gp">$               </span>: at the end</code></pre></figure>
+
+<p>If you like this post please pay me with a click on the ads :)</p>
+
+<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- inferior -->
+<p><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-5428825449848403" data-ad-slot="1328012179"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
 
   </div>
 
+  
 </article>
 
       </div>
