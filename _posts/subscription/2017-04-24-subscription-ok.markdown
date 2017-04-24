@@ -2,7 +2,7 @@
 layout: post
 title:  "Subscription Success"
 date:   2017-04-24 21:08
-categories: Subscruption
+categories: subscription
 ---
 # Welcome to GeekTown
 
