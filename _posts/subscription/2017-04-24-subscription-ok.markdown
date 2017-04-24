@@ -7,7 +7,8 @@ categories: Subscruption
 # Welcome
 Now you are part of GeekTown, we are so glad to have you in.
 
-Don't forget pay us with a click on the ads if you enjoy this site.
+Don't forget to pay us with a click on the ads if you enjoy this site.
+<hr>
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- inferior -->
