@@ -8,7 +8,7 @@ categories: subscription
 
 Now you are part of our community, we are so glad to have you here.
 
-Please, d on't forget to pay us with a click on the ads if you enjoy this site.
+Please, don't forget to pay us with a click on the ads if you enjoy this site.
 
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
