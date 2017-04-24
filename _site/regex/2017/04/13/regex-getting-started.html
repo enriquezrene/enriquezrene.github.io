@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>About</title>
-  <meta name="description" content="">
+  <title>RegEx Getting Started</title>
+  <meta name="description" content="RegEx It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/about/">
+  <link rel="canonical" href="http://localhost:4000/regex/2017/04/13/regex-getting-started.html">
   <link rel="alternate" type="application/rss+xml" title="Geek Town" href="/feed.xml">
   
   
@@ -69,17 +69,52 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">About</h1>
+    <h1 class="post-title" itemprop="name headline">RegEx Getting Started</h1>
+    <p class="post-meta"><time datetime="2017-04-13T09:09:00-05:00" itemprop="datePublished">Apr 13, 2017</time></p>
   </header>
 
-  <div class="post-content">
-    <p>Under construction</p>
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="regex">RegEx</h1>
+<p>It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place</p>
+
+<h2 id="filtering-with-grep">Filtering with GREP</h2>
+<p>The most simple way to find text in files in UNIX is using GREP. This one is heavily used daily on servers in order to find some patterns inside logs.
+For example, let say we are looking for the string “ERROR” in the logs directory.</p>
+
+<p>Move to the logs directory:
+<code class="highlighter-rouge">cd path/to/logs/directory</code></p>
+
+<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- inferior -->
+<p><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-5428825449848403" data-ad-slot="1328012179"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+
+<p>Use grep for finding the pattern:</p>
+
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -n <span class="s1">'ERROR'</span> <span class="k">*</span>.log
+apache.log:8:ERROR <span class="k">in </span>line ...
+nginx.log:77:it has an ERROR ...
+
+<span class="c"># Where:</span>
+-n:     print the line number
+ERROR:  string to find
+<span class="k">*</span>:      any file
+.log:   files must have .log extension</code></pre></figure>
+
+<p>From the output, firstly you will se file that has the coincidence, then the line number and the whole line that has the string that you are searching for</p>
+
+<p>If you enjoyed this article please support it clicking on the ads</p>
+
 
   </div>
 
+  
 </article>
 
       </div>
