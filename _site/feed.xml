@@ -1,4 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-04-25T11:42:28-05:00</updated><id>http://localhost:4000/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">Subscription Success</title><link href="http://localhost:4000/subscription/2017/04/24/subscription-ok.html" rel="alternate" type="text/html" title="Subscription Success" /><published>2017-04-24T08:08:00-05:00</published><updated>2017-04-24T08:08:00-05:00</updated><id>http://localhost:4000/subscription/2017/04/24/subscription-ok</id><content type="html" xml:base="http://localhost:4000/subscription/2017/04/24/subscription-ok.html">&lt;h1 id=&quot;welcome-to-geektown&quot;&gt;Welcome to GeekTown&lt;/h1&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-04-25T15:10:05-05:00</updated><id>http://localhost:4000/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">Getting Started</title><link href="http://localhost:4000/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd.html" rel="alternate" type="text/html" title="Getting Started" /><published>2017-04-25T14:53:00-05:00</published><updated>2017-04-25T14:53:00-05:00</updated><id>http://localhost:4000/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd</id><content type="html" xml:base="http://localhost:4000/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd.html">&lt;p&gt;This post contains a summary about the first Chapter of the book&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Growing Object Oriented Software, Guided by Tests &lt;br /&gt;
+By Steve Freeman and Nat Pryce.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;If you want to buy this book, please use this link:&lt;/p&gt;
+&lt;div style=&quot;text-align:center;&quot;&gt;
+&lt;iframe src=&quot;http://rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&amp;amp;bc1=FFFFFF&amp;amp;IS2=1&amp;amp;bg1=FFFFFF&amp;amp;fc1=000000&amp;amp;lc1=B6B6C1&amp;amp;t=httpenriqucom-21&amp;amp;o=30&amp;amp;p=8&amp;amp;l=as1&amp;amp;m=amazon&amp;amp;f=ifr&amp;amp;ref=tf_til&amp;amp;asins=B01JKJ2JKK&quot; style=&quot;width:120px;height:240px;&quot; scrolling=&quot;no&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;When we are creating software we have to bear in mind that feedback cycles at every level of development are quite important. We are going to mention some of them:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Pair programming&lt;/li&gt;
+  &lt;li&gt;Unit tests&lt;/li&gt;
+  &lt;li&gt;Acceptance tests&lt;/li&gt;
+  &lt;li&gt;Daily meetings&lt;/li&gt;
+  &lt;li&gt;Iterations&lt;/li&gt;
+  &lt;li&gt;Releases, and so on.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;what-is-the-point-of-test-driven-development&quot;&gt;What Is the Point of Test-Driven Development?&lt;/h1&gt;
+&lt;p&gt;Feedback is the matter of TDD. Each cycle should expose the team for receiving feedback and correct any misconception&lt;/p&gt;
+
+&lt;h2 id=&quot;supporting-changes&quot;&gt;Supporting Changes&lt;/h2&gt;
+&lt;p&gt;Testing is helpful for catching errors on regressions and gives us confidence for modifying the existing code.&lt;/p&gt;
+
+&lt;p&gt;The code should follow the &lt;a href=&quot;https://en.wikipedia.org/wiki/KISS_principle&quot;&gt;KISS principle&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Apply TDD for everything and follow the golden rule “Never write new functionality without a failing test.”&lt;/p&gt;
+
+&lt;p&gt;After implement a new feature, we need an Acceptance Test&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Write a failing acceptance test&lt;/strong&gt;, then:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;table&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;(1) write failing unit test&lt;/td&gt;
+        &lt;td&gt;(2) make the test pass&lt;/td&gt;
+        &lt;td&gt;(3) refactor -&amp;gt; Go to step (1)&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/blockquote&gt;
+
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Failing unit tests should never be committed to the source repository.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;acceptance-test&quot;&gt;Acceptance Test&lt;/h2&gt;
+&lt;p&gt;Usually end-to-end tests, it interacts with the system from the outside without directly calling its internal code.&lt;/p&gt;
+
+&lt;h2 id=&quot;levels-of-testing&quot;&gt;Levels of Testing&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Acceptance&lt;/strong&gt;: Does the whole system work?&lt;br /&gt;
+&lt;strong&gt;Integration&lt;/strong&gt;: Does our code work against code we can’t change?&lt;br /&gt;
+&lt;strong&gt;Unit&lt;/strong&gt;: Do our objects do the right thing, are they convenient to work with?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;external-and-internal-quality&quot;&gt;External and Internal Quality&lt;/h2&gt;
+&lt;p&gt;Internal quality is directly proportional to the amount of feedback received.&lt;/p&gt;
+
+&lt;p&gt;External quality is directly proportional to the tests you have done:&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;unit-&amp;gt;integration-&amp;gt;end-to-end.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;On unit-test, the class must have explicit dependencies that can easily be substituted and clear responsibilities that can easily be invoked and verified. It provides valuable and immediate feedback about our design.
+Features with “high” coherence are easier to maintain. Imagine a machine to wash clothes and dishes (crazy and untestable).&lt;/p&gt;
+
+&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;
+
+&lt;p&gt;If you have any questions about this summary, feel free to send me an email and we can discuss anything more in deep.&lt;/p&gt;
+
+&lt;p&gt;Don’t forget to subscribe us using the link at the right-upper corner to receive next posts&lt;/p&gt;</content><author><name></name></author><summary type="html">This post contains a summary about the first Chapter of the book Growing Object Oriented Software, Guided by Tests By Steve Freeman and Nat Pryce.</summary></entry><entry><title type="html">Background</title><link href="http://localhost:4000/growing-object-oriented-software/2017/04/25/introduction.html" rel="alternate" type="text/html" title="Background" /><published>2017-04-25T14:45:00-05:00</published><updated>2017-04-25T14:45:00-05:00</updated><id>http://localhost:4000/growing-object-oriented-software/2017/04/25/introduction</id><content type="html" xml:base="http://localhost:4000/growing-object-oriented-software/2017/04/25/introduction.html">&lt;p&gt;From now on, I’m gonna write a series of posts that summarizes the main ideas from the book:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Growing Object Oriented Software, Guided by Tests 
+By Steve Freeman and Nat Pryce.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is an awesome book recommended by rock stars in Software Development like &lt;a href=&quot;https://martinfowler.com/&quot;&gt;Martin Fowler&lt;/a&gt;, &lt;a href=&quot;http://www.yegor256.com/&quot;&gt;Yegor Bugayenko&lt;/a&gt; among others.&lt;/p&gt;
+
+&lt;p&gt;If you want to buy this book, please use this link:&lt;/p&gt;
+
+&lt;div style=&quot;text-align:center;&quot;&gt;
+&lt;iframe src=&quot;http://rcm-eu.amazon-adsystem.com/e/cm?lt1=_blank&amp;amp;bc1=FFFFFF&amp;amp;IS2=1&amp;amp;bg1=FFFFFF&amp;amp;fc1=000000&amp;amp;lc1=B6B6C1&amp;amp;t=httpenriqucom-21&amp;amp;o=30&amp;amp;p=8&amp;amp;l=as1&amp;amp;m=amazon&amp;amp;f=ifr&amp;amp;ref=tf_til&amp;amp;asins=B01JKJ2JKK&quot; style=&quot;width:120px;height:240px;&quot; scrolling=&quot;no&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;p&gt;I’m pretty sure you will enjoy the journey as much as I did. If you have any questions about my summaries, feel free to send me an email and we can discuss anything more in deep.&lt;/p&gt;
+
+&lt;div class=&quot;PageNavigation&quot;&gt;
+
+    &lt;a class=&quot;next&quot; href=&quot;/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd.html&quot;&gt;Getting Started &amp;raquo;&lt;/a&gt;
+
+&lt;/div&gt;</content><author><name></name></author><summary type="html">From now on, I’m gonna write a series of posts that summarizes the main ideas from the book:</summary></entry><entry><title type="html">Subscription Success</title><link href="http://localhost:4000/subscription/2017/04/24/subscription-ok.html" rel="alternate" type="text/html" title="Subscription Success" /><published>2017-04-24T08:08:00-05:00</published><updated>2017-04-24T08:08:00-05:00</updated><id>http://localhost:4000/subscription/2017/04/24/subscription-ok</id><content type="html" xml:base="http://localhost:4000/subscription/2017/04/24/subscription-ok.html">&lt;h1 id=&quot;welcome-to-geektown&quot;&gt;Welcome to GeekTown&lt;/h1&gt;
 
 &lt;p&gt;Now you are part of our community, we are so glad to have you here.&lt;/p&gt;
 
@@ -391,97 +496,4 @@ Name1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
 &lt;script&gt;
 (adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Meta-Characters RegEx uses heavily meta-characters in order to easily find patterns inside a file</summary></entry><entry><title type="html">RegEx Getting Started</title><link href="http://localhost:4000/regex/2017/04/13/regex-getting-started.html" rel="alternate" type="text/html" title="RegEx Getting Started" /><published>2017-04-13T09:09:00-05:00</published><updated>2017-04-13T09:09:00-05:00</updated><id>http://localhost:4000/regex/2017/04/13/regex-getting-started</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/13/regex-getting-started.html">&lt;h1 id=&quot;regex&quot;&gt;RegEx&lt;/h1&gt;
-&lt;p&gt;It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place&lt;/p&gt;
-
-&lt;h2 id=&quot;filtering-with-grep&quot;&gt;Filtering with GREP&lt;/h2&gt;
-&lt;p&gt;The most simple way to find text in files in UNIX is using GREP. This one is heavily used daily on servers in order to find some patterns inside logs.
-For example, let say we are looking for the string “ERROR” in the logs directory.&lt;/p&gt;
-
-&lt;p&gt;Move to the logs directory:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;cd path/to/logs/directory&lt;/code&gt;&lt;/p&gt;
-
-&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
-
-&lt;!-- inferior --&gt;
-&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
-&lt;script&gt;
-(adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;&lt;/p&gt;
-
-&lt;p&gt;Use grep for finding the pattern:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -n &lt;span class=&quot;s1&quot;&gt;'ERROR'&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.log
-apache.log:8:ERROR &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;line ...
-nginx.log:77:it has an ERROR ...
-
-&lt;span class=&quot;c&quot;&gt;# Where:&lt;/span&gt;
--n:     print the line number
-ERROR:  string to find
-&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:      any file
-.log:   files must have .log extension&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;From the output, firstly you will se file that has the coincidence, then the line number and the whole line that has the string that you are searching for&lt;/p&gt;
-
-&lt;p&gt;If you enjoyed this article please support it clicking on the ads&lt;/p&gt;</content><author><name></name></author><summary type="html">RegEx It allows us to find certain patterns in strings, those string can be stored in files, variables, or any other place</summary></entry><entry><title type="html">AKKA Hello World</title><link href="http://localhost:4000/akka/2017/03/31/akka-hello-world.html" rel="alternate" type="text/html" title="AKKA Hello World" /><published>2017-03-31T14:51:00-05:00</published><updated>2017-03-31T14:51:00-05:00</updated><id>http://localhost:4000/akka/2017/03/31/akka-hello-world</id><content type="html" xml:base="http://localhost:4000/akka/2017/03/31/akka-hello-world.html">&lt;p&gt;Let’s create the most well known application for us, the HELLO WORLD APP&lt;/p&gt;
-
-&lt;p&gt;In order to have the required actor of an AKKA application, we will need:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;A message&lt;/li&gt;
-  &lt;li&gt;An actor&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;a-message&quot;&gt;A message&lt;/h1&gt;
-&lt;p&gt;This is quite simple, we only need one line of code:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;taskName&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h1 id=&quot;an-actor&quot;&gt;An actor&lt;/h1&gt;
-&lt;p&gt;Don’t be afraid, this is quite simple too. You just have to inherit from akka.actor.Actor and provide an implementation for the receive method.
-This method will be executed when the actor receives the message.&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Employee&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Actor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;receive&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Receive&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;taskName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;I'm working on $taskName&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;For finish, we only need to send the message to the Actor. Let’s say that someone has sent me a message to work on the Hello World app, the app should looks like:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;system&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ActorSystem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HelloWorld-App&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;developer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;actorOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Props&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Employee&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Rene&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// Send the task to the developer
-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;developer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Write an AKKA Hello World app&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;I love Scala because it help us to keep the things really simple, the whole application can reside in just one file:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;akka.actor.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Actor&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ActorSystem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Props&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// A message with what to do
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;taskName&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Who will do
-&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Employee&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Actor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;override&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;receive&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Receive&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;taskName&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;I'm working on $taskName&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-
-&lt;span class=&quot;k&quot;&gt;object&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;HelloWorld&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Array&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;])&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Unit&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;system&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ActorSystem&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;HelloWorld-App&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;val&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;developer&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;system&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;actorOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;Props&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;Employee&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Rene&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// Send the task to the developer
-&lt;/span&gt;    &lt;span class=&quot;n&quot;&gt;developer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Write an AKKA Hello World app&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;The code is available &lt;a href=&quot;https://github.com/enriquezrene/akka-in-a-nutshell/blob/master/src/main/scala/io/github/enriquezrene/akka01/HelloWorld.scala&quot;&gt;on Github&lt;/a&gt;, if you want to run it just type:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-scala&quot; data-lang=&quot;scala&quot;&gt;&lt;span class=&quot;n&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sbt&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;io&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;github&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;enriquezrene&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;akka01&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;HelloWorld&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prints&lt;/span&gt; &lt;span class=&quot;sc&quot;&gt;'I'&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;working&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;on&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Write&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;an&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;AKKA&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Hello&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;World&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;'&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;STDOUT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;</content><author><name></name></author><summary type="html">Let’s create the most well known application for us, the HELLO WORLD APP</summary></entry></feed>
+&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Meta-Characters RegEx uses heavily meta-characters in order to easily find patterns inside a file</summary></entry></feed>
