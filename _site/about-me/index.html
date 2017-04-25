@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>AKKA Getting Started!</title>
-  <meta name="description" content="AKKA Akka is a really cool toolkit for building highly concurrent and distributed applications based on a message-driven model. Let’s review some key concept...">
+  <title>About Me</title>
+  <meta name="description" content="">
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/akka/2017/03/30/akka-getting-started.html">
+  <link rel="canonical" href="http://localhost:4000/about-me/">
   <link rel="alternate" type="application/rss+xml" title="Geek Town" href="/feed.xml">
   
   
@@ -62,72 +62,40 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">AKKA Getting Started!</h1>
-    <p class="post-meta"><time datetime="2017-03-30T16:33:00-05:00" itemprop="datePublished">Mar 30, 2017</time></p>
+    <h1 class="post-title" itemprop="name headline">About Me</h1>
+    <p class="post-meta"><time datetime="2017-04-25T11:18:00-05:00" itemprop="datePublished">Apr 25, 2017</time></p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <h1 id="akka">AKKA</h1>
-<p>Akka is a really cool toolkit for building highly concurrent and distributed applications based on a message-driven model. Let’s review some key concepts in order to understand it.</p>
+    <style>
+ 
+  .thick-green-border {
+    border-color: gray;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 50%;
+  }
 
-<h2 id="actor-model">Actor Model</h2>
-<p>AKKA is based on an actor model that is quite simple, let’s suppose that we have 2 actors: A and B</p>
+  .smaller-image {
+    width: 150px;
+  }
+</style>
 
-<p><code class="highlighter-rouge">Actor A</code>: Hi Actor B, can you do xyz</p>
+<div style="text-align:center">
+<img class="smaller-image thick-green-border" src="https://avatars.githubusercontent.com/u/1638636?v=3" alt="Rene Enriquez" />
+</div>
 
-<p><code class="highlighter-rouge">Actor B</code>: Sure, give me a while</p>
+<p></p>
+<p>I’m Rene Enriquez (Quito, Ecuador) a software developer passionate by cutting edge technologies.</p>
 
-<p>Basically a model based on messaging where one Actor send a message to other one when needs something.</p>
+<p>As a programmer, I write mostly in Java, but also using Scala, Groovy and JavaScript. 
+Currently I’m really glad using IntelliJ but it would change, the history of IDEs in my career has been:</p>
 
-<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<p>Netbeans -&gt; Eclipse -&gt; JBoss Developer Studio -&gt; STS -&gt; IntelliJ</p>
 
-<!-- inferior -->
-<p><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-5428825449848403" data-ad-slot="1328012179"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script></p>
+<p>I’m an Oracle Certified Professional, OCJP. I also wrote a book about the foundation for securing restful web services. If you’re interested on it, here is the link:</p>
 
-<h2 id="main-concepts-related-to-akka">Main Concepts Related to AKKA</h2>
-<p>In order to understand how AKKA works, it’s vital understand a couple of concepts:</p>
-
-<h3 id="concurrency-and-parallelism">Concurrency and Parallelism</h3>
-
-<h4 id="concurrency">Concurrency</h4>
-<p>Many task running on single core machine.
-One coffee machine, many guys taking a little bit of coffee one after other</p>
-
-<h4 id="parallelism">Parallelism</h4>
-<p>Many task running on multicore processor machine.
-Many coffee machines, many guys taking coffee from there at the same time</p>
-
-<h3 id="sync-and-async-processes">Sync and Async processes</h3>
-
-<h4 id="sync">Sync</h4>
-<p>One task invokes another one and it should wait until the other one has completed to continue</p>
-
-<h4 id="async">Async</h4>
-<p>One task invokes another one and it can keep working with no need to wait for the completion. After the completion, the invoked task can inform about its progress with a callback, message or any other way</p>
-
-<h3 id="blocking-and-non-blocking">Blocking and Non-blocking</h3>
-
-<h4 id="blocking">Blocking</h4>
-<p>One task will delay other tasks running</p>
-
-<h4 id="non-blocking">Non-Blocking</h4>
-<p>One task run and it wont delay other tasks running</p>
-
-<h3 id="race-condition">Race Condition</h3>
-<p>It’s when more than one actor are trying to modify the state of something at the same time</p>
-
-<p>That’s all for now, in the next posts we are going to dive into the AKKA world</p>
-
-<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-
-<!-- inferior -->
-<p><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-5428825449848403" data-ad-slot="1328012179"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script></p>
+<p>https://www.packtpub.com/application-development/restful-java-web-services-security</p>
 
 
   </div>

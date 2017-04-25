@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Subscribe us
-permalink: /about/
+permalink: /subscribe/
 ---
 <form action="https://getsimpleform.com/messages?form_api_token=4d0b75265e16ce301cd0b1c84f41fb51" method="post">
     <h1>Get our newsletter</h1>
