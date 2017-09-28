@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-09-27T08:40:39-05:00</updated><id>http://localhost:4000/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">Getting Started</title><link href="http://localhost:4000/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd.html" rel="alternate" type="text/html" title="Getting Started" /><published>2017-04-25T14:53:00-05:00</published><updated>2017-04-25T14:53:00-05:00</updated><id>http://localhost:4000/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd</id><content type="html" xml:base="http://localhost:4000/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd.html">&lt;p&gt;This post contains a summary about the first Chapter of the book.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-09-27T23:05:42-05:00</updated><id>http://localhost:4000/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">Getting Started</title><link href="http://localhost:4000/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd.html" rel="alternate" type="text/html" title="Getting Started" /><published>2017-04-25T14:53:00-05:00</published><updated>2017-04-25T14:53:00-05:00</updated><id>http://localhost:4000/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd</id><content type="html" xml:base="http://localhost:4000/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd.html">&lt;p&gt;This post contains a summary about the first Chapter of the book.&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Growing Object Oriented Software, Guided by Tests &lt;br /&gt;
 By Steve Freeman and Nat Pryce.&lt;/p&gt;
@@ -157,30 +157,43 @@ Let’s use this string:&lt;/p&gt;
 &lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;</content><author><name></name></author><summary type="html">Let’s work hard We are going to extract coordinates from a string like this COORDINATES(((1 2,3 4)),((5 6,7 8,9 10)))</summary></entry><entry><title type="html">URLs</title><link href="http://localhost:4000/regex/2017/04/17/urls.html" rel="alternate" type="text/html" title="URLs" /><published>2017-04-17T15:53:00-05:00</published><updated>2017-04-17T15:53:00-05:00</updated><id>http://localhost:4000/regex/2017/04/17/urls</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/17/urls.html">&lt;h1 id=&quot;looking-for-valid-urls&quot;&gt;Looking for valid URLs&lt;/h1&gt;
 &lt;p&gt;Valid URLs are protocol://someadress, for this example we are going to use a file with this content:&lt;/p&gt;
 
-&lt;p&gt;http://www.google.com
-http:/www.google.com
-ftp://123.44.5.22
-https://255.122.22.11
-htt://google.com
-http://google.com
-file://somefile
-file//another-file&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;http://www.google.com&lt;/li&gt;
+  &lt;li&gt;http:/www.google.com&lt;/li&gt;
+  &lt;li&gt;ftp://123.44.5.22&lt;/li&gt;
+  &lt;li&gt;https://255.122.22.11&lt;/li&gt;
+  &lt;li&gt;htt://google.com&lt;/li&gt;
+  &lt;li&gt;http://google.com&lt;/li&gt;
+  &lt;li&gt;file://somefile&lt;/li&gt;
+  &lt;li&gt;file//another-file&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;p&gt;We will support these protocols: http, https, ftp 
-So, the expression for find these values is quite simple:&lt;/p&gt;
+&lt;p&gt;We will support these protocols:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;http&lt;/li&gt;
+  &lt;li&gt;https&lt;/li&gt;
+  &lt;li&gt;ftp&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;^(https?|ftp|file)://.+$&quot;&lt;/span&gt; file.txt
-http://www.google.com
-ftp://123.44.5.22
-https://255.122.22.11
-http://google.com
-file://somefile
-Where:
-^               : at the beginning
-https?|ftp|file : http or https &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;no, find ftp &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;no find file
-://             : ://  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; self explained &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-.+              : any characters
-&lt;span class=&quot;gp&quot;&gt;$               &lt;/span&gt;: at the end&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;So, the expression for find these values is quite simple:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;^(https?|ftp|file)://.+$&quot;&lt;/span&gt; file.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;http://www.google.com&lt;/li&gt;
+  &lt;li&gt;ftp://123.44.5.22&lt;/li&gt;
+  &lt;li&gt;https://255.122.22.11&lt;/li&gt;
+  &lt;li&gt;http://google.com&lt;/li&gt;
+  &lt;li&gt;file://somefile&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Where:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;- ^               : at the beginning
+- https?|ftp|file : http or https &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;no, find ftp &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;no find file
+- ://             : ://  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; self explained &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+- .+              : any characters
+- &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;              : at the end&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;
 
