@@ -8,30 +8,40 @@ categories: RegEx
 Valid URLs are protocol://someadress, for this example we are going to use a file with this content:
 
 
-http://www.google.com
-http:/www.google.com
-ftp://123.44.5.22
-https://255.122.22.11
-htt://google.com
-http://google.com
-file://somefile
-file//another-file
+- http://www.google.com
+- http:/www.google.com
+- ftp://123.44.5.22
+- https://255.122.22.11
+- htt://google.com
+- http://google.com
+- file://somefile
+- file//another-file
  
-We will support these protocols: http, https, ftp 
+We will support these protocols: 
+- http
+- https
+- ftp
+ 
 So, the expression for find these values is quite simple:
+
 {% highlight shell %}
 $ grep -P "^(https?|ftp|file)://.+$" file.txt
-http://www.google.com
-ftp://123.44.5.22
-https://255.122.22.11
-http://google.com
-file://somefile
+{% endhighlight %}
+
+- http://www.google.com
+- ftp://123.44.5.22
+- https://255.122.22.11
+- http://google.com
+- file://somefile
+
 Where:
-^               : at the beginning
-https?|ftp|file : http or https if no, find ftp if no find file
-://             : ://  ( self explained )
-.+              : any characters
-$               : at the end
+
+{% highlight shell %}
+- ^               : at the beginning
+- https?|ftp|file : http or https if no, find ftp if no find file
+- ://             : ://  ( self explained )
+- .+              : any characters
+- $               : at the end
 {% endhighlight %}
 
 If you like this post please pay me with a click on the ads :)
