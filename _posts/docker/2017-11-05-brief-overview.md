@@ -7,13 +7,31 @@ categories: docker
 
 Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc. 
 
-I have been working with this technology for a while and I decided to write a little bit about my experience.
-Let's start understanding what Docker is.
+I have been working with this technology for a while and I decided to write a little bit about my experience with it. Let's start understanding what Docker is.
 
-Docker is a container <- still hard to understand
+# Background
+At the beginning we used to buy powerful servers in order to deploy our applications. Often these servers used to be underused.
+Probably they were used at the half of their maximum capacity in the best cases. 
 
-A container is like a virtual machine running an OS but re-using the host's kernel. 
-By this reason is really less resource consuming in comparison to a virtual machine where you need to install the whole OS.
+One of the worst things that used to happened us was related to have many services running on a physical server. 
+So if we needed to restart the server because of a failure or something, all those services were down while the server was starting.
+
+Keep the services isolated is one of the best practices to deal with these problems, but of course, buy one server per service is only worst.
+That's why Virtual Machines raised, with them, we can have many services running on a single host and all of them are isolated. 
+So if you need to restart one service, you only need to restart that VM (Virtual Machine) and that's it.
+
+
+# What's wrong with VMs?
+There is nothing wrong with them but the unique bad stuff is they need the full blown OS to work.
+As we know each OS consumes:
+
+- RAM
+- Hard disk
+- CPU
+- Licenses (like Windows, RedHat and other OS)
+
+# Docker comes to help us
+
 
 # Advantages
 - Re-use the kernel
