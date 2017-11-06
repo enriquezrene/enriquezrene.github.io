@@ -7,55 +7,62 @@ categories: docker
 
 Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc. 
 
-I have been working with this technology for a while and I decided to write a little bit about my experience.
-Let's start understanding what Docker is.
+I have been working with this technology for a while and I decided to write a little bit about my experience with it. Let's start understanding what Docker is.
 
-Docker is a container <- still hard to understand
+# Background
+At the beginning we used to buy powerful servers in order to deploy our applications. Often these servers used to be underused.
+Probably they were used at the half of their maximum capacity in the best cases. 
 
-A container is like a virtual machine running an OS but re-using the host's kernel. 
-By this reason is really less resource consuming in comparison to a virtual machine where you need to install the whole OS.
+One of the worst things that used to happened us was related to have many services running on a physical server. 
+So if we needed to restart the server because of a failure or something, all those services were down while the server was starting.
 
-# Advantages
-- Re-use the kernel
-- Less resource consuming
-- Independent machines
-- Easy to manage
+Keep the services isolated is one of the best practices to deal with these problems, but of course, buy one server per service is only worst.
+That's why Virtual Machines raised, with them, we can have many services running on a single host and all of them are isolated. 
+So if you need to restart one service, you only need to restart that VM (Virtual Machine) and that's it.
 
-The main idea with docker is to have one container per process.
 
-For example: 
+# What's wrong with VMs?
+There is nothing wrong with them but the unique bad stuff is they need the full blown OS to work.
+As we know each OS consumes:
+
+- RAM
+- Hard disk
+- CPU
+- Licenses (like Windows, RedHat and other OS)
+
+# Docker is here to help us
+Nowadays we have containers, and Docker is one of them, in a nutshell a container is like a VM that re-use the host kernel.
+Since the container re-use the host kernel you have allowed to run any Linux distribution as a docker instance in your Unix (Linux/Mac) docker host. Same it's true for Windows.
+
+- Docker host: physical server
+- Docker image: like a VM re-using the host kernel
+
+A Docker image is composed of the OS of your choice, and the services that you want inside it. 
+For example, if you have installed Ubuntu in your host machine, you can run on it CentOS, RedHat, Debian or whatever other linux distribution.
+
+A good practice is to run only one service inside a docker image.
 
 Let's say that you want to run an application that is composed by a MySQL database, some code written in Java that is consuming queues from RabbitMQ.
 
-In the classic way you will probably install on a server MySQL, Java and RabbitMQ, or, if you want to have an isolated environment per product, you would end up with 3 servers.
+With this idea in mind we will need three docker images and let's say three different OS too (if you want):
 
-After all, it's always a good idea keep every different process isolated in different servers. Of this way, if you need to restart your java server you won't end up killing your database and message server too.
+- Image 1: Ubuntu 14.04, Java 8
+- Image 2: CentOS 5, MySQL 5.x
+- Image 3: Debian 9.1, RabbitMQ 3.6.11
 
-Docker solve this problem in a more elegant way. In this case you only need one server and 3 docker instances:
+Of course we can use Ubuntu or any other distro for all the images, but I wrote three different OS just to make it clear.
+Once you have your images you can run them, an image running is what we call an instance, so you'll have three docker instances running.
 
-- One instance running Java
-- One instance running MySQL
-- One instance running RabbitMQ
+In the next posts I'm going to show you how to create your own docker images and how to run applications/services inside of them.
 
-Wait, what is an instance? 
+If you liked this post you can pay me with a click on the ads :)
 
-In docker you have to understand a really simple concept.
-
-Docker uses images, one image consist of the OS of your choice and all the things that you want to run inside it.
-A good practice is only have one process running inside an image. 
-
-For example: 
-
-In our case we will need to have:
-
-- Image for Java : Ubuntu 14.04, Java 8
-- Image for MySQL : CentOS 5, MySQL 5.x
-- Image for RabbitMQ: Debian 9.1, RabbitMQ 3.6.11
-
-And after have these images, we need to run them, so every single image running will be an instance.
-
-Now, all of these instances will be able to run inside your host so you won't need 3 servers but only one. 
-
-And these 3 intances will be re-using the host's kernel instead of install a new one for them.
-
-Of this way, your instances won't consume a lot of resources of your server and you'll have 3 isolated and independent processes running in your server.
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- inferior -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-5428825449848403"
+     data-ad-slot="1328012179"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
