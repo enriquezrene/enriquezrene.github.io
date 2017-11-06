@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Subscribe us</title>
-  <meta name="description" content="">
+  <title>Brief Overview</title>
+  <meta name="description" content="Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc.">
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +17,7 @@
 
   <link rel="stylesheet" href="/custom-css/styles.css">
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/subscribe/">
+  <link rel="canonical" href="http://localhost:4000/docker/2017/11/05/brief-overview.html">
   <link rel="alternate" type="application/rss+xml" title="Geek Town" href="/feed.xml">
 
   
@@ -135,23 +135,78 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">Subscribe us</h1>
+    <h1 class="post-title" itemprop="name headline">Brief Overview</h1>
+    <p class="post-meta"><time datetime="2017-11-05T22:21:00-05:00" itemprop="datePublished">Nov 5, 2017</time></p>
   </header>
 
-  <div class="post-content">
-    <form action="https://getsimpleform.com/messages?form_api_token=4d0b75265e16ce301cd0b1c84f41fb51" method="post">
-    <h1>Get our newsletter</h1>
-    <p>If you want to be part of our monthly newsletter, please fill this form</p>
-    <input type="hidden" name="redirect_to" value="https://geektown.netlify.com/subscription/2017/04/24/subscription-ok.html" />
-    <input type="text" name="email" size="30" placeholder="Enter your email" required="" />
-    <input type="submit" value="Subscribe me" />
-</form>
+  <div class="post-content" itemprop="articleBody">
+    <p>Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc.</p>
+
+<p>I have been working with this technology for a while and I decided to write a little bit about my experience.
+Let’s start understanding what Docker is.</p>
+
+<p>Docker is a container &lt;- still hard to understand</p>
+
+<p>A container is like a virtual machine running an OS but re-using the host’s kernel. 
+By this reason is really less resource consuming in comparison to a virtual machine where you need to install the whole OS.</p>
+
+<h1 id="advantages">Advantages</h1>
+<ul>
+  <li>Re-use the kernel</li>
+  <li>Less resource consuming</li>
+  <li>Independent machines</li>
+  <li>Easy to manage</li>
+</ul>
+
+<p>The main idea with docker is to have one container per process.</p>
+
+<p>For example:</p>
+
+<p>Let’s say that you want to run an application that is composed by a MySQL database, some code written in Java that is consuming queues from RabbitMQ.</p>
+
+<p>In the classic way you will probably install on a server MySQL, Java and RabbitMQ, or, if you want to have an isolated environment per product, you would end up with 3 servers.</p>
+
+<p>After all, it’s always a good idea keep every different process isolated in different servers. Of this way, if you need to restart your java server you won’t end up killing your database and message server too.</p>
+
+<p>Docker solve this problem in a more elegant way. In this case you only need one server and 3 docker instances:</p>
+
+<ul>
+  <li>One instance running Java</li>
+  <li>One instance running MySQL</li>
+  <li>One instance running RabbitMQ</li>
+</ul>
+
+<p>Wait, what is an instance?</p>
+
+<p>In docker you have to understand a really simple concept.</p>
+
+<p>Docker uses images, one image consist of the OS of your choice and all the things that you want to run inside it.
+A good practice is only have one process running inside an image.</p>
+
+<p>For example:</p>
+
+<p>In our case we will need to have:</p>
+
+<ul>
+  <li>Image for Java : Ubuntu 14.04, Java 8</li>
+  <li>Image for MySQL : CentOS 5, MySQL 5.x</li>
+  <li>Image for RabbitMQ: Debian 9.1, RabbitMQ 3.6.11</li>
+</ul>
+
+<p>And after have these images, we need to run them, so every single image running will be an instance.</p>
+
+<p>Now, all of these instances will be able to run inside your host so you won’t need 3 servers but only one.</p>
+
+<p>And these 3 intances will be re-using the host’s kernel instead of install a new one for them.</p>
+
+<p>Of this way, your instances won’t consume a lot of resources of your server and you’ll have 3 isolated and independent processes running in your server.</p>
 
   </div>
 
+  
 </article>
 
       </div>

@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Subscribe us</title>
-  <meta name="description" content="">
+  <title>Refactoring, a First Example</title>
+  <meta name="description" content="Refactoring, Improving the Design of Existing Code">
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,7 +17,7 @@
 
   <link rel="stylesheet" href="/custom-css/styles.css">
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/subscribe/">
+  <link rel="canonical" href="http://localhost:4000/refactoring/2017/09/27/a-first-example.html">
   <link rel="alternate" type="application/rss+xml" title="Geek Town" href="/feed.xml">
 
   
@@ -135,23 +135,28 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title">Subscribe us</h1>
+    <h1 class="post-title" itemprop="name headline">Refactoring, a First Example</h1>
+    <p class="post-meta"><time datetime="2017-09-27T21:34:00-05:00" itemprop="datePublished">Sep 27, 2017</time></p>
   </header>
 
-  <div class="post-content">
-    <form action="https://getsimpleform.com/messages?form_api_token=4d0b75265e16ce301cd0b1c84f41fb51" method="post">
-    <h1>Get our newsletter</h1>
-    <p>If you want to be part of our monthly newsletter, please fill this form</p>
-    <input type="hidden" name="redirect_to" value="https://geektown.netlify.com/subscription/2017/04/24/subscription-ok.html" />
-    <input type="text" name="email" size="30" placeholder="Enter your email" required="" />
-    <input type="submit" value="Subscribe me" />
-</form>
+  <div class="post-content" itemprop="articleBody">
+    <h1 id="refactoring-improving-the-design-of-existing-code">Refactoring, Improving the Design of Existing Code</h1>
+
+<h2 id="chapter-01-refactoring-a-first-example">Chapter 01: Refactoring, a First Example</h2>
+
+<p>When you find you have to add a feature to a program, and the program’s code is not structured in a convenient way to add the feature, first refactor the program to make it easy to add the feature, then add the feature.</p>
+
+<ol>
+  <li>Write test to ensure you’re not breaking the existing code.</li>
+  <li>Split big methods in small ones in order to make them more manageable.</li>
+</ol>
 
   </div>
 
+  
 </article>
 
       </div>

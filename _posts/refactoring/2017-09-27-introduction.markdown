@@ -1,84 +1,16 @@
 ---
 layout: post
-title:  "Meta-Characters"
-date:   2017-04-13 11:08
-categories: RegEx
+title:  "Introduction"
+date:   2017-09-27 21:30
+categories: Refactoring
 ---
-# Meta-Characters
-RegEx uses heavily meta-characters in order to easily find patterns inside a file
 
-## [] Brackets
-It allows to define a range of characters for find them in a file. 
+# Refactoring, Improving the Design of Existing Code
 
-For the demonstration we are going to use a file named file.txt with this content:
-{% highlight shell %}
-1
-hello
-2
-goodbye
-{% endhighlight %}
+## Introduction
 
-Finding alphabetic characters
-{% highlight shell %}
-$ grep "[a-z]" file.txt
-hello
-goodbye
-{% endhighlight %}
+This is a series of articles with small summaries about the book "Refactoring, Improving the Design of Existing Code" by Kent Beck and Martin Fowler. 
 
-Finding numbers 
-{% highlight shell %}
-$ grep "[0-9]" file.txt
-1
-2
-{% endhighlight %}
- 
-## ^ Negate
-Finding no-alphabetic characters
-{% highlight shell %}
-$ grep "[^a-z]" file.txt
-1
-2
-{% endhighlight %}
+I'll put here the links to GitHub containing the code examples.
 
-Finding no numbers 
-{% highlight shell %}
-$ grep "[^0-9]" file.txt
-hello
-goodbye
-{% endhighlight %}
-
-
-## Searching Text Starting and Ending With
-For the sake of simplicity let's change the content of the file by:
-{% highlight shell %}
-FirstName
-LastName
-Name1
-1stName
-{% endhighlight %}
-
-### ^[ Starting With
-Finding text starting with a number
-{% highlight shell %}
-$ grep "^[0-9]" file.txt
-1stName
-{% endhighlight %}
-
-### $ Ending With
-Finding text ending in a number
-{% highlight shell %}
-$ grep "[0-9]$" file.txt
-Name1
-{% endhighlight %}
-
-If you like this post please pay me with a click on the ads :)
-
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- inferior -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:728px;height:90px"
-     data-ad-client="ca-pub-5428825449848403"
-     data-ad-slot="1328012179"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+I hope you like it and find it useful.

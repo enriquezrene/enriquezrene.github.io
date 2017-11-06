@@ -1,4 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-09-27T23:05:42-05:00</updated><id>http://localhost:4000/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">Getting Started</title><link href="http://localhost:4000/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd.html" rel="alternate" type="text/html" title="Getting Started" /><published>2017-04-25T14:53:00-05:00</published><updated>2017-04-25T14:53:00-05:00</updated><id>http://localhost:4000/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd</id><content type="html" xml:base="http://localhost:4000/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd.html">&lt;p&gt;This post contains a summary about the first Chapter of the book.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-05T22:54:57-05:00</updated><id>http://localhost:4000/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">Brief Overview</title><link href="http://localhost:4000/docker/2017/11/05/brief-overview.html" rel="alternate" type="text/html" title="Brief Overview" /><published>2017-11-05T22:21:00-05:00</published><updated>2017-11-05T22:21:00-05:00</updated><id>http://localhost:4000/docker/2017/11/05/brief-overview</id><content type="html" xml:base="http://localhost:4000/docker/2017/11/05/brief-overview.html">&lt;p&gt;Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc.&lt;/p&gt;
+
+&lt;p&gt;I have been working with this technology for a while and I decided to write a little bit about my experience.
+Let’s start understanding what Docker is.&lt;/p&gt;
+
+&lt;p&gt;Docker is a container &amp;lt;- still hard to understand&lt;/p&gt;
+
+&lt;p&gt;A container is like a virtual machine running an OS but re-using the host’s kernel. 
+By this reason is really less resource consuming in comparison to a virtual machine where you need to install the whole OS.&lt;/p&gt;
+
+&lt;h1 id=&quot;advantages&quot;&gt;Advantages&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Re-use the kernel&lt;/li&gt;
+  &lt;li&gt;Less resource consuming&lt;/li&gt;
+  &lt;li&gt;Independent machines&lt;/li&gt;
+  &lt;li&gt;Easy to manage&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The main idea with docker is to have one container per process.&lt;/p&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;p&gt;Let’s say that you want to run an application that is composed by a MySQL database, some code written in Java that is consuming queues from RabbitMQ.&lt;/p&gt;
+
+&lt;p&gt;In the classic way you will probably install on a server MySQL, Java and RabbitMQ, or, if you want to have an isolated environment per product, you would end up with 3 servers.&lt;/p&gt;
+
+&lt;p&gt;After all, it’s always a good idea keep every different process isolated in different servers. Of this way, if you need to restart your java server you won’t end up killing your database and message server too.&lt;/p&gt;
+
+&lt;p&gt;Docker solve this problem in a more elegant way. In this case you only need one server and 3 docker instances:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;One instance running Java&lt;/li&gt;
+  &lt;li&gt;One instance running MySQL&lt;/li&gt;
+  &lt;li&gt;One instance running RabbitMQ&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Wait, what is an instance?&lt;/p&gt;
+
+&lt;p&gt;In docker you have to understand a really simple concept.&lt;/p&gt;
+
+&lt;p&gt;Docker uses images, one image consist of the OS of your choice and all the things that you want to run inside it.
+A good practice is only have one process running inside an image.&lt;/p&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;p&gt;In our case we will need to have:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Image for Java : Ubuntu 14.04, Java 8&lt;/li&gt;
+  &lt;li&gt;Image for MySQL : CentOS 5, MySQL 5.x&lt;/li&gt;
+  &lt;li&gt;Image for RabbitMQ: Debian 9.1, RabbitMQ 3.6.11&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;And after have these images, we need to run them, so every single image running will be an instance.&lt;/p&gt;
+
+&lt;p&gt;Now, all of these instances will be able to run inside your host so you won’t need 3 servers but only one.&lt;/p&gt;
+
+&lt;p&gt;And these 3 intances will be re-using the host’s kernel instead of install a new one for them.&lt;/p&gt;
+
+&lt;p&gt;Of this way, your instances won’t consume a lot of resources of your server and you’ll have 3 isolated and independent processes running in your server.&lt;/p&gt;</content><author><name></name></author><summary type="html">Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc.</summary></entry><entry><title type="html">Refactoring, a First Example</title><link href="http://localhost:4000/refactoring/2017/09/27/a-first-example.html" rel="alternate" type="text/html" title="Refactoring, a First Example" /><published>2017-09-27T21:34:00-05:00</published><updated>2017-09-27T21:34:00-05:00</updated><id>http://localhost:4000/refactoring/2017/09/27/a-first-example</id><content type="html" xml:base="http://localhost:4000/refactoring/2017/09/27/a-first-example.html">&lt;h1 id=&quot;refactoring-improving-the-design-of-existing-code&quot;&gt;Refactoring, Improving the Design of Existing Code&lt;/h1&gt;
+
+&lt;h2 id=&quot;chapter-01-refactoring-a-first-example&quot;&gt;Chapter 01: Refactoring, a First Example&lt;/h2&gt;
+
+&lt;p&gt;When you find you have to add a feature to a program, and the program’s code is not structured in a convenient way to add the feature, first refactor the program to make it easy to add the feature, then add the feature.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Write test to ensure you’re not breaking the existing code.&lt;/li&gt;
+  &lt;li&gt;Split big methods in small ones in order to make them more manageable.&lt;/li&gt;
+&lt;/ol&gt;</content><author><name></name></author><summary type="html">Refactoring, Improving the Design of Existing Code</summary></entry><entry><title type="html">Introduction</title><link href="http://localhost:4000/refactoring/2017/09/27/introduction.html" rel="alternate" type="text/html" title="Introduction" /><published>2017-09-27T21:30:00-05:00</published><updated>2017-09-27T21:30:00-05:00</updated><id>http://localhost:4000/refactoring/2017/09/27/introduction</id><content type="html" xml:base="http://localhost:4000/refactoring/2017/09/27/introduction.html">&lt;h1 id=&quot;refactoring-improving-the-design-of-existing-code&quot;&gt;Refactoring, Improving the Design of Existing Code&lt;/h1&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;p&gt;This is a series of articles with small summaries about the book “Refactoring, Improving the Design of Existing Code” by Kent Beck and Martin Fowler.&lt;/p&gt;
+
+&lt;p&gt;I’ll put here the links to GitHub containing the code examples.&lt;/p&gt;
+
+&lt;p&gt;I hope you like it and find it useful.&lt;/p&gt;</content><author><name></name></author><summary type="html">Refactoring, Improving the Design of Existing Code</summary></entry><entry><title type="html">Getting Started</title><link href="http://localhost:4000/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd.html" rel="alternate" type="text/html" title="Getting Started" /><published>2017-04-25T14:53:00-05:00</published><updated>2017-04-25T14:53:00-05:00</updated><id>http://localhost:4000/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd</id><content type="html" xml:base="http://localhost:4000/growing-object-oriented-software/2017/04/25/whats-the-point-of-tdd.html">&lt;p&gt;This post contains a summary about the first Chapter of the book.&lt;/p&gt;
 &lt;blockquote&gt;
   &lt;p&gt;Growing Object Oriented Software, Guided by Tests &lt;br /&gt;
 By Steve Freeman and Nat Pryce.&lt;/p&gt;
@@ -325,177 +401,4 @@ Where:
 &lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
 &lt;script&gt;
 (adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Shortcuts It allows to specify key characters for simplifying our expressions</summary></entry><entry><title type="html">BackReference</title><link href="http://localhost:4000/regex/2017/04/17/back-reference.html" rel="alternate" type="text/html" title="BackReference" /><published>2017-04-17T12:34:00-05:00</published><updated>2017-04-17T12:34:00-05:00</updated><id>http://localhost:4000/regex/2017/04/17/back-reference</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/17/back-reference.html">&lt;h1 id=&quot;back-reference&quot;&gt;Back Reference&lt;/h1&gt;
-&lt;p&gt;It allows to find repeated blocks in an expression
-let’s use this content in your file for tests&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;I need to to find double
-expressions &lt;span class=&quot;k&quot;&gt;in
-&lt;/span&gt;this this file&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;repeated-words&quot;&gt;Repeated words&lt;/h2&gt;
-&lt;p&gt;In order to find repeated words let’s use this expression:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;([a-z]+) +&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
-I need to to find double
-this this file&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;
-
-&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
-
-&lt;!-- inferior --&gt;
-&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
-&lt;script&gt;
-(adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Back Reference It allows to find repeated blocks in an expression let’s use this content in your file for tests I need to to find double expressions in this this file</summary></entry><entry><title type="html">Quantifiers</title><link href="http://localhost:4000/regex/2017/04/13/quantifiers.html" rel="alternate" type="text/html" title="Quantifiers" /><published>2017-04-13T11:32:00-05:00</published><updated>2017-04-13T11:32:00-05:00</updated><id>http://localhost:4000/regex/2017/04/13/quantifiers</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/13/quantifiers.html">&lt;h1 id=&quot;quantifiers&quot;&gt;Quantifiers&lt;/h1&gt;
-&lt;p&gt;It allows us to specify how many characters we do need to search, let’s dive right in&lt;/p&gt;
-
-&lt;h2 id=&quot;-optional&quot;&gt;? Optional&lt;/h2&gt;
-&lt;p&gt;It allows to find a text that contains or not a character&lt;/p&gt;
-
-&lt;p&gt;For the demonstration we are going to use a file named file.txt with this content:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;Java SE it&lt;span class=&quot;s1&quot;&gt;'s nice
-I like JEE just a little bit
-I prefer to avoid J2EE and use plain JavaSE
-JavaFX is growing a lot&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Finding lines with JEE or J2EE&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;J2?EE&quot;&lt;/span&gt; file.txt
-I like JEE just a little bit
-I prefer to avoid J2EE and use plain SEJava&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;-exact-coincidences&quot;&gt;* Exact Coincidences&lt;/h2&gt;
-&lt;p&gt;Finding lines with Java text (no matter where, beginning-middle-ending)&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;*Java&quot;&lt;/span&gt; file.txt
-Java SE it&lt;span class=&quot;s1&quot;&gt;'s nice
-I prefer to avoid J2EE and use plain SEJava
-JavaFX is growing a lot&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;-a-quantity-of-coincidences&quot;&gt;+ A Quantity Of Coincidences&lt;/h2&gt;
-&lt;p&gt;Let’s replace the content by:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;1
-2
-12
-21
-123
-213&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Finding two or more digits&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;[0-9][0-9]+&quot;&lt;/span&gt; file.txt
-12
-21
-123
-213&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;-quantifiers-for-idn&quot;&gt;{} Quantifiers for IDN&lt;/h2&gt;
-&lt;p&gt;Let’s validate an identification number, we are looking for this pattern:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;3_DIGITS - 4_DIGITS - 2_DIGITS - 5_DIGITS&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;For this example we are use a file with this content:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;12345-4567-453465-45646
-123-4568-45-45698
-45646-454-545-99999
-321-6548-55-87549
-01236-21-45646-00
-012-2546-5-00008&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;The expression that we need is:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;[0-9]{3}-[0-9]{4}-[0-9]{2}-[0-9]{5}&quot;&lt;/span&gt; file.txt
-123-4568-45-45698
-321-6548-55-87549&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Let’s suppose that valid IDN is:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;3or5_DIGITS-4_DIGITS-2orMORE_DIGITS-5DIGITS&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;The expression that we need in this case is:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;[0-9]{3,5}-[0-9]{4}-[0-9]{2,}-[0-9]{5}&quot;&lt;/span&gt; file.txt
-12345-4567-453465-45646
-123-4568-45-45698
-321-6548-55-87549&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;
-
-&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
-
-&lt;!-- inferior --&gt;
-&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
-&lt;script&gt;
-(adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Quantifiers It allows us to specify how many characters we do need to search, let’s dive right in</summary></entry><entry><title type="html">Meta-Characters</title><link href="http://localhost:4000/regex/2017/04/13/meta-characters.html" rel="alternate" type="text/html" title="Meta-Characters" /><published>2017-04-13T11:08:00-05:00</published><updated>2017-04-13T11:08:00-05:00</updated><id>http://localhost:4000/regex/2017/04/13/meta-characters</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/13/meta-characters.html">&lt;h1 id=&quot;meta-characters&quot;&gt;Meta-Characters&lt;/h1&gt;
-&lt;p&gt;RegEx uses heavily meta-characters in order to easily find patterns inside a file&lt;/p&gt;
-
-&lt;h2 id=&quot;-brackets&quot;&gt;[] Brackets&lt;/h2&gt;
-&lt;p&gt;It allows to define a range of characters for find them in a file.&lt;/p&gt;
-
-&lt;p&gt;For the demonstration we are going to use a file named file.txt with this content:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;1
-hello
-2
-goodbye&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Finding alphabetic characters&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;[a-z]&quot;&lt;/span&gt; file.txt
-hello
-goodbye&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Finding numbers&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;[0-9]&quot;&lt;/span&gt; file.txt
-1
-2&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;-negate&quot;&gt;^ Negate&lt;/h2&gt;
-&lt;p&gt;Finding no-alphabetic characters&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;[^a-z]&quot;&lt;/span&gt; file.txt
-1
-2&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Finding no numbers&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;[^0-9]&quot;&lt;/span&gt; file.txt
-hello
-goodbye&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;searching-text-starting-and-ending-with&quot;&gt;Searching Text Starting and Ending With&lt;/h2&gt;
-&lt;p&gt;For the sake of simplicity let’s change the content of the file by:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;FirstName
-LastName
-Name1
-1stName&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;-starting-with&quot;&gt;^[ Starting With&lt;/h3&gt;
-&lt;p&gt;Finding text starting with a number&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;^[0-9]&quot;&lt;/span&gt; file.txt
-1stName&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h3 id=&quot;-ending-with&quot;&gt;$ Ending With&lt;/h3&gt;
-&lt;p&gt;Finding text ending in a number&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep &lt;span class=&quot;s2&quot;&gt;&quot;[0-9]$&quot;&lt;/span&gt; file.txt
-Name1&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;
-
-&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
-
-&lt;!-- inferior --&gt;
-&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
-&lt;script&gt;
-(adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Meta-Characters RegEx uses heavily meta-characters in order to easily find patterns inside a file</summary></entry></feed>
+&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Shortcuts It allows to specify key characters for simplifying our expressions</summary></entry></feed>
