@@ -33,7 +33,8 @@ You will see something like this:
 ﻿Docker version 17.09.0-ce, build afdb6d4
 ```
 
-For finish, I know we all love *Hello World* examples and that's why we are going to run a *Hello World* using our
+# Hello World
+I know we all love *Hello World* examples and that's why we are going to run a *Hello World* using our
 fresh Docker installation. 
 
 For this, let's type in your terminal the next command:
