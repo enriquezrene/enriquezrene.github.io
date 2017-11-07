@@ -23,5 +23,5 @@
   sublinks:
       - title: Introduction
         url: /docker/2017/11/05/brief-overview.html
-      - title: Install and run a hello world
+      - title: Install and running a Hello World
         url: /docker/2017/11/06/installing-docker.html
