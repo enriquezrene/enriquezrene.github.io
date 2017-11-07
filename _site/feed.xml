@@ -1,4 +1,74 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-06T22:20:42-05:00</updated><id>http://localhost:4000/</id><title type="html">Blog Enriquez Rene</title><subtitle></subtitle><entry><title type="html">Brief Overview</title><link href="http://localhost:4000/docker/2017/11/05/brief-overview.html" rel="alternate" type="text/html" title="Brief Overview" /><published>2017-11-05T22:21:00-05:00</published><updated>2017-11-05T22:21:00-05:00</updated><id>http://localhost:4000/docker/2017/11/05/brief-overview</id><content type="html" xml:base="http://localhost:4000/docker/2017/11/05/brief-overview.html">&lt;p&gt;Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-06T23:27:05-05:00</updated><id>http://localhost:4000/</id><title type="html">Blog Enriquez Rene</title><subtitle></subtitle><entry><title type="html">Installing Docker</title><link href="http://localhost:4000/docker/2017/11/06/installing-docker.html" rel="alternate" type="text/html" title="Installing Docker" /><published>2017-11-06T22:23:00-05:00</published><updated>2017-11-06T22:23:00-05:00</updated><id>http://localhost:4000/docker/2017/11/06/installing-docker</id><content type="html" xml:base="http://localhost:4000/docker/2017/11/06/installing-docker.html">&lt;p&gt;In this post, I’m going to show you how to install Docker on Ubuntu 17.10&lt;/p&gt;
+
+&lt;p&gt;Old linux distributions used to include the program &lt;em&gt;docker&lt;/em&gt;, &lt;em&gt;docker.io&lt;/em&gt; and &lt;em&gt;docker-engine&lt;/em&gt; as part of a fresh installation.
+Those programs are really old, if you have them, please ensure to first remove them of this way:&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get remove docker docker-engine docker.io
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, let’s add the required repos and install docker-ce (community edition) on our PC with the following commands:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install apt-transport-https ca-certificates curl software-properties-common
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;curl &lt;span class=&quot;nt&quot;&gt;-fsSL&lt;/span&gt; https://download.docker.com/linux/ubuntu/gpg | &lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-key add -
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;add-apt-repository &lt;span class=&quot;s2&quot;&gt;&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu zesty stable&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get update
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;apt-get install docker-ce
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In order to verify if the installation was successful, run the following command:&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker &lt;span class=&quot;nt&quot;&gt;--version&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You will see something like this:&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;﻿Docker version 17.09.0-ce, build afdb6d4
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For finish, I know we all love &lt;em&gt;Hello World&lt;/em&gt; examples and that’s why we are going to run a &lt;em&gt;Hello World&lt;/em&gt; using our
+fresh Docker installation.&lt;/p&gt;
+
+&lt;p&gt;For this, let’s type in your terminal the next command:&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker run hello-world
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You’ll have an output like this:&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;﻿&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;docker run hello-world
+Unable to find image &lt;span class=&quot;s1&quot;&gt;'hello-world:latest'&lt;/span&gt; locally
+latest: Pulling from library/hello-world
+9a0669468bf7: Pull &lt;span class=&quot;nb&quot;&gt;complete 
+&lt;/span&gt;Digest: sha256:0e06ef5e1945a718b02a8c319e15bae44f47039005530bc617a5d071190ed3fc
+Status: Downloaded newer image &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &lt;span class=&quot;s2&quot;&gt;&quot;hello-world&quot;&lt;/span&gt; image from the Docker Hub.
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker run &lt;span class=&quot;nt&quot;&gt;-it&lt;/span&gt; ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://cloud.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/engine/userguide/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Yay!!! It means, Docker was successfully installed and now you are ready to go ahead with the rest of the posts.&lt;/p&gt;
+
+&lt;p&gt;If you liked this post, you can pay me with a click on the ads :sweat_smile: :v:&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">In this post, I’m going to show you how to install Docker on Ubuntu 17.10</summary></entry><entry><title type="html">Brief Overview</title><link href="http://localhost:4000/docker/2017/11/05/brief-overview.html" rel="alternate" type="text/html" title="Brief Overview" /><published>2017-11-05T22:21:00-05:00</published><updated>2017-11-05T22:21:00-05:00</updated><id>http://localhost:4000/docker/2017/11/05/brief-overview</id><content type="html" xml:base="http://localhost:4000/docker/2017/11/05/brief-overview.html">&lt;p&gt;Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc.&lt;/p&gt;
 
 &lt;p&gt;I have been working with this technology for a while and I decided to write a little bit about my experience with it. Let’s start understanding what Docker is.&lt;/p&gt;
 
@@ -326,89 +396,4 @@ Where:
 &lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
 &lt;script&gt;
 (adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Looking for valid IP Addresses IP Addresses have the format 3DIGITS.3DIGITS.3DIGITS.3DIGITS So, the expression for find these values is quite simple: $ grep -P &quot;^([\d]{1,3}\.){3}[\d]{1,3}$&quot; file.txt 127.0.0.1 129.22.224.55 192.168.1.1 123.255.255.255 Where: ^ : at the beginning [\d]{1,3} : find 1, 2 or 3 digits \. : those numbers must be followed by a . {3} : we are looking for 3 groups with the same pattern [\d]{1,3} : find a block of 1,2 or 3 digits $ : at the end</summary></entry><entry><title type="html">Shortcuts</title><link href="http://localhost:4000/regex/2017/04/17/shortcuts.html" rel="alternate" type="text/html" title="Shortcuts" /><published>2017-04-17T12:34:00-05:00</published><updated>2017-04-17T12:34:00-05:00</updated><id>http://localhost:4000/regex/2017/04/17/shortcuts</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/17/shortcuts.html">&lt;h1 id=&quot;shortcuts&quot;&gt;Shortcuts&lt;/h1&gt;
-&lt;p&gt;It allows to specify key characters for simplifying our expressions&lt;/p&gt;
-
-&lt;h2 id=&quot;d-digits-0-9&quot;&gt;\d digits ([0-9])&lt;/h2&gt;
-&lt;p&gt;The expression:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-E&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[0-9]{3,5}-[0-9]{4}-[0-9]{2,}-[0-9]{5}&quot;&lt;/span&gt; file.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;can be easily translated into:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{3,5}-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{4}-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{2,}-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{5}&quot;&lt;/span&gt; file.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;NOTE: we are using -P instead of -E flag because now we are using a Perl regular expression&lt;/p&gt;
-
-&lt;p&gt;let’s use this content in your file for tests&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;1stName
-2ndName
-Name1
-Name2
-LastName1
-LastName2
-Full Name
-Change4Free
- Type
-  your
-   name&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;b-beginning&quot;&gt;\b beginning&lt;/h2&gt;
-&lt;p&gt;Finding expressions beginning with a number:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]&quot;&lt;/span&gt; file.txt
-1stName
-2ndName&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;At the end:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
-Name1
-Name2
-LastName1
-LastName2&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;s-space&quot;&gt;\s space&lt;/h2&gt;
-&lt;p&gt;Finding expressions with spaces:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
-Full Name
- Type
-  your
-   name&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;h2 id=&quot;-group--optional-group&quot;&gt;(?: GROUP )? Optional Group&lt;/h2&gt;
-&lt;p&gt;Let’s validate ZIP codes, valid values are:
-5_DIGITS
-5_DIGITS-4_DIGITS&lt;/p&gt;
-
-&lt;p&gt;For this example we are going to replace the content of the file with:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;12354
-456465-444
-54546-4445
-5554
-65465-9978&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;The expression that we need is:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;^[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{5}(?:-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{4})?$&quot;&lt;/span&gt; file.txt
-12354
-54546-4445
-Where:
-^               : at the beginning
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]{&lt;/span&gt;5&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;         : 5 digits
-&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;?:REGEX&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;       : expression
-?               : optional
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;              : at the end&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;
-
-&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
-
-&lt;!-- inferior --&gt;
-&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
-&lt;script&gt;
-(adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Shortcuts It allows to specify key characters for simplifying our expressions</summary></entry></feed>
+&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Looking for valid IP Addresses IP Addresses have the format 3DIGITS.3DIGITS.3DIGITS.3DIGITS So, the expression for find these values is quite simple: $ grep -P &quot;^([\d]{1,3}\.){3}[\d]{1,3}$&quot; file.txt 127.0.0.1 129.22.224.55 192.168.1.1 123.255.255.255 Where: ^ : at the beginning [\d]{1,3} : find 1, 2 or 3 digits \. : those numbers must be followed by a . {3} : we are looking for 3 groups with the same pattern [\d]{1,3} : find a block of 1,2 or 3 digits $ : at the end</summary></entry></feed>
