@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Brief Overview</title>
-  <meta name="description" content="Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc.">
+  <title>Installing Docker</title>
+  <meta name="description" content="In this post, I’m going to show you how to install Docker on Ubuntu 17.10">
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +18,7 @@
 
   <link rel="stylesheet" href="/custom-css/styles.css">
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/docker/2017/11/05/brief-overview.html">
+  <link rel="canonical" href="http://localhost:4000/docker/2017/11/06/installing-docker.html">
   <link rel="alternate" type="application/rss+xml" title="Blog Enriquez Rene" href="/feed.xml">
 
   
@@ -136,76 +136,77 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Brief Overview</h1>
+    <h1 class="post-title" itemprop="name headline">Installing Docker</h1>
     <p class="post-meta">
-      <time datetime="2017-11-05T22:21:00-05:00" itemprop="datePublished">
+      <time datetime="2017-11-06T22:23:00-05:00" itemprop="datePublished">
         
-        Nov 5, 2017
+        Nov 6, 2017
       </time>
       </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc.</p>
+    <p>In this post, I’m going to show you how to install Docker on Ubuntu 17.10</p>
 
-<p>I have been working with this technology for a while and I decided to write a little bit about my experience with it. Let’s start understanding what Docker is.</p>
+<p>Old linux distributions used to include the program <em>docker</em>, <em>docker.io</em> and <em>docker-engine</em> as part of a fresh installation.
+Those programs are really old, if you have them, please ensure to first remove them of this way:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get remove docker docker-engine docker.io
+</code></pre></div></div>
 
-<h1 id="background">Background</h1>
-<p>At the beginning we used to buy powerful servers in order to deploy our applications. Often these servers used to be under-used.
-Probably they were used at the half of their maximum capacity in the best cases.</p>
+<p>Now, let’s add the required repos and install docker-ce (community edition) on our PC with the following commands:</p>
 
-<p>One of the worst things that used to happened us was related to have many services running on a physical server. 
-So if we needed to restart for some reason, all those services were down while the server was being started, this is too bad.</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">sudo </span>apt-get install apt-transport-https ca-certificates curl software-properties-common
+<span class="nv">$ </span>curl <span class="nt">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg | <span class="nb">sudo </span>apt-key add -
+<span class="nv">$ </span><span class="nb">sudo </span>add-apt-repository <span class="s2">"deb [arch=amd64] https://download.docker.com/linux/ubuntu zesty stable"</span>
+<span class="nv">$ </span><span class="nb">sudo </span>apt-get update
+<span class="nv">$ </span><span class="nb">sudo </span>apt-get install docker-ce
+</code></pre></div></div>
 
-<p>On the other hand, keep the services isolated is one of the best practices to deal with these problems, but of course, buy one server per service is not a smart idea at all, and that’s why Virtual Machines (VMs) raised.</p>
+<p>In order to verify if the installation was successful, run the following command:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker <span class="nt">--version</span>
+</code></pre></div></div>
 
-<p>Using VMs, we can have many services running on a single host and all of them are isolated one each other. 
-So if you need to restart one service, you only need to restart that VM and that’s it.</p>
+<p>You will see something like this:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>﻿Docker version 17.09.0-ce, build afdb6d4
+</code></pre></div></div>
 
-<h1 id="whats-wrong-with-vms">What’s wrong with VMs?</h1>
-<p>There is nothing wrong with them but the unique bad stuff is they need the full blown OS to work and as we know, each OS consumes:</p>
+<p>For finish, I know we all love <em>Hello World</em> examples and that’s why we are going to run a <em>Hello World</em> using our
+fresh Docker installation.</p>
 
-<ul>
-  <li>RAM</li>
-  <li>Hard disk</li>
-  <li>CPU</li>
-  <li>OS Licenses (like Windows and other OS)</li>
-</ul>
+<p>For this, let’s type in your terminal the next command:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker run hello-world
+</code></pre></div></div>
 
-<h1 id="now-we-have-docker">Now we have Docker</h1>
-<p>Keeping in mind those issues a new (not really new) solution was created and now we have containers. 
-Docker is one of them, in a nutshell a container is like a VM that re-use the host’s kernel and because of that you have allowed to run any Linux distribution as a docker instance on your Linux docker host. Of course, the same it’s true for Windows.</p>
+<p>You’ll have an output like this:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>﻿<span class="nv">$ </span><span class="nb">sudo </span>docker run hello-world
+Unable to find image <span class="s1">'hello-world:latest'</span> locally
+latest: Pulling from library/hello-world
+9a0669468bf7: Pull <span class="nb">complete 
+</span>Digest: sha256:0e06ef5e1945a718b02a8c319e15bae44f47039005530bc617a5d071190ed3fc
+Status: Downloaded newer image <span class="k">for </span>hello-world:latest
 
-<p>Let’s review two basic concepts:</p>
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
 
-<h3 id="docker-host">Docker host</h3>
-<p>This is your physical server, nowadays it’s pretty common an EC2 instance running on AWS.</p>
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the <span class="s2">"hello-world"</span> image from the Docker Hub.
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
 
-<h3 id="docker-image">Docker image</h3>
-<p>It is composed of the OS of your choice, and the services that you want running inside it.</p>
+To try something more ambitious, you can run an Ubuntu container with:
+ <span class="nv">$ </span>docker run <span class="nt">-it</span> ubuntu bash
 
-<p>For example, if you have installed Ubuntu in your host machine, you can run on it CentOS, RedHat, Debian or whatever other linux distribution.</p>
+Share images, automate workflows, and more with a free Docker ID:
+ https://cloud.docker.com/
 
-<blockquote>
-  <p>A good practice is to run only one service inside a docker image.</p>
-</blockquote>
+For more examples and ideas, visit:
+ https://docs.docker.com/engine/userguide/
+</code></pre></div></div>
 
-<p>In order to understand better how Docker can be used, let’s say that you want to run an application that is composed by a MySQL database and some code written in Java.</p>
-
-<p>With this idea in mind, we will need two docker images, and each one of them can have a different OS, for example:</p>
-
-<ul>
-  <li>Image 1: Ubuntu 14.04, Java 8</li>
-  <li>Image 2: CentOS 5, MySQL 5.x</li>
-</ul>
-
-<p>Of course we can use Ubuntu or any other distro for all the images, but I’m choosing two different OS just to make it clear.
-Once you have your images you can run them, an image running is what we call an instance, so you’ll have two docker instances running.</p>
-
-<p>And each one of them will be absolutely isolated and re-using the host kernel. Of this way, if we want to restart the database server,
-we will only need to restart the Image 2 and the Image 1 and the docker host will keep working without any problems.</p>
-
-<p>In the next posts, I’m going to show you how to create your own docker images and how to run applications/services inside of them.</p>
+<p>Yay!!! It means, Docker was successfully installed and now you are ready to go ahead with the rest of the posts.</p>
 
 <p>If you liked this post, you can pay me with a click on the ads <img class="emoji" title=":sweat_smile:" alt=":sweat_smile:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f605.png" height="20" width="20"> <img class="emoji" title=":v:" alt=":v:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/270c.png" height="20" width="20"></p>
 
