@@ -1,63 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-05T23:00:22-05:00</updated><id>http://localhost:4000/</id><title type="html">Geek Town</title><subtitle></subtitle><entry><title type="html">Brief Overview</title><link href="http://localhost:4000/docker/2017/11/05/brief-overview.html" rel="alternate" type="text/html" title="Brief Overview" /><published>2017-11-05T22:21:00-05:00</published><updated>2017-11-05T22:21:00-05:00</updated><id>http://localhost:4000/docker/2017/11/05/brief-overview</id><content type="html" xml:base="http://localhost:4000/docker/2017/11/05/brief-overview.html">&lt;p&gt;Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-06T22:20:42-05:00</updated><id>http://localhost:4000/</id><title type="html">Blog Enriquez Rene</title><subtitle></subtitle><entry><title type="html">Brief Overview</title><link href="http://localhost:4000/docker/2017/11/05/brief-overview.html" rel="alternate" type="text/html" title="Brief Overview" /><published>2017-11-05T22:21:00-05:00</published><updated>2017-11-05T22:21:00-05:00</updated><id>http://localhost:4000/docker/2017/11/05/brief-overview</id><content type="html" xml:base="http://localhost:4000/docker/2017/11/05/brief-overview.html">&lt;p&gt;Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc.&lt;/p&gt;
 
-&lt;p&gt;I have been working with this technology for a while and I decided to write a little bit about my experience.
-Let’s start understanding what Docker is.&lt;/p&gt;
+&lt;p&gt;I have been working with this technology for a while and I decided to write a little bit about my experience with it. Let’s start understanding what Docker is.&lt;/p&gt;
 
-&lt;p&gt;Docker is a container &amp;lt;- still hard to understand&lt;/p&gt;
+&lt;h1 id=&quot;background&quot;&gt;Background&lt;/h1&gt;
+&lt;p&gt;At the beginning we used to buy powerful servers in order to deploy our applications. Often these servers used to be under-used.
+Probably they were used at the half of their maximum capacity in the best cases.&lt;/p&gt;
 
-&lt;p&gt;A container is like a virtual machine running an OS but re-using the host’s kernel. 
-By this reason is really less resource consuming in comparison to a virtual machine where you need to install the whole OS.&lt;/p&gt;
+&lt;p&gt;One of the worst things that used to happened us was related to have many services running on a physical server. 
+So if we needed to restart for some reason, all those services were down while the server was being started, this is too bad.&lt;/p&gt;
 
-&lt;h1 id=&quot;advantages&quot;&gt;Advantages&lt;/h1&gt;
-&lt;ul&gt;
-  &lt;li&gt;Re-use the kernel&lt;/li&gt;
-  &lt;li&gt;Less resource consuming&lt;/li&gt;
-  &lt;li&gt;Independent machines&lt;/li&gt;
-  &lt;li&gt;Easy to manage&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;On the other hand, keep the services isolated is one of the best practices to deal with these problems, but of course, buy one server per service is not a smart idea at all, and that’s why Virtual Machines (VMs) raised.&lt;/p&gt;
 
-&lt;p&gt;The main idea with docker is to have one container per process.&lt;/p&gt;
+&lt;p&gt;Using VMs, we can have many services running on a single host and all of them are isolated one each other. 
+So if you need to restart one service, you only need to restart that VM and that’s it.&lt;/p&gt;
 
-&lt;p&gt;For example:&lt;/p&gt;
-
-&lt;p&gt;Let’s say that you want to run an application that is composed by a MySQL database, some code written in Java that is consuming queues from RabbitMQ.&lt;/p&gt;
-
-&lt;p&gt;In the classic way you will probably install on a server MySQL, Java and RabbitMQ, or, if you want to have an isolated environment per product, you would end up with 3 servers.&lt;/p&gt;
-
-&lt;p&gt;After all, it’s always a good idea keep every different process isolated in different servers. Of this way, if you need to restart your java server you won’t end up killing your database and message server too.&lt;/p&gt;
-
-&lt;p&gt;Docker solve this problem in a more elegant way. In this case you only need one server and 3 docker instances:&lt;/p&gt;
+&lt;h1 id=&quot;whats-wrong-with-vms&quot;&gt;What’s wrong with VMs?&lt;/h1&gt;
+&lt;p&gt;There is nothing wrong with them but the unique bad stuff is they need the full blown OS to work and as we know, each OS consumes:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;One instance running Java&lt;/li&gt;
-  &lt;li&gt;One instance running MySQL&lt;/li&gt;
-  &lt;li&gt;One instance running RabbitMQ&lt;/li&gt;
+  &lt;li&gt;RAM&lt;/li&gt;
+  &lt;li&gt;Hard disk&lt;/li&gt;
+  &lt;li&gt;CPU&lt;/li&gt;
+  &lt;li&gt;OS Licenses (like Windows and other OS)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Wait, what is an instance?&lt;/p&gt;
+&lt;h1 id=&quot;now-we-have-docker&quot;&gt;Now we have Docker&lt;/h1&gt;
+&lt;p&gt;Keeping in mind those issues a new (not really new) solution was created and now we have containers. 
+Docker is one of them, in a nutshell a container is like a VM that re-use the host’s kernel and because of that you have allowed to run any Linux distribution as a docker instance on your Linux docker host. Of course, the same it’s true for Windows.&lt;/p&gt;
 
-&lt;p&gt;In docker you have to understand a really simple concept.&lt;/p&gt;
+&lt;p&gt;Let’s review two basic concepts:&lt;/p&gt;
 
-&lt;p&gt;Docker uses images, one image consist of the OS of your choice and all the things that you want to run inside it.
-A good practice is only have one process running inside an image.&lt;/p&gt;
+&lt;h3 id=&quot;docker-host&quot;&gt;Docker host&lt;/h3&gt;
+&lt;p&gt;This is your physical server, nowadays it’s pretty common an EC2 instance running on AWS.&lt;/p&gt;
 
-&lt;p&gt;For example:&lt;/p&gt;
+&lt;h3 id=&quot;docker-image&quot;&gt;Docker image&lt;/h3&gt;
+&lt;p&gt;It is composed of the OS of your choice, and the services that you want running inside it.&lt;/p&gt;
 
-&lt;p&gt;In our case we will need to have:&lt;/p&gt;
+&lt;p&gt;For example, if you have installed Ubuntu in your host machine, you can run on it CentOS, RedHat, Debian or whatever other linux distribution.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A good practice is to run only one service inside a docker image.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In order to understand better how Docker can be used, let’s say that you want to run an application that is composed by a MySQL database and some code written in Java.&lt;/p&gt;
+
+&lt;p&gt;With this idea in mind, we will need two docker images, and each one of them can have a different OS, for example:&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Image for Java : Ubuntu 14.04, Java 8&lt;/li&gt;
-  &lt;li&gt;Image for MySQL : CentOS 5, MySQL 5.x&lt;/li&gt;
-  &lt;li&gt;Image for RabbitMQ: Debian 9.1, RabbitMQ 3.6.11&lt;/li&gt;
+  &lt;li&gt;Image 1: Ubuntu 14.04, Java 8&lt;/li&gt;
+  &lt;li&gt;Image 2: CentOS 5, MySQL 5.x&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;And after have these images, we need to run them, so every single image running will be an instance.&lt;/p&gt;
+&lt;p&gt;Of course we can use Ubuntu or any other distro for all the images, but I’m choosing two different OS just to make it clear.
+Once you have your images you can run them, an image running is what we call an instance, so you’ll have two docker instances running.&lt;/p&gt;
 
-&lt;p&gt;Now, all of these instances will be able to run inside your host so you won’t need 3 servers but only one.&lt;/p&gt;
+&lt;p&gt;And each one of them will be absolutely isolated and re-using the host kernel. Of this way, if we want to restart the database server,
+we will only need to restart the Image 2 and the Image 1 and the docker host will keep working without any problems.&lt;/p&gt;
 
-&lt;p&gt;And these 3 intances will be re-using the host’s kernel instead of install a new one for them.&lt;/p&gt;
+&lt;p&gt;In the next posts, I’m going to show you how to create your own docker images and how to run applications/services inside of them.&lt;/p&gt;
 
-&lt;p&gt;Of this way, your instances won’t consume a lot of resources of your server and you’ll have 3 isolated and independent processes running in your server.&lt;/p&gt;</content><author><name></name></author><summary type="html">Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc.</summary></entry><entry><title type="html">Refactoring, a First Example</title><link href="http://localhost:4000/refactoring/2017/09/27/a-first-example.html" rel="alternate" type="text/html" title="Refactoring, a First Example" /><published>2017-09-27T21:34:00-05:00</published><updated>2017-09-27T21:34:00-05:00</updated><id>http://localhost:4000/refactoring/2017/09/27/a-first-example</id><content type="html" xml:base="http://localhost:4000/refactoring/2017/09/27/a-first-example.html">&lt;h1 id=&quot;refactoring-improving-the-design-of-existing-code&quot;&gt;Refactoring, Improving the Design of Existing Code&lt;/h1&gt;
+&lt;p&gt;If you liked this post, you can pay me with a click on the ads :sweat_smile: :v:&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc.</summary></entry><entry><title type="html">Refactoring, a First Example</title><link href="http://localhost:4000/refactoring/2017/09/27/a-first-example.html" rel="alternate" type="text/html" title="Refactoring, a First Example" /><published>2017-09-27T21:34:00-05:00</published><updated>2017-09-27T21:34:00-05:00</updated><id>http://localhost:4000/refactoring/2017/09/27/a-first-example</id><content type="html" xml:base="http://localhost:4000/refactoring/2017/09/27/a-first-example.html">&lt;h1 id=&quot;refactoring-improving-the-design-of-existing-code&quot;&gt;Refactoring, Improving the Design of Existing Code&lt;/h1&gt;
 
 &lt;h2 id=&quot;chapter-01-refactoring-a-first-example&quot;&gt;Chapter 01: Refactoring, a First Example&lt;/h2&gt;
 
@@ -192,7 +202,7 @@ By Steve Freeman and Nat Pryce.&lt;/p&gt;
 
 &lt;p&gt;So, the expression for finding these values will be:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -Po &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(\(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[0-9]{1,}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;{1}[0-9]{1,}(?:,[0-9]{1,}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;{1}[0-9]{1,}){1,}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\)\)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Po&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(\(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[0-9]{1,}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;{1}[0-9]{1,}(?:,[0-9]{1,}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;{1}[0-9]{1,}){1,}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\)\)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
 &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;1 2,3 4&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;5 6,7 8,9 10&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
@@ -215,18 +225,18 @@ By Steve Freeman and Nat Pryce.&lt;/p&gt;
 &lt;p&gt;Now, we are going to make it a little bit difficult, let’s say numbers expressing the coordinates can be signal decimals like: -4.875 or 9.669
 Let’s use this string:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;COORDINATES&lt;span class=&quot;o&quot;&gt;(((&lt;/span&gt;-102.084546466 26.45688853338312,-102.1490725018084 26.13520439439342,-102.15047246071138 26.1264975143505,-102.14981952668641 26.1384657784035,-102.12671666102124 26.149049533554354,-102.1188178 26.152923456807,-102.10091893897877 26.149049533554354,-102.0878160633126 26.1384657784035,-102.08653386170432 26.13460053338312&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;-102.15271126918533 26.129748541924556,-102.14764154329896 26.12984171790165,-102.14755705371499 26.13408877990621,-102.14815585687757 26.13514319847587,-102.13090187683702 26.13494986238747,-102.10652676348738 26.13471792646315,-102.0865197014023 26.13455784661961,-102.08302007795753 26.1240081,-102.0878160633126 26.109550421596495,-102.10091893897877 26.09896666644564,-102.1188178 26.09509274319299,-102.12671666102124 26.09896666644564,-102.14981952668641 26.109550421596495,-102.15461552204248 26.1240081,-102.15271126918533 26.129748541924556&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;COORDINATES&lt;span class=&quot;o&quot;&gt;(((&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-102&lt;/span&gt;.084546466 26.45688853338312,-102.1490725018084 26.13520439439342,-102.15047246071138 26.1264975143505,-102.14981952668641 26.1384657784035,-102.12671666102124 26.149049533554354,-102.1188178 26.152923456807,-102.10091893897877 26.149049533554354,-102.0878160633126 26.1384657784035,-102.08653386170432 26.13460053338312&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;,&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-102&lt;/span&gt;.15271126918533 26.129748541924556,-102.14764154329896 26.12984171790165,-102.14755705371499 26.13408877990621,-102.14815585687757 26.13514319847587,-102.13090187683702 26.13494986238747,-102.10652676348738 26.13471792646315,-102.0865197014023 26.13455784661961,-102.08302007795753 26.1240081,-102.0878160633126 26.109550421596495,-102.10091893897877 26.09896666644564,-102.1188178 26.09509274319299,-102.12671666102124 26.09896666644564,-102.14981952668641 26.109550421596495,-102.15461552204248 26.1240081,-102.15271126918533 26.129748541924556&lt;span class=&quot;o&quot;&gt;)))&lt;/span&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;The desired output will be:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;-102.084546466 26.45688853338312,-102.1490725018084 26.13520439439342,-102.15047246071138 26.1264975143505,-102.14981952668641 26.1384657784035,-102.12671666102124 26.149049533554354,-102.1188178 26.152923456807,-102.10091893897877 26.149049533554354,-102.0878160633126 26.1384657784035,-102.08653386170432 26.13460053338312&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;-102.15271126918533 26.129748541924556,-102.14764154329896 26.12984171790165,-102.14755705371499 26.13408877990621,-102.14815585687757 26.13514319847587,-102.13090187683702 26.13494986238747,-102.10652676348738 26.13471792646315,-102.0865197014023 26.13455784661961,-102.08302007795753 26.1240081,-102.0878160633126 26.109550421596495,-102.10091893897877 26.09896666644564,-102.1188178 26.09509274319299,-102.12671666102124 26.09896666644564,-102.14981952668641 26.109550421596495,-102.15461552204248 26.1240081,-102.15271126918533 26.129748541924556&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-102&lt;/span&gt;.084546466 26.45688853338312,-102.1490725018084 26.13520439439342,-102.15047246071138 26.1264975143505,-102.14981952668641 26.1384657784035,-102.12671666102124 26.149049533554354,-102.1188178 26.152923456807,-102.10091893897877 26.149049533554354,-102.0878160633126 26.1384657784035,-102.08653386170432 26.13460053338312&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-102&lt;/span&gt;.15271126918533 26.129748541924556,-102.14764154329896 26.12984171790165,-102.14755705371499 26.13408877990621,-102.14815585687757 26.13514319847587,-102.13090187683702 26.13494986238747,-102.10652676348738 26.13471792646315,-102.0865197014023 26.13455784661961,-102.08302007795753 26.1240081,-102.0878160633126 26.109550421596495,-102.10091893897877 26.09896666644564,-102.1188178 26.09509274319299,-102.12671666102124 26.09896666644564,-102.14981952668641 26.109550421596495,-102.15461552204248 26.1240081,-102.15271126918533 26.129748541924556&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;So, the expression for finding these values will be:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;grep -Po &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(\(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[-+]?&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+)?&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;{1}[-+]?&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+)?&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;(?:,[-+]?&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+)?&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;{1}[-+]?&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+)?&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;){1,}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\)\)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
-&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;-102.084546466 26.45688853338312,-102.1490725018084 26.13520439439342,-102.15047246071138 26.1264975143505,-102.14981952668641 26.1384657784035,-102.12671666102124 26.149049533554354,-102.1188178 26.152923456807,-102.10091893897877 26.149049533554354,-102.0878160633126 26.1384657784035,-102.08653386170432 26.13460053338312&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;-102.15271126918533 26.129748541924556,-102.14764154329896 26.12984171790165,-102.14755705371499 26.13408877990621,-102.14815585687757 26.13514319847587,-102.13090187683702 26.13494986238747,-102.10652676348738 26.13471792646315,-102.0865197014023 26.13455784661961,-102.08302007795753 26.1240081,-102.0878160633126 26.109550421596495,-102.10091893897877 26.09896666644564,-102.1188178 26.09509274319299,-102.12671666102124 26.09896666644564,-102.14981952668641 26.109550421596495,-102.15461552204248 26.1240081,-102.15271126918533 26.129748541924556&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-Po&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(\(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[-+]?&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+)?&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;{1}[-+]?&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+)?&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;(?:,[-+]?&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+)?&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;{1}[-+]?&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+(&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;+)?&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;){1,}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\)\)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
+&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-102&lt;/span&gt;.084546466 26.45688853338312,-102.1490725018084 26.13520439439342,-102.15047246071138 26.1264975143505,-102.14981952668641 26.1384657784035,-102.12671666102124 26.149049533554354,-102.1188178 26.152923456807,-102.10091893897877 26.149049533554354,-102.0878160633126 26.1384657784035,-102.08653386170432 26.13460053338312&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-102&lt;/span&gt;.15271126918533 26.129748541924556,-102.14764154329896 26.12984171790165,-102.14755705371499 26.13408877990621,-102.14815585687757 26.13514319847587,-102.13090187683702 26.13494986238747,-102.10652676348738 26.13471792646315,-102.0865197014023 26.13455784661961,-102.08302007795753 26.1240081,-102.0878160633126 26.109550421596495,-102.10091893897877 26.09896666644564,-102.1188178 26.09509274319299,-102.12671666102124 26.09896666644564,-102.14981952668641 26.109550421596495,-102.15461552204248 26.1240081,-102.15271126918533 26.129748541924556&lt;span class=&quot;o&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;OMG, what it is? Don’t cry please, we only changed the last expression replacing [0-9] by [-+]?\d+(.\d+)?$, that’s it.&lt;/p&gt;
 
@@ -253,7 +263,7 @@ Let’s use this string:&lt;/p&gt;
 
 &lt;p&gt;So, the expression for find these values is quite simple:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;^(https?|ftp|file)://.+$&quot;&lt;/span&gt; file.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;^(https?|ftp|file)://.+$&quot;&lt;/span&gt; file.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;ul&gt;
   &lt;li&gt;http://www.google.com&lt;/li&gt;
@@ -285,7 +295,7 @@ Let’s use this string:&lt;/p&gt;
 
 &lt;p&gt;So, the expression for find these values is quite simple:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;^([&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{1,3}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;){3}[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{1,3}$&quot;&lt;/span&gt; file.txt
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;^([&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{1,3}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;){3}[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{1,3}$&quot;&lt;/span&gt; file.txt
 127.0.0.1
 129.22.224.55
 192.168.1.1
@@ -293,10 +303,10 @@ Let’s use this string:&lt;/p&gt;
 Where:
 ^               : at the beginning
 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]{&lt;/span&gt;1,3&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;       : find 1, 2 or 3 digits
-&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;              : those numbers must be followed by a .
+&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;              : those numbers must be followed by a &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
 &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;3&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;             : we are looking &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;3 groups with the same pattern
 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]{&lt;/span&gt;1,3&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;       : find a block of 1,2 or 3 digits
-&lt;span class=&quot;gp&quot;&gt;$               &lt;/span&gt;: at the end&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;              : at the end&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;For this example we have used a file with this content:&lt;/p&gt;
 
@@ -322,11 +332,11 @@ Where:
 &lt;h2 id=&quot;d-digits-0-9&quot;&gt;\d digits ([0-9])&lt;/h2&gt;
 &lt;p&gt;The expression:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -E &lt;span class=&quot;s2&quot;&gt;&quot;[0-9]{3,5}-[0-9]{4}-[0-9]{2,}-[0-9]{5}&quot;&lt;/span&gt; file.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-E&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[0-9]{3,5}-[0-9]{4}-[0-9]{2,}-[0-9]{5}&quot;&lt;/span&gt; file.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;can be easily translated into:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{3,5}-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{4}-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{2,}-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{5}&quot;&lt;/span&gt; file.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{3,5}-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{4}-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{2,}-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{5}&quot;&lt;/span&gt; file.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;NOTE: we are using -P instead of -E flag because now we are using a Perl regular expression&lt;/p&gt;
 
@@ -347,13 +357,13 @@ Change4Free
 &lt;h2 id=&quot;b-beginning&quot;&gt;\b beginning&lt;/h2&gt;
 &lt;p&gt;Finding expressions beginning with a number:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]&quot;&lt;/span&gt; file.txt
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]&quot;&lt;/span&gt; file.txt
 1stName
 2ndName&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;At the end:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\b&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
 Name1
 Name2
 LastName1
@@ -362,7 +372,7 @@ LastName2&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;s-space&quot;&gt;\s space&lt;/h2&gt;
 &lt;p&gt;Finding expressions with spaces:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\s&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; file.txt
 Full Name
  Type
   your
@@ -383,7 +393,7 @@ Full Name
 
 &lt;p&gt;The expression that we need is:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;grep -P &lt;span class=&quot;s2&quot;&gt;&quot;^[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{5}(?:-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{4})?$&quot;&lt;/span&gt; file.txt
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;^[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{5}(?:-[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{4})?$&quot;&lt;/span&gt; file.txt
 12354
 54546-4445
 Where:
@@ -391,7 +401,7 @@ Where:
 &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]{&lt;/span&gt;5&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;         : 5 digits
 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;?:REGEX&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;       : expression
 ?               : optional
-&lt;span class=&quot;gp&quot;&gt;$               &lt;/span&gt;: at the end&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;              : at the end&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;
 

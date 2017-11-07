@@ -2,6 +2,7 @@
 <html lang="en">
 
   <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +19,7 @@
   <link rel="stylesheet" href="/custom-css/styles.css">
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="canonical" href="http://localhost:4000/docker/2017/11/05/brief-overview.html">
-  <link rel="alternate" type="application/rss+xml" title="Geek Town" href="/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="Blog Enriquez Rene" href="/feed.xml">
 
   
 </head>
@@ -38,8 +39,7 @@
             
             
             <li class="dropdown ">
-                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                   aria-haspopup="true" aria-expanded="false">RegEx <span class="caret"></span></a>
+                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">RegEx <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     
                     
@@ -73,11 +73,12 @@
                     
                     
                     
-                    <li role="separator" class="divider"></li>
+                    <li role="separator" class="divider">
                     
                     
                     
-                    <li>
+                    </li>
+<li>
                         <a href="/regex/2017/04/17/ip-address.html">Validating IPs</a>
                     </li>
                     
@@ -102,8 +103,7 @@
             
             
             <li class="dropdown ">
-                <a href="/#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                   aria-haspopup="true" aria-expanded="false">Docker <span class="caret"></span></a>
+                <a href="/#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Docker <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                     
                     
@@ -131,70 +131,85 @@
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Brief Overview</h1>
-    <p class="post-meta"><time datetime="2017-11-05T22:21:00-05:00" itemprop="datePublished">Nov 5, 2017</time></p>
+    <p class="post-meta">
+      <time datetime="2017-11-05T22:21:00-05:00" itemprop="datePublished">
+        
+        Nov 5, 2017
+      </time>
+      </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
     <p>Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc.</p>
 
-<p>I have been working with this technology for a while and I decided to write a little bit about my experience.
-Let’s start understanding what Docker is.</p>
+<p>I have been working with this technology for a while and I decided to write a little bit about my experience with it. Let’s start understanding what Docker is.</p>
 
-<p>Docker is a container &lt;- still hard to understand</p>
+<h1 id="background">Background</h1>
+<p>At the beginning we used to buy powerful servers in order to deploy our applications. Often these servers used to be under-used.
+Probably they were used at the half of their maximum capacity in the best cases.</p>
 
-<p>A container is like a virtual machine running an OS but re-using the host’s kernel. 
-By this reason is really less resource consuming in comparison to a virtual machine where you need to install the whole OS.</p>
+<p>One of the worst things that used to happened us was related to have many services running on a physical server. 
+So if we needed to restart for some reason, all those services were down while the server was being started, this is too bad.</p>
 
-<h1 id="advantages">Advantages</h1>
-<ul>
-  <li>Re-use the kernel</li>
-  <li>Less resource consuming</li>
-  <li>Independent machines</li>
-  <li>Easy to manage</li>
-</ul>
+<p>On the other hand, keep the services isolated is one of the best practices to deal with these problems, but of course, buy one server per service is not a smart idea at all, and that’s why Virtual Machines (VMs) raised.</p>
 
-<p>The main idea with docker is to have one container per process.</p>
+<p>Using VMs, we can have many services running on a single host and all of them are isolated one each other. 
+So if you need to restart one service, you only need to restart that VM and that’s it.</p>
 
-<p>For example:</p>
-
-<p>Let’s say that you want to run an application that is composed by a MySQL database, some code written in Java that is consuming queues from RabbitMQ.</p>
-
-<p>In the classic way you will probably install on a server MySQL, Java and RabbitMQ, or, if you want to have an isolated environment per product, you would end up with 3 servers.</p>
-
-<p>After all, it’s always a good idea keep every different process isolated in different servers. Of this way, if you need to restart your java server you won’t end up killing your database and message server too.</p>
-
-<p>Docker solve this problem in a more elegant way. In this case you only need one server and 3 docker instances:</p>
+<h1 id="whats-wrong-with-vms">What’s wrong with VMs?</h1>
+<p>There is nothing wrong with them but the unique bad stuff is they need the full blown OS to work and as we know, each OS consumes:</p>
 
 <ul>
-  <li>One instance running Java</li>
-  <li>One instance running MySQL</li>
-  <li>One instance running RabbitMQ</li>
+  <li>RAM</li>
+  <li>Hard disk</li>
+  <li>CPU</li>
+  <li>OS Licenses (like Windows and other OS)</li>
 </ul>
 
-<p>Wait, what is an instance?</p>
+<h1 id="now-we-have-docker">Now we have Docker</h1>
+<p>Keeping in mind those issues a new (not really new) solution was created and now we have containers. 
+Docker is one of them, in a nutshell a container is like a VM that re-use the host’s kernel and because of that you have allowed to run any Linux distribution as a docker instance on your Linux docker host. Of course, the same it’s true for Windows.</p>
 
-<p>In docker you have to understand a really simple concept.</p>
+<p>Let’s review two basic concepts:</p>
 
-<p>Docker uses images, one image consist of the OS of your choice and all the things that you want to run inside it.
-A good practice is only have one process running inside an image.</p>
+<h3 id="docker-host">Docker host</h3>
+<p>This is your physical server, nowadays it’s pretty common an EC2 instance running on AWS.</p>
 
-<p>For example:</p>
+<h3 id="docker-image">Docker image</h3>
+<p>It is composed of the OS of your choice, and the services that you want running inside it.</p>
 
-<p>In our case we will need to have:</p>
+<p>For example, if you have installed Ubuntu in your host machine, you can run on it CentOS, RedHat, Debian or whatever other linux distribution.</p>
+
+<blockquote>
+  <p>A good practice is to run only one service inside a docker image.</p>
+</blockquote>
+
+<p>In order to understand better how Docker can be used, let’s say that you want to run an application that is composed by a MySQL database and some code written in Java.</p>
+
+<p>With this idea in mind, we will need two docker images, and each one of them can have a different OS, for example:</p>
 
 <ul>
-  <li>Image for Java : Ubuntu 14.04, Java 8</li>
-  <li>Image for MySQL : CentOS 5, MySQL 5.x</li>
-  <li>Image for RabbitMQ: Debian 9.1, RabbitMQ 3.6.11</li>
+  <li>Image 1: Ubuntu 14.04, Java 8</li>
+  <li>Image 2: CentOS 5, MySQL 5.x</li>
 </ul>
 
-<p>And after have these images, we need to run them, so every single image running will be an instance.</p>
+<p>Of course we can use Ubuntu or any other distro for all the images, but I’m choosing two different OS just to make it clear.
+Once you have your images you can run them, an image running is what we call an instance, so you’ll have two docker instances running.</p>
 
-<p>Now, all of these instances will be able to run inside your host so you won’t need 3 servers but only one.</p>
+<p>And each one of them will be absolutely isolated and re-using the host kernel. Of this way, if we want to restart the database server,
+we will only need to restart the Image 2 and the Image 1 and the docker host will keep working without any problems.</p>
 
-<p>And these 3 intances will be re-using the host’s kernel instead of install a new one for them.</p>
+<p>In the next posts, I’m going to show you how to create your own docker images and how to run applications/services inside of them.</p>
 
-<p>Of this way, your instances won’t consume a lot of resources of your server and you’ll have 3 isolated and independent processes running in your server.</p>
+<p>If you liked this post, you can pay me with a click on the ads <img class="emoji" title=":sweat_smile:" alt=":sweat_smile:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f605.png" height="20" width="20"> <img class="emoji" title=":v:" alt=":v:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/270c.png" height="20" width="20"></p>
+
+<script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+<!-- inferior -->
+<p><ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-5428825449848403" data-ad-slot="1328012179"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
 
   </div>
 
@@ -208,14 +223,14 @@ A good practice is only have one process running inside an image.</p>
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">Geek Town</h2>
+    <h2 class="footer-heading">Blog Enriquez Rene</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
           <li>
             
-              Geek Town
+              Blog Enriquez Rene
             
             </li>
             
@@ -228,7 +243,7 @@ A good practice is only have one process running inside an image.</p>
         <ul class="social-media-list">
           
           <li>
-            <a href="https://github.com/enriquezrene"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+            <a href="https://github.com/enriquezrene"><span class="icon icon--github"><svg viewbox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"></path></svg>
 </span><span class="username">enriquezrene</span></a>
 
           </li>
@@ -236,7 +251,7 @@ A good practice is only have one process running inside an image.</p>
 
           
           <li>
-            <a href="https://twitter.com/enriquezrene_ap"><span class="icon icon--twitter"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"/></svg>
+            <a href="https://twitter.com/enriquezrene_ap"><span class="icon icon--twitter"><svg viewbox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M15.969,3.058c-0.586,0.26-1.217,0.436-1.878,0.515c0.675-0.405,1.194-1.045,1.438-1.809c-0.632,0.375-1.332,0.647-2.076,0.793c-0.596-0.636-1.446-1.033-2.387-1.033c-1.806,0-3.27,1.464-3.27,3.27 c0,0.256,0.029,0.506,0.085,0.745C5.163,5.404,2.753,4.102,1.14,2.124C0.859,2.607,0.698,3.168,0.698,3.767 c0,1.134,0.577,2.135,1.455,2.722C1.616,6.472,1.112,6.325,0.671,6.08c0,0.014,0,0.027,0,0.041c0,1.584,1.127,2.906,2.623,3.206 C3.02,9.402,2.731,9.442,2.433,9.442c-0.211,0-0.416-0.021-0.615-0.059c0.416,1.299,1.624,2.245,3.055,2.271 c-1.119,0.877-2.529,1.4-4.061,1.4c-0.264,0-0.524-0.015-0.78-0.046c1.447,0.928,3.166,1.469,5.013,1.469 c6.015,0,9.304-4.983,9.304-9.304c0-0.142-0.003-0.283-0.009-0.423C14.976,4.29,15.531,3.714,15.969,3.058z"></path></svg>
 </span><span class="username">enriquezrene_ap</span></a>
 
           </li>
@@ -253,16 +268,6 @@ A good practice is only have one process running inside an image.</p>
 
 </footer>
 
-    <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-96576520-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 
   </body>
 

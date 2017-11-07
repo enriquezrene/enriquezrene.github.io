@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="/custom-css/styles.css">
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="canonical" href="http://localhost:4000/regex/2017/04/13/quantifiers.html">
-  <link rel="alternate" type="application/rss+xml" title="Geek Town" href="/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="Blog Enriquez Rene" href="/feed.xml">
 
   
 </head>
@@ -131,7 +131,12 @@
 
   <header class="post-header">
     <h1 class="post-title" itemprop="name headline">Quantifiers</h1>
-    <p class="post-meta"><time datetime="2017-04-13T11:32:00-05:00" itemprop="datePublished">Apr 13, 2017</time></p>
+    <p class="post-meta">
+      <time datetime="2017-04-13T11:32:00-05:00" itemprop="datePublished">
+        
+        Apr 13, 2017
+      </time>
+      </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
@@ -150,14 +155,14 @@ JavaFX is growing a lot</span></code></pre></figure>
 
 <p>Finding lines with JEE or J2EE</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -E <span class="s2">"J2?EE"</span> file.txt
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">grep</span> <span class="nt">-E</span> <span class="s2">"J2?EE"</span> file.txt
 I like JEE just a little bit
 I prefer to avoid J2EE and use plain SEJava</code></pre></figure>
 
 <h2 id="-exact-coincidences">* Exact Coincidences</h2>
 <p>Finding lines with Java text (no matter where, beginning-middle-ending)</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -E <span class="s2">"*Java"</span> file.txt
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">grep</span> <span class="nt">-E</span> <span class="s2">"*Java"</span> file.txt
 Java SE it<span class="s1">'s nice
 I prefer to avoid J2EE and use plain SEJava
 JavaFX is growing a lot</span></code></pre></figure>
@@ -174,7 +179,7 @@ JavaFX is growing a lot</span></code></pre></figure>
 
 <p>Finding two or more digits</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -E <span class="s2">"[0-9][0-9]+"</span> file.txt
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">grep</span> <span class="nt">-E</span> <span class="s2">"[0-9][0-9]+"</span> file.txt
 12
 21
 123
@@ -196,7 +201,7 @@ JavaFX is growing a lot</span></code></pre></figure>
 
 <p>The expression that we need is:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -E <span class="s2">"[0-9]{3}-[0-9]{4}-[0-9]{2}-[0-9]{5}"</span> file.txt
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">grep</span> <span class="nt">-E</span> <span class="s2">"[0-9]{3}-[0-9]{4}-[0-9]{2}-[0-9]{5}"</span> file.txt
 123-4568-45-45698
 321-6548-55-87549</code></pre></figure>
 
@@ -206,7 +211,7 @@ JavaFX is growing a lot</span></code></pre></figure>
 
 <p>The expression that we need in this case is:</p>
 
-<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="gp">$ </span>grep -E <span class="s2">"[0-9]{3,5}-[0-9]{4}-[0-9]{2,}-[0-9]{5}"</span> file.txt
+<figure class="highlight"><pre><code class="language-shell" data-lang="shell"><span class="nv">$ </span><span class="nb">grep</span> <span class="nt">-E</span> <span class="s2">"[0-9]{3,5}-[0-9]{4}-[0-9]{2,}-[0-9]{5}"</span> file.txt
 12345-4567-453465-45646
 123-4568-45-45698
 321-6548-55-87549</code></pre></figure>
@@ -233,14 +238,14 @@ JavaFX is growing a lot</span></code></pre></figure>
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">Geek Town</h2>
+    <h2 class="footer-heading">Blog Enriquez Rene</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
           <li>
             
-              Geek Town
+              Blog Enriquez Rene
             
             </li>
             
@@ -278,16 +283,6 @@ JavaFX is growing a lot</span></code></pre></figure>
 
 </footer>
 
-    <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-96576520-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 
   </body>
 
