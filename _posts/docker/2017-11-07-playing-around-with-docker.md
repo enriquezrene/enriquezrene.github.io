@@ -18,15 +18,21 @@ Let's say that you want to use a docker container with CentOS, for it you can ty
 $ docker search centos
 ```  
   
-and you'll have an output like this:
+<details>
+  <summary>output</summary>
+    <p>
+    
+        ```sh
+        NAME                               DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+        centos                             The official build of CentOS.                   3789                [OK]                
+        ansible/centos7-ansible            Ansible on Centos7                              103                                     [OK]
+        jdeathe/centos-ssh                 CentOS-6 6.9 x86_64 / CentOS-7 7.4.1708 x8...   89                                      [OK]
+        ...
+        ```
+    </p>
+</details>
 
-```sh
-NAME                               DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
-centos                             The official build of CentOS.                   3789                [OK]                
-ansible/centos7-ansible            Ansible on Centos7                              103                                     [OK]
-jdeathe/centos-ssh                 CentOS-6 6.9 x86_64 / CentOS-7 7.4.1708 x8...   89                                      [OK]
-...
-```
+
 
 This command basically allow us to search existing docker images that we can use.
 
