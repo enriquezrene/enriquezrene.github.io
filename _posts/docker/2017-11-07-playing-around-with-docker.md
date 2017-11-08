@@ -12,7 +12,7 @@ We said Docker can use any linux distribution that we want, now the question is:
 How can I do that?
 
 In Docker we have a public repo of docker images that we can use to run our apps.
-Let's say that you want to use a docker with CentOS, so you can type in your terminal:
+Let's say that you want to use a docker container with CentOS, for it you can type in your terminal:
   
 ```sh
 $ docker search centos
@@ -67,7 +67,7 @@ $ docker ps -a
   810ad3c9ffe7        hello-world         "/hello"            47 seconds ago      Exited (0) 46 seconds ago                       objective_hawking
 ```
 
-#docker images
+## docker images
 It's helpful to check which images you have downloaded and are available locally:
 ```sh
 $ docker images
@@ -76,7 +76,7 @@ hello-world         latest              725dcfab7d63        4 days ago          
 centos              latest              d123f4e55e12        4 days ago          197MB
 ```
 
-#docker rmi
+## docker rmi
 If you want to remove a local image, use this command of this way:
 ```sh
 # docker rmi <image_id>
