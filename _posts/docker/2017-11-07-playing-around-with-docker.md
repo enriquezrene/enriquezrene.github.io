@@ -18,21 +18,15 @@ Let's say that you want to use a docker container with CentOS, for it you can ty
 $ docker search centos
 ```  
   
-<details>
-  <summary>output</summary>
-    <p>
-    
-        ```sh
-        NAME                               DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
-        centos                             The official build of CentOS.                   3789                [OK]                
-        ansible/centos7-ansible            Ansible on Centos7                              103                                     [OK]
-        jdeathe/centos-ssh                 CentOS-6 6.9 x86_64 / CentOS-7 7.4.1708 x8...   89                                      [OK]
-        ...
-        ```
-    </p>
-</details>
+and you'll have an output like this:
 
-
+```sh
+NAME                               DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+centos                             The official build of CentOS.                   3789                [OK]                
+ansible/centos7-ansible            Ansible on Centos7                              103                                     [OK]
+jdeathe/centos-ssh                 CentOS-6 6.9 x86_64 / CentOS-7 7.4.1708 x8...   89                                      [OK]
+...
+```
 
 This command basically allow us to search existing docker images that we can use.
 
@@ -94,7 +88,7 @@ centos              latest              d123f4e55e12        4 days ago          
 
 In the next post I'm going to explain you about what the **Dockerfile** is and how you can use it. 
 
-If you liked this post, you can pay me with a click on the ads. :sweat_smile: :v:
+If you liked this post, you can pay me with a click on the ads :sweat_smile: :v:
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- inferior -->
