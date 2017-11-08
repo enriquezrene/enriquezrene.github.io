@@ -88,7 +88,7 @@ centos              latest              d123f4e55e12        4 days ago          
 
 In the next post I'm going to explain you about what the **Dockerfile** is and how you can use it. 
 
-If you liked this post, you can pay me with a click on the ads :sweat_smile: :v:
+If you liked this post, you can pay me with a click on the ads. :sweat_smile: :v:
 
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- inferior -->
