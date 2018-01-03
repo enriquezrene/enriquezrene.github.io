@@ -161,3 +161,5 @@ y puede fácilmente romper piezas importantes si lo usas mal.
 - Greg Young fue la primera persona a la que escuche hablar acerca de este enfoque - [este es su resumen](http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/) que a mi es el que mas me agrada
 - Udi Dahan es otro defensor de CQRS, el tiene una [descripcion detallada de esta tecnica](http://udidahan.com/2009/12/09/clarified-cqrs/)
 - Hay una [lista de correo](https://groups.google.com/forum/#!forum/dddcqrs) para discutir este enfoque.
+
+Esta es una traduccion del articulo de Martin Fowler, si deseas visitar el original este es el [link](https://martinfowler.com/bliki/CQRS.html)
