@@ -27,3 +27,9 @@
         url: /docker/2017/11/06/installing-docker.html
       - title: Playing around with Docker
         url: /docker/2017/11/07/playing-around-with-docker.html
+
+- title: Martin Fowler
+  url: /#
+  sublinks:
+      - title: CQRS
+        url: /martin/fowler/2018/01/03/cqrs.html

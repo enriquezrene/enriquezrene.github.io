@@ -1,0 +1,163 @@
+---
+layout: post
+title:  "CQRS!"
+date:   2018-01-03 5:00:00 -0500
+categories: Martin Fowler
+published: true
+---
+**CQRS**
+
+CQRS se entiende por Command Query Responsibility Segregation (Segregacion de responsabilidad en comandos de consulta).
+Es un patron que la lo escuche por primera vez descrito por Greg Young. 
+Su motivacion es la nocion de que puedes usar un modelo diferente para actualizar informacion al utilizado para leerla.
+Para algunas situaciones, esta separacion podria ser valiosa, pero hay que tener en cuenta que para la mayoria de sistemas
+CQRS agrega complejidad muy riesgosa.
+
+El principal enfoque utilizado por las personas para interactuar con un sistema de informacion
+es tratarla como un almacen de datos CRUD. Con esto quiero decir que tenemos un modelo mental de alguna 
+estructura de registros en donde podemos `c`rear nuevos registros, `r`ead (leer) registros, `u`pdate (actualizar) registros existentes,
+y `d`elete (borrar) registros cuando no los necesitamos. En el caso mas simple, nuestras
+interacciones no son mas que almacenar y recibir estos registros.
+
+Cuando nuestras necesidades llegan a ser mas sofisticadas sensatamente nos movemos
+lejos de ese modelo. Podriamos desear ver la informacion de una forma diferente al 
+almacen de datos, quiza comprimiendo un conjunto de registros dentro de uno solo, o
+formando registros virtualmente combinando informacion de diferentes lugares. En
+el lugar en donde se actualiza la informacion podriamos encontrar reglas de validacion
+que solamente permiten que ciertas combinaciones de datos sean guardadas,  incluso
+se podria inferir cierta data para que sea almacenada que es diferente a la provista.
+
+<img src="https://martinfowler.com/bliki/images/cqrs/single-model.png"/>
+
+Cuando esto sucede empezamos a ver diferentes representaciones de informacion. Cuando los usuarios
+interactuan con la informacion ellos usan varias representacion de esta informacion.
+Los desarrolladores usualmente construyen su propio modelo conceptual el cual usan
+para manipular los elementos core del modelo. Si estas usando un modelo de dominio,
+entonces esta es usualmente la representacion conceptual del dominio. Tu usualmente
+tambien creas el almacen persistente tan similar al modelo conceptual como se pueda.
+
+Esta estructura de representacion de multiples capas puede ser muy compleja, pero cuando
+la gente hace esto, ellos aun lo resuelven como una unica representacion conceptual
+la cual actua como un punto de integracion conceptual entre todas las presentaciones.
+
+El cambio que CQRS presenta es partir ese modelo conceptual dentro de modelos separados
+para actualizar y mostrar datos, lo cual es referido como Comando (Command) y Consulta (Query)
+respectivamente siguiendo el vocabulario de [CommandQuerySeparation](https://martinfowler.com/bliki/CommandQuerySeparation.html).
+Lo racional es que para varios problemas, particularmente en los dominios mas complejos,
+tener el mismo modelo conceptual para comandos y consultas nos lleva a un modelo mas
+complejo el cual tampoco esta bien.
+
+<img src="https://martinfowler.com/bliki/images/cqrs/cqrs.png"/>
+
+Por modelos separados comunmente queremos decir modelos de objetos distintos,
+probablemente corriendo en diferentes procesos logicos, quiza sobre 
+hardware separado.
+Un ejemplo en la web podria ser un usuario que mira una pagina web que es
+renderizada usando un modelo de consulta. Si ellos inician un cambio ese cambio
+es ruteado a un modelo de comandos separado para su procesamiento, el cambio
+resultante es comunicado al modelo de consulta para renderizar el estado actualizado.
+
+Hay espacion para variaciones considerables aqui. Los modelos en memoria
+podrian compartir la misma base de datos, en cuyo caso la base de datos actua
+como el medio de comunicacion entre ambos modelos. Sin embargo, ellos podrian
+usar bases de datos separadas, efectivamente crear la base de datos para consultas
+dentro de una [base de datos de reportes en tiempo real](https://martinfowler.com/bliki/ReportingDatabase.html)
+En este caso hay la necesidad de teneder algunos mecanismos de comunicacion 
+entre ambos modelos de sus bases de datos.
+
+Los dos modelos podrian no ser modelos de objetos separados, 
+podrian ser los mismos objetos con diferentes interfaces que son usadas
+de forma separada cuando el objeto es usado para enviar un comando u otra para
+cuando es usado para consultas, algo similar a las vistas en las bases
+de datos relacionales. Pero normalmente cuando escucho CQRS, ellos son modelos claramente separados.
+
+CQRS naturalmente encaja con otros patrones de arquitectura.
+
+- A medida que nos alejamos de una única representación 
+con la que interactuamos mediante CRUD, 
+podemos pasar fácilmente a una UI basada en tareas.
+
+- CQRS se adapta bien a los modelos de programación basados en eventos. 
+Es común ver que el sistema CQRS se divida en servicios separados 
+que se comunican con []Event Collaboration](https://martinfowler.com/eaaDev/EventCollaboration.html). 
+Esto permite que estos servicios aprovechen fácilmente [Event Sourcing](https://martinfowler.com/eaaDev/EventSourcing.html).
+
+- Tener modelos separados plantea preguntas sobre la dificultad para mantener 
+esos modelos consistentes, lo que aumenta la probabilidad de usar 
+consistencia eventual.
+
+- Para muchos dominios, gran parte de la lógica es necesaria 
+cuando está actualizando, por lo que puede tener sentido 
+utilizar [EagerReadDerivation](https://martinfowler.com/bliki/EagerReadDerivation.html) para simplificar sus modelos de consulta.
+
+- Si el modelo de escritura genera eventos para todas las actualizaciones, 
+se puede estructurar los modelos de lectura como EventPosters, 
+lo que les permite ser imágenes de memoria y así evitar muchas 
+interacciones con la base de datos.
+
+- CQRS es adecuado para dominios complejos, 
+el tipo que también se beneficia del diseño dirigido por dominio.
+
+**Cuando usarlo**
+
+Al igual que cualquier patrón, CQRS es útil en algunos lugares, 
+pero no en otros. Muchos sistemas se ajustan a un modelo mental CRUD, 
+por lo que deben hacerse de ese modo. 
+CQRS es un salto mental significativo para todos los interesados, 
+por lo que no debe abordarse a menos que el beneficio valga la pena hacer el salto. 
+Si bien he encontrado uso exitosos de CQRS, 
+hasta ahora la mayoría de los casos que he encontrado no han sido tan buenos, 
+con CQRS  he visto una fuerza significativa que pone un sistema 
+de software en serias dificultades.
+
+En particular, CQRS solo debe usarse en partes específicas de un sistema 
+(un BoundedContext en DDD) y no en el sistema como un todo. 
+Con esta forma de pensar, cada contexto delimitado 
+necesita sus propias decisiones sobre cómo se debe modelar.
+
+Hasta ahora he visto beneficios en dos direcciones. 
+En primer lugar, es posible que algunos dominios complejos 
+sean más fáciles de abordar mediante el uso de CQRS. 
+Sin embargo, debo enfatizar que tal idoneidad para CQRS es en gran 
+medida el caso de minoría. 
+Por lo general, hay suficiente superposición entre el comando y l
+os lados de la consulta que compartir un modelo es más fácil. 
+Usar CQRS en un dominio que no concuerda agregará complejidad, 
+reduciendo la productividad y aumentando el riesgo.
+
+
+El otro beneficio principal es en el manejo de aplicaciones de alto rendimiento.
+CQRS permite separar la carga de lectura y escritura 
+permitiéndo escalar cada una de manera independiente. 
+Si tu aplicación ve una gran disparidad entre lecturas y escrituras, 
+esto es muy útil. Incluso sin eso, 
+se puede aplicar diferentes estrategias de optimización a los dos lados. 
+Un ejemplo de esto es el uso de diferentes técnicas de acceso a la 
+base de datos para leer y actualizar.
+
+
+Si tu dominio no es adecuado para CQRS, 
+pero tiene consultas exigentes que agregan complejidad o 
+problemas de rendimiento, recuerde que aún puede usar una 
+Base de datos de reportes. CQRS usa un modelo separado para todas l
+as consultas. Con una base de datos de reportes, 
+aun necesitas tu sistema principal para la mayoría de consultas, 
+pero descargas las más exigentes a la base de datos de reportes.
+
+A pesar de estos beneficios, se debe tener mucho cuidado con el uso de CQRS. 
+Muchos sistemas de información se ajustan bien a la noción 
+de una base de información que se actualiza de la misma manera que se lee, 
+agregar CQRS a dicho sistema puede agregar complejidad significativa. 
+Ciertamente he visto casos en los que se agrega una complejidad
+que afecta de forma significativa la productividad, 
+añadiendo una cantidad injustificada de riesgo al proyecto, 
+incluso en manos de un equipo capaz. Por lo que aun cuando 
+CQRS es un patrón que es bueno tenerlo en la caja de herramientas, 
+ten en cuenta que es difícil usarlo bien 
+y puede fácilmente romper piezas importantes si lo usas mal.
+
+
+**Otras lecturas**
+- Greg Young fue la primera persona a la que escuche hablar acerca de este enfoque - [este es su resumen](http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/) que a mi es el que mas me agrada
+- Udi Dahan es otro defensor de CQRS, el tiene una [descripcion detallada de esta tecnica](http://udidahan.com/2009/12/09/clarified-cqrs/)
+- Hay una [lista de correo](https://groups.google.com/forum/#!forum/dddcqrs) para discutir este enfoque.

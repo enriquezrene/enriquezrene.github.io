@@ -1,4 +1,251 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-11-06T23:27:05-05:00</updated><id>http://localhost:4000/</id><title type="html">Blog Enriquez Rene</title><subtitle></subtitle><entry><title type="html">Installing Docker</title><link href="http://localhost:4000/docker/2017/11/06/installing-docker.html" rel="alternate" type="text/html" title="Installing Docker" /><published>2017-11-06T22:23:00-05:00</published><updated>2017-11-06T22:23:00-05:00</updated><id>http://localhost:4000/docker/2017/11/06/installing-docker</id><content type="html" xml:base="http://localhost:4000/docker/2017/11/06/installing-docker.html">&lt;p&gt;In this post, I’m going to show you how to install Docker on Ubuntu 17.10&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-01-03T05:35:39-05:00</updated><id>http://localhost:4000/</id><title type="html">Blog Enriquez Rene</title><subtitle></subtitle><entry><title type="html">CQRS!</title><link href="http://localhost:4000/martin/fowler/2018/01/03/cqrs.html" rel="alternate" type="text/html" title="CQRS!" /><published>2018-01-03T05:00:00-05:00</published><updated>2018-01-03T05:00:00-05:00</updated><id>http://localhost:4000/martin/fowler/2018/01/03/cqrs</id><content type="html" xml:base="http://localhost:4000/martin/fowler/2018/01/03/cqrs.html">&lt;p&gt;&lt;strong&gt;CQRS&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;CQRS se entiende por Command Query Responsibility Segregation (Segregacion de responsabilidad en comandos de consulta).
+Es un patron que la lo escuche por primera vez descrito por Greg Young. 
+Su motivacion es la nocion de que puedes usar un modelo diferente para actualizar informacion al utilizado para leerla.
+Para algunas situaciones, esta separacion podria ser valiosa, pero hay que tener en cuenta que para la mayoria de sistemas
+CQRS agrega complejidad muy riesgosa.&lt;/p&gt;
+
+&lt;p&gt;El principal enfoque utilizado por las personas para interactuar con un sistema de informacion
+es tratarla como un almacen de datos CRUD. Con esto quiero decir que tenemos un modelo mental de alguna 
+estructura de registros en donde podemos &lt;code class=&quot;highlighter-rouge&quot;&gt;c&lt;/code&gt;rear nuevos registros, &lt;code class=&quot;highlighter-rouge&quot;&gt;r&lt;/code&gt;ead (leer) registros, &lt;code class=&quot;highlighter-rouge&quot;&gt;u&lt;/code&gt;pdate (actualizar) registros existentes,
+y &lt;code class=&quot;highlighter-rouge&quot;&gt;d&lt;/code&gt;elete (borrar) registros cuando no los necesitamos. En el caso mas simple, nuestras
+interacciones no son mas que almacenar y recibir estos registros.&lt;/p&gt;
+
+&lt;p&gt;Cuando nuestras necesidades llegan a ser mas sofisticadas sensatamente nos movemos
+lejos de ese modelo. Podriamos desear ver la informacion de una forma diferente al 
+almacen de datos, quiza comprimiendo un conjunto de registros dentro de uno solo, o
+formando registros virtualmente combinando informacion de diferentes lugares. En
+el lugar en donde se actualiza la informacion podriamos encontrar reglas de validacion
+que solamente permiten que ciertas combinaciones de datos sean guardadas,  incluso
+se podria inferir cierta data para que sea almacenada que es diferente a la provista.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://martinfowler.com/bliki/images/cqrs/single-model.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Cuando esto sucede empezamos a ver diferentes representaciones de informacion. Cuando los usuarios
+interactuan con la informacion ellos usan varias representacion de esta informacion.
+Los desarrolladores usualmente construyen su propio modelo conceptual el cual usan
+para manipular los elementos core del modelo. Si estas usando un modelo de dominio,
+entonces esta es usualmente la representacion conceptual del dominio. Tu usualmente
+tambien creas el almacen persistente tan similar al modelo conceptual como se pueda.&lt;/p&gt;
+
+&lt;p&gt;Esta estructura de representacion de multiples capas puede ser muy compleja, pero cuando
+la gente hace esto, ellos aun lo resuelven como una unica representacion conceptual
+la cual actua como un punto de integracion conceptual entre todas las presentaciones.&lt;/p&gt;
+
+&lt;p&gt;El cambio que CQRS presenta es partir ese modelo conceptual dentro de modelos separados
+para actualizar y mostrar datos, lo cual es referido como Comando (Command) y Consulta (Query)
+respectivamente siguiendo el vocabulario de &lt;a href=&quot;https://martinfowler.com/bliki/CommandQuerySeparation.html&quot;&gt;CommandQuerySeparation&lt;/a&gt;.
+Lo racional es que para varios problemas, particularmente en los dominios mas complejos,
+tener el mismo modelo conceptual para comandos y consultas nos lleva a un modelo mas
+complejo el cual tampoco esta bien.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://martinfowler.com/bliki/images/cqrs/cqrs.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Por modelos separados comunmente queremos decir modelos de objetos distintos,
+probablemente corriendo en diferentes procesos logicos, quiza sobre 
+hardware separado.
+Un ejemplo en la web podria ser un usuario que mira una pagina web que es
+renderizada usando un modelo de consulta. Si ellos inician un cambio ese cambio
+es ruteado a un modelo de comandos separado para su procesamiento, el cambio
+resultante es comunicado al modelo de consulta para renderizar el estado actualizado.&lt;/p&gt;
+
+&lt;p&gt;Hay espacion para variaciones considerables aqui. Los modelos en memoria
+podrian compartir la misma base de datos, en cuyo caso la base de datos actua
+como el medio de comunicacion entre ambos modelos. Sin embargo, ellos podrian
+usar bases de datos separadas, efectivamente crear la base de datos para consultas
+dentro de una &lt;a href=&quot;https://martinfowler.com/bliki/ReportingDatabase.html&quot;&gt;base de datos de reportes en tiempo real&lt;/a&gt;
+En este caso hay la necesidad de teneder algunos mecanismos de comunicacion 
+entre ambos modelos de sus bases de datos.&lt;/p&gt;
+
+&lt;p&gt;Los dos modelos podrian no ser modelos de objetos separados, 
+podrian ser los mismos objetos con diferentes interfaces que son usadas
+de forma separada cuando el objeto es usado para enviar un comando u otra para
+cuando es usado para consultas, algo similar a las vistas en las bases
+de datos relacionales. Pero normalmente cuando escucho CQRS, ellos son modelos claramente separados.&lt;/p&gt;
+
+&lt;p&gt;CQRS naturalmente encaja con otros patrones de arquitectura.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;A medida que nos alejamos de una única representación 
+con la que interactuamos mediante CRUD, 
+podemos pasar fácilmente a una UI basada en tareas.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;CQRS se adapta bien a los modelos de programación basados en eventos. 
+Es común ver que el sistema CQRS se divida en servicios separados 
+que se comunican con []Event Collaboration](https://martinfowler.com/eaaDev/EventCollaboration.html). 
+Esto permite que estos servicios aprovechen fácilmente &lt;a href=&quot;https://martinfowler.com/eaaDev/EventSourcing.html&quot;&gt;Event Sourcing&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tener modelos separados plantea preguntas sobre la dificultad para mantener 
+esos modelos consistentes, lo que aumenta la probabilidad de usar 
+consistencia eventual.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Para muchos dominios, gran parte de la lógica es necesaria 
+cuando está actualizando, por lo que puede tener sentido 
+utilizar &lt;a href=&quot;https://martinfowler.com/bliki/EagerReadDerivation.html&quot;&gt;EagerReadDerivation&lt;/a&gt; para simplificar sus modelos de consulta.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Si el modelo de escritura genera eventos para todas las actualizaciones, 
+se puede estructurar los modelos de lectura como EventPosters, 
+lo que les permite ser imágenes de memoria y así evitar muchas 
+interacciones con la base de datos.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;CQRS es adecuado para dominios complejos, 
+el tipo que también se beneficia del diseño dirigido por dominio.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Cuando usarlo&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Al igual que cualquier patrón, CQRS es útil en algunos lugares, 
+pero no en otros. Muchos sistemas se ajustan a un modelo mental CRUD, 
+por lo que deben hacerse de ese modo. 
+CQRS es un salto mental significativo para todos los interesados, 
+por lo que no debe abordarse a menos que el beneficio valga la pena hacer el salto. 
+Si bien he encontrado uso exitosos de CQRS, 
+hasta ahora la mayoría de los casos que he encontrado no han sido tan buenos, 
+con CQRS  he visto una fuerza significativa que pone un sistema 
+de software en serias dificultades.&lt;/p&gt;
+
+&lt;p&gt;En particular, CQRS solo debe usarse en partes específicas de un sistema 
+(un BoundedContext en DDD) y no en el sistema como un todo. 
+Con esta forma de pensar, cada contexto delimitado 
+necesita sus propias decisiones sobre cómo se debe modelar.&lt;/p&gt;
+
+&lt;p&gt;Hasta ahora he visto beneficios en dos direcciones. 
+En primer lugar, es posible que algunos dominios complejos 
+sean más fáciles de abordar mediante el uso de CQRS. 
+Sin embargo, debo enfatizar que tal idoneidad para CQRS es en gran 
+medida el caso de minoría. 
+Por lo general, hay suficiente superposición entre el comando y l
+os lados de la consulta que compartir un modelo es más fácil. 
+Usar CQRS en un dominio que no concuerda agregará complejidad, 
+reduciendo la productividad y aumentando el riesgo.&lt;/p&gt;
+
+&lt;p&gt;El otro beneficio principal es en el manejo de aplicaciones de alto rendimiento.
+CQRS permite separar la carga de lectura y escritura 
+permitiéndo escalar cada una de manera independiente. 
+Si tu aplicación ve una gran disparidad entre lecturas y escrituras, 
+esto es muy útil. Incluso sin eso, 
+se puede aplicar diferentes estrategias de optimización a los dos lados. 
+Un ejemplo de esto es el uso de diferentes técnicas de acceso a la 
+base de datos para leer y actualizar.&lt;/p&gt;
+
+&lt;p&gt;Si tu dominio no es adecuado para CQRS, 
+pero tiene consultas exigentes que agregan complejidad o 
+problemas de rendimiento, recuerde que aún puede usar una 
+Base de datos de reportes. CQRS usa un modelo separado para todas l
+as consultas. Con una base de datos de reportes, 
+aun necesitas tu sistema principal para la mayoría de consultas, 
+pero descargas las más exigentes a la base de datos de reportes.&lt;/p&gt;
+
+&lt;p&gt;A pesar de estos beneficios, se debe tener mucho cuidado con el uso de CQRS. 
+Muchos sistemas de información se ajustan bien a la noción 
+de una base de información que se actualiza de la misma manera que se lee, 
+agregar CQRS a dicho sistema puede agregar complejidad significativa. 
+Ciertamente he visto casos en los que se agrega una complejidad
+que afecta de forma significativa la productividad, 
+añadiendo una cantidad injustificada de riesgo al proyecto, 
+incluso en manos de un equipo capaz. Por lo que aun cuando 
+CQRS es un patrón que es bueno tenerlo en la caja de herramientas, 
+ten en cuenta que es difícil usarlo bien 
+y puede fácilmente romper piezas importantes si lo usas mal.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Otras lecturas&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Greg Young fue la primera persona a la que escuche hablar acerca de este enfoque - &lt;a href=&quot;http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/&quot;&gt;este es su resumen&lt;/a&gt; que a mi es el que mas me agrada&lt;/li&gt;
+  &lt;li&gt;Udi Dahan es otro defensor de CQRS, el tiene una &lt;a href=&quot;http://udidahan.com/2009/12/09/clarified-cqrs/&quot;&gt;descripcion detallada de esta tecnica&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Hay una &lt;a href=&quot;https://groups.google.com/forum/#!forum/dddcqrs&quot;&gt;lista de correo&lt;/a&gt; para discutir este enfoque.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">CQRS</summary></entry><entry><title type="html">Playing around with Docker</title><link href="http://localhost:4000/docker/2017/11/07/playing-around-with-docker.html" rel="alternate" type="text/html" title="Playing around with Docker" /><published>2017-11-07T22:20:00-05:00</published><updated>2017-11-07T22:20:00-05:00</updated><id>http://localhost:4000/docker/2017/11/07/playing-around-with-docker</id><content type="html" xml:base="http://localhost:4000/docker/2017/11/07/playing-around-with-docker.html">&lt;p&gt;Now that you have ran your &lt;em&gt;Hello World&lt;/em&gt; app with Docker, you’re ready to go for more.&lt;/p&gt;
+
+&lt;p&gt;We said Docker can use any linux distribution that we want, now the question is:&lt;/p&gt;
+
+&lt;p&gt;How can I do that?&lt;/p&gt;
+
+&lt;p&gt;In Docker we have a public repo of docker images that we can use to run our apps.
+Let’s say that you want to use a docker container with CentOS, for it you can type in your terminal:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker search centos
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;and you’ll have an output like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NAME                               DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+centos                             The official build of CentOS.                   3789                &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;OK]                
+ansible/centos7-ansible            Ansible on Centos7                              103                                     &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;OK]
+jdeathe/centos-ssh                 CentOS-6 6.9 x86_64 / CentOS-7 7.4.1708 x8...   89                                      &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;OK]
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This command basically allow us to search existing docker images that we can use.&lt;/p&gt;
+
+&lt;h1 id=&quot;running-docker-images&quot;&gt;Running docker images&lt;/h1&gt;
+
+&lt;h2 id=&quot;docker-run&quot;&gt;docker run&lt;/h2&gt;
+&lt;p&gt;Once you found the image that you are looking for (let’s say &lt;strong&gt;centos&lt;/strong&gt;) we need to use the &lt;em&gt;run&lt;/em&gt; command:&lt;/p&gt;
+
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker run centos
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This command will download the image from the internet to our host and then run the container.
+The container running on the host is what docker calls, an instance.&lt;/p&gt;
+
+&lt;h2 id=&quot;docker-ps&quot;&gt;docker ps&lt;/h2&gt;
+&lt;p&gt;Once you ran a container, it will execute whatever process that you have specified inside it and then it finishes.
+Since we did not configure any process to run inside the container, the instance should be finished. 
+To know what instances have ran in your host you can type the following command:&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker ps &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;
+  CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
+  651fb5f3300b        centos              &lt;span class=&quot;s2&quot;&gt;&quot;/bin/bash&quot;&lt;/span&gt;         14 seconds ago      Exited &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 12 seconds ago                       musing_hoover
+  810ad3c9ffe7        hello-world         &lt;span class=&quot;s2&quot;&gt;&quot;/hello&quot;&lt;/span&gt;            47 seconds ago      Exited &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 46 seconds ago                       objective_hawking
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;strong&gt;-a&lt;/strong&gt; flag is used to query the instances that are running and also those instances that have finished.
+If you are interested only in the running instances just ignore the &lt;strong&gt;-a&lt;/strong&gt; argument.&lt;/p&gt;
+
+&lt;p&gt;The command is currently listing two instances with an &lt;em&gt;Exited&lt;/em&gt; status, which means they are no longer running.&lt;/p&gt;
+
+&lt;h2 id=&quot;docker-rm&quot;&gt;docker rm&lt;/h2&gt;
+&lt;p&gt;This command allows you to remove the instances that you no longer need.&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker rm 651fb5f3300b
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker ps &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt;
+  CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES  
+  810ad3c9ffe7        hello-world         &lt;span class=&quot;s2&quot;&gt;&quot;/hello&quot;&lt;/span&gt;            47 seconds ago      Exited &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 46 seconds ago                       objective_hawking
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;docker-images&quot;&gt;docker images&lt;/h2&gt;
+&lt;p&gt;It’s helpful to check which images you have downloaded and are available locally:&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+hello-world         latest              725dcfab7d63        4 days ago          1.84kB
+centos              latest              d123f4e55e12        4 days ago          197MB
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;docker-rmi&quot;&gt;docker rmi&lt;/h2&gt;
+&lt;p&gt;If you want to remove a local image, use this command of this way:&lt;/p&gt;
+&lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# docker rmi &amp;lt;image_id&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker rmi 725dcfab7d63
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+centos              latest              d123f4e55e12        4 days ago          197MB
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In the next post I’m going to explain you about what the &lt;strong&gt;Dockerfile&lt;/strong&gt; is and how you can use it.&lt;/p&gt;
+
+&lt;p&gt;If you liked this post, you can pay me with a click on the ads :sweat_smile: :v:&lt;/p&gt;
+
+&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
+
+&lt;!-- inferior --&gt;
+&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
+&lt;script&gt;
+(adsbygoogle = window.adsbygoogle || []).push({});
+&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Now that you have ran your Hello World app with Docker, you’re ready to go for more.</summary></entry><entry><title type="html">Installing Docker</title><link href="http://localhost:4000/docker/2017/11/06/installing-docker.html" rel="alternate" type="text/html" title="Installing Docker" /><published>2017-11-06T22:23:00-05:00</published><updated>2017-11-06T22:23:00-05:00</updated><id>http://localhost:4000/docker/2017/11/06/installing-docker</id><content type="html" xml:base="http://localhost:4000/docker/2017/11/06/installing-docker.html">&lt;p&gt;In this post, I’m going to show you how to install Docker on Ubuntu 17.10&lt;/p&gt;
 
 &lt;p&gt;Old linux distributions used to include the program &lt;em&gt;docker&lt;/em&gt;, &lt;em&gt;docker.io&lt;/em&gt; and &lt;em&gt;docker-engine&lt;/em&gt; as part of a fresh installation.
 Those programs are really old, if you have them, please ensure to first remove them of this way:&lt;/p&gt;
@@ -22,7 +269,8 @@ Those programs are really old, if you have them, please ensure to first remove t
 &lt;div class=&quot;language-sh highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;﻿Docker version 17.09.0-ce, build afdb6d4
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;For finish, I know we all love &lt;em&gt;Hello World&lt;/em&gt; examples and that’s why we are going to run a &lt;em&gt;Hello World&lt;/em&gt; using our
+&lt;h1 id=&quot;hello-world&quot;&gt;Hello World&lt;/h1&gt;
+&lt;p&gt;I know we all love &lt;em&gt;Hello World&lt;/em&gt; examples and that’s why we are going to run a &lt;em&gt;Hello World&lt;/em&gt; using our
 fresh Docker installation.&lt;/p&gt;
 
 &lt;p&gt;For this, let’s type in your terminal the next command:&lt;/p&gt;
@@ -310,90 +558,4 @@ Let’s use this string:&lt;/p&gt;
 
 &lt;p&gt;OMG, what it is? Don’t cry please, we only changed the last expression replacing [0-9] by [-+]?\d+(.\d+)?$, that’s it.&lt;/p&gt;
 
-&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;</content><author><name></name></author><summary type="html">Let’s work hard We are going to extract coordinates from a string like this COORDINATES(((1 2,3 4)),((5 6,7 8,9 10)))</summary></entry><entry><title type="html">URLs</title><link href="http://localhost:4000/regex/2017/04/17/urls.html" rel="alternate" type="text/html" title="URLs" /><published>2017-04-17T15:53:00-05:00</published><updated>2017-04-17T15:53:00-05:00</updated><id>http://localhost:4000/regex/2017/04/17/urls</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/17/urls.html">&lt;h1 id=&quot;looking-for-valid-urls&quot;&gt;Looking for valid URLs&lt;/h1&gt;
-&lt;p&gt;Valid URLs are protocol://someadress, for this example we are going to use a file with this content:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http://www.google.com&lt;/li&gt;
-  &lt;li&gt;http:/www.google.com&lt;/li&gt;
-  &lt;li&gt;ftp://123.44.5.22&lt;/li&gt;
-  &lt;li&gt;https://255.122.22.11&lt;/li&gt;
-  &lt;li&gt;htt://google.com&lt;/li&gt;
-  &lt;li&gt;http://google.com&lt;/li&gt;
-  &lt;li&gt;file://somefile&lt;/li&gt;
-  &lt;li&gt;file//another-file&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;We will support these protocols:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;http&lt;/li&gt;
-  &lt;li&gt;https&lt;/li&gt;
-  &lt;li&gt;ftp&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;So, the expression for find these values is quite simple:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;^(https?|ftp|file)://.+$&quot;&lt;/span&gt; file.txt&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;http://www.google.com&lt;/li&gt;
-  &lt;li&gt;ftp://123.44.5.22&lt;/li&gt;
-  &lt;li&gt;https://255.122.22.11&lt;/li&gt;
-  &lt;li&gt;http://google.com&lt;/li&gt;
-  &lt;li&gt;file://somefile&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Where:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;- ^               : at the beginning
-- https?|ftp|file : http or https &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;no, find ftp &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;no find file
-- ://             : ://  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; self explained &lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-- .+              : any characters
-- &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;              : at the end&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;
-
-&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
-
-&lt;!-- inferior --&gt;
-&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
-&lt;script&gt;
-(adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Looking for valid URLs Valid URLs are protocol://someadress, for this example we are going to use a file with this content:</summary></entry><entry><title type="html">Ip Adress with RegEx</title><link href="http://localhost:4000/regex/2017/04/17/ip-address.html" rel="alternate" type="text/html" title="Ip Adress with RegEx" /><published>2017-04-17T14:34:00-05:00</published><updated>2017-04-17T14:34:00-05:00</updated><id>http://localhost:4000/regex/2017/04/17/ip-address</id><content type="html" xml:base="http://localhost:4000/regex/2017/04/17/ip-address.html">&lt;h1 id=&quot;looking-for-valid-ip-addresses&quot;&gt;Looking for valid IP Addresses&lt;/h1&gt;
-&lt;p&gt;IP Addresses have the format
-3DIGITS.3DIGITS.3DIGITS.3DIGITS&lt;/p&gt;
-
-&lt;p&gt;So, the expression for find these values is quite simple:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;grep&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-P&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;^([&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{1,3}&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;){3}[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]{1,3}$&quot;&lt;/span&gt; file.txt
-127.0.0.1
-129.22.224.55
-192.168.1.1
-123.255.255.255
-Where:
-^               : at the beginning
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]{&lt;/span&gt;1,3&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;       : find 1, 2 or 3 digits
-&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;              : those numbers must be followed by a &lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;3&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;             : we are looking &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;3 groups with the same pattern
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\d&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]{&lt;/span&gt;1,3&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;       : find a block of 1,2 or 3 digits
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;              : at the end&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;For this example we have used a file with this content:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot; data-lang=&quot;shell&quot;&gt;127.0.0.1
-129.22.224.55
-192.168.1.1
-123.12.12
-11.00.00.1.2
-123.255.255.255
-12.12.12.12.12&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;
-
-&lt;script async=&quot;&quot; src=&quot;//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js&quot;&gt;&lt;/script&gt;
-
-&lt;!-- inferior --&gt;
-&lt;p&gt;&lt;ins class=&quot;adsbygoogle&quot; style=&quot;display:inline-block;width:728px;height:90px&quot; data-ad-client=&quot;ca-pub-5428825449848403&quot; data-ad-slot=&quot;1328012179&quot;&gt;&lt;/ins&gt;
-&lt;script&gt;
-(adsbygoogle = window.adsbygoogle || []).push({});
-&lt;/script&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Looking for valid IP Addresses IP Addresses have the format 3DIGITS.3DIGITS.3DIGITS.3DIGITS So, the expression for find these values is quite simple: $ grep -P &quot;^([\d]{1,3}\.){3}[\d]{1,3}$&quot; file.txt 127.0.0.1 129.22.224.55 192.168.1.1 123.255.255.255 Where: ^ : at the beginning [\d]{1,3} : find 1, 2 or 3 digits \. : those numbers must be followed by a . {3} : we are looking for 3 groups with the same pattern [\d]{1,3} : find a block of 1,2 or 3 digits $ : at the end</summary></entry></feed>
+&lt;p&gt;If you like this post please pay me with a click on the ads :)&lt;/p&gt;</content><author><name></name></author><summary type="html">Let’s work hard We are going to extract coordinates from a string like this COORDINATES(((1 2,3 4)),((5 6,7 8,9 10)))</summary></entry></feed>

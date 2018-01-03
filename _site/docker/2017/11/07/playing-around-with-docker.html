@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Brief Overview</title>
-  <meta name="description" content="Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc.">
+  <title>Playing around with Docker</title>
+  <meta name="description" content="Now that you have ran your Hello World app with Docker, you’re ready to go for more.">
 
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +18,7 @@
 
   <link rel="stylesheet" href="/assets/main.css">
   <link rel="stylesheet" href="/custom-css/styles.css">
-  <link rel="canonical" href="http://localhost:4000/docker/2017/11/05/brief-overview.html">
+  <link rel="canonical" href="http://localhost:4000/docker/2017/11/07/playing-around-with-docker.html">
   <link rel="alternate" type="application/rss+xml" title="Blog Enriquez Rene" href="/feed.xml">
 
   
@@ -159,76 +159,91 @@
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 
   <header class="post-header">
-    <h1 class="post-title" itemprop="name headline">Brief Overview</h1>
+    <h1 class="post-title" itemprop="name headline">Playing around with Docker</h1>
     <p class="post-meta">
-      <time datetime="2017-11-05T22:21:00-05:00" itemprop="datePublished">
+      <time datetime="2017-11-07T22:20:00-05:00" itemprop="datePublished">
         
-        Nov 5, 2017
+        Nov 7, 2017
       </time>
       </p>
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>Docker is one of the most used terms when you hear people talking about deployments, continuous integration, testing, DevOps, etc.</p>
+    <p>Now that you have ran your <em>Hello World</em> app with Docker, you’re ready to go for more.</p>
 
-<p>I have been working with this technology for a while and I decided to write a little bit about my experience with it. Let’s start understanding what Docker is.</p>
+<p>We said Docker can use any linux distribution that we want, now the question is:</p>
 
-<h1 id="background">Background</h1>
-<p>At the beginning we used to buy powerful servers in order to deploy our applications. Often these servers used to be under-used.
-Probably they were used at the half of their maximum capacity in the best cases.</p>
+<p>How can I do that?</p>
 
-<p>One of the worst things that used to happened us was related to have many services running on a physical server. 
-So if we needed to restart for some reason, all those services were down while the server was being started, this is too bad.</p>
+<p>In Docker we have a public repo of docker images that we can use to run our apps.
+Let’s say that you want to use a docker container with CentOS, for it you can type in your terminal:</p>
 
-<p>On the other hand, keep the services isolated is one of the best practices to deal with these problems, but of course, buy one server per service is not a smart idea at all, and that’s why Virtual Machines (VMs) raised.</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker search centos
+</code></pre></div></div>
 
-<p>Using VMs, we can have many services running on a single host and all of them are isolated one each other. 
-So if you need to restart one service, you only need to restart that VM and that’s it.</p>
+<p>and you’ll have an output like this:</p>
 
-<h1 id="whats-wrong-with-vms">What’s wrong with VMs?</h1>
-<p>There is nothing wrong with them but the unique bad stuff is they need the full blown OS to work and as we know, each OS consumes:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NAME                               DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+centos                             The official build of CentOS.                   3789                <span class="o">[</span>OK]                
+ansible/centos7-ansible            Ansible on Centos7                              103                                     <span class="o">[</span>OK]
+jdeathe/centos-ssh                 CentOS-6 6.9 x86_64 / CentOS-7 7.4.1708 x8...   89                                      <span class="o">[</span>OK]
+...
+</code></pre></div></div>
 
-<ul>
-  <li>RAM</li>
-  <li>Hard disk</li>
-  <li>CPU</li>
-  <li>OS Licenses (like Windows and other OS)</li>
-</ul>
+<p>This command basically allow us to search existing docker images that we can use.</p>
 
-<h1 id="now-we-have-docker">Now we have Docker</h1>
-<p>Keeping in mind those issues a new (not really new) solution was created and now we have containers. 
-Docker is one of them, in a nutshell a container is like a VM that re-use the host’s kernel and because of that you have allowed to run any Linux distribution as a docker instance on your Linux docker host. Of course, the same it’s true for Windows.</p>
+<h1 id="running-docker-images">Running docker images</h1>
 
-<p>Let’s review two basic concepts:</p>
+<h2 id="docker-run">docker run</h2>
+<p>Once you found the image that you are looking for (let’s say <strong>centos</strong>) we need to use the <em>run</em> command:</p>
 
-<h3 id="docker-host">Docker host</h3>
-<p>This is your physical server, nowadays it’s pretty common an EC2 instance running on AWS.</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker run centos
+</code></pre></div></div>
 
-<h3 id="docker-image">Docker image</h3>
-<p>It is composed of the OS of your choice, and the services that you want running inside it.</p>
+<p>This command will download the image from the internet to our host and then run the container.
+The container running on the host is what docker calls, an instance.</p>
 
-<p>For example, if you have installed Ubuntu in your host machine, you can run on it CentOS, RedHat, Debian or whatever other linux distribution.</p>
+<h2 id="docker-ps">docker ps</h2>
+<p>Once you ran a container, it will execute whatever process that you have specified inside it and then it finishes.
+Since we did not configure any process to run inside the container, the instance should be finished. 
+To know what instances have ran in your host you can type the following command:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker ps <span class="nt">-a</span>
+  CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
+  651fb5f3300b        centos              <span class="s2">"/bin/bash"</span>         14 seconds ago      Exited <span class="o">(</span>0<span class="o">)</span> 12 seconds ago                       musing_hoover
+  810ad3c9ffe7        hello-world         <span class="s2">"/hello"</span>            47 seconds ago      Exited <span class="o">(</span>0<span class="o">)</span> 46 seconds ago                       objective_hawking
+</code></pre></div></div>
 
-<blockquote>
-  <p>A good practice is to run only one service inside a docker image.</p>
-</blockquote>
+<p>The <strong>-a</strong> flag is used to query the instances that are running and also those instances that have finished.
+If you are interested only in the running instances just ignore the <strong>-a</strong> argument.</p>
 
-<p>In order to understand better how Docker can be used, let’s say that you want to run an application that is composed by a MySQL database and some code written in Java.</p>
+<p>The command is currently listing two instances with an <em>Exited</em> status, which means they are no longer running.</p>
 
-<p>With this idea in mind, we will need two docker images, and each one of them can have a different OS, for example:</p>
+<h2 id="docker-rm">docker rm</h2>
+<p>This command allows you to remove the instances that you no longer need.</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker rm 651fb5f3300b
+<span class="nv">$ </span>docker ps <span class="nt">-a</span>
+  CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES  
+  810ad3c9ffe7        hello-world         <span class="s2">"/hello"</span>            47 seconds ago      Exited <span class="o">(</span>0<span class="o">)</span> 46 seconds ago                       objective_hawking
+</code></pre></div></div>
 
-<ul>
-  <li>Image 1: Ubuntu 14.04, Java 8</li>
-  <li>Image 2: CentOS 5, MySQL 5.x</li>
-</ul>
+<h2 id="docker-images">docker images</h2>
+<p>It’s helpful to check which images you have downloaded and are available locally:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+hello-world         latest              725dcfab7d63        4 days ago          1.84kB
+centos              latest              d123f4e55e12        4 days ago          197MB
+</code></pre></div></div>
 
-<p>Of course we can use Ubuntu or any other distro for all the images, but I’m choosing two different OS just to make it clear.
-Once you have your images you can run them, an image running is what we call an instance, so you’ll have two docker instances running.</p>
+<h2 id="docker-rmi">docker rmi</h2>
+<p>If you want to remove a local image, use this command of this way:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># docker rmi &lt;image_id&gt;</span>
+<span class="nv">$ </span>docker rmi 725dcfab7d63
+<span class="nv">$ </span>docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+centos              latest              d123f4e55e12        4 days ago          197MB
+</code></pre></div></div>
 
-<p>And each one of them will be absolutely isolated and re-using the host kernel. Of this way, if we want to restart the database server,
-we will only need to restart the Image 2 and the Image 1 and the docker host will keep working without any problems.</p>
-
-<p>In the next posts, I’m going to show you how to create your own docker images and how to run applications/services inside of them.</p>
+<p>In the next post I’m going to explain you about what the <strong>Dockerfile</strong> is and how you can use it.</p>
 
 <p>If you liked this post, you can pay me with a click on the ads <img class="emoji" title=":sweat_smile:" alt=":sweat_smile:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f605.png" height="20" width="20"> <img class="emoji" title=":v:" alt=":v:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/270c.png" height="20" width="20"></p>
 
